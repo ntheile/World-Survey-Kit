@@ -324,6 +324,15 @@
     <Content Include="images\AquaClara.gif" />
     <Content Include="images\bg-footer-noise.jpg" />
     <Content Include="images\city.jpg" />
+    <Content Include="images\demo\screen-build.png" />
+    <Content Include="images\demo\screen-gps.png" />
+    <Content Include="images\demo\screen-import.png" />
+    <Content Include="images\demo\screen-multi.png" />
+    <Content Include="images\demo\screen-open.png" />
+    <Content Include="images\demo\screen-report.png" />
+    <Content Include="images\demo\screen-sidemenu.png" />
+    <Content Include="images\demo\screen-signature.png" />
+    <Content Include="images\demo\screen-single.png" />
     <Content Include="images\facebook_login.png" />
     <Content Include="images\facebook_login_sm.png" />
     <Content Include="images\icons\hdpi.png" />

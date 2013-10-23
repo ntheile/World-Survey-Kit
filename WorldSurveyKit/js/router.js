@@ -67,7 +67,9 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
 
             "reports?:fileId": "reportsTable",
 
-            "importer?:id": "importer"
+            "importer?:id": "importer",
+
+            "tutorial": "tutorial"
 
         };
 
@@ -102,7 +104,9 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
 
             "history?:page": "history",
 
-            "reports?:fileId": "reportsTable"
+            "reports?:fileId": "reportsTable",
+
+            "tutorial": "tutorial"
 
         };
 
@@ -1312,6 +1316,17 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
                 console.log("Error fetching files");
             });
 
+
+        },
+
+        // Test method
+        tutorial: function () {
+
+            console.log("====> tutorial");
+
+            // show dom ele
+            $.mobile.changePage("#tutorial", { reverse: false, changeHash: false });
+            $("#tutorial").trigger("create");
 
         },
 

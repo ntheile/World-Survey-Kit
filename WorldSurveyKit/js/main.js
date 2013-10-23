@@ -155,6 +155,41 @@ require(["jquery", "backbone", "backstretch", "dataTables", "sly", "modernizrCus
         speed: 300
     });
 
+    // set up sly slider
+    $('#frame2').sly({
+        horizontal: 1,
+        itemNav: 'centered',
+        itemSelector: 'div',
+        // Scrollbar
+        scrollBar: '.scrollbar2',
+        dragHandle: 1,
+        dragging: 1,
+        activateMiddle: 0,
+        // dragging
+        dragSource: "#frame2",
+        mouseDragging: 1,    // Enable navigation by dragging the SLIDEE with mouse cursor.
+        touchDragging: 1,    // Enable navigation by dragging the SLIDEE with touch events.
+        releaseSwing: 1,    // Ease out on dragging swing release.
+        swingSpeed: 0.2,  // Swing synchronization speed, where: 1 = instant, 0 = infinite.
+        elasticBounds: 1,    // Stretch SLIDEE position limits when dragging past FRAME boundaries.
+        pagesBar: '.pages2',
+        activatePageOn: 'click', // Event used to activate page. Can be: click, mouseenter, ...
+        pageBuilder:          // Page item generator.
+            function (index) {
+                return '<li>' + (index + 1) + '</li>';
+            },
+        // Automated cycling
+        startAt: 0,
+        scrollBy: 1,
+        cycleBy: 'pages',
+        cycleInterval: 4000,
+        pauseOnHover: 1,
+        startPaused: 0,
+        speed: 300
+    });
+
+
+
 
     // app start code
     // get the config then start the app

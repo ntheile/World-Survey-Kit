@@ -337,29 +337,27 @@ Hidden routes in the web application:
 
 
 
-TODO - Long Term
-================
-
-1. Make the app user friendly
-	* Landing page
-		* show a demo of a survey for the user to take
-		* show screen shot of reporting
-		* explain what sets the app apart (working offline, collection signatures, GPS. working across Android, iOS and Windows
-2. Make a pricing model page with 3 tiers (find appropriate model from competition)
-	1. Free
-	2. Small Biz 
-	3. Enterprise
-3. Change the authenication model for a survey
-	* anonymous, enter pin, facebook authenicated
-4. Make everything pageable and odata queryable
-5. Make charting, graphing and analytics using d3.js http://d3js.org/ 
-
-
 
 TODO - Short Term
 =================
+* Change the authenication model for a survey
+	* anonymous, facebook authenicated, pin
+* add a share via email, link, embed
+* add a tutorial page
 * fix the mobile export to excel link
 * fix signature pad on tablet (onclick it disappears but still records)
+
+
+TODO - Long Term
+================		
+1. Make a pricing model page with 3 tiers (find appropriate model from competition)
+	1. Free
+	2. Small Biz 
+	3. Enterprise
+2. Make everything pageable and odata queryable
+3. Make charting, graphing and analytics using d3.js http://d3js.org/ 
+4. Share via qr code
+
 
 
 Completed

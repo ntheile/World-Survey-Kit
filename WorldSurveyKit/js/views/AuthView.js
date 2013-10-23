@@ -214,7 +214,7 @@ define(["jquery", "backbone", "models/Models", "collections/MyOrgsCollection"], 
                     $.mobile.loading("hide");
                     // Success, Your Authorized
 
-                    $(".notAuth").css("visibility", "hidden");
+                    $(".notAuth").css("display", "none");
                     $(".logoutBtn").html("Logoff");
 
                     App.isAdmin = data.IsAdmin;
