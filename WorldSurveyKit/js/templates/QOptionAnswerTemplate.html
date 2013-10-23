@@ -1,0 +1,35 @@
+﻿<h2>Editing - <%= type %> Question</h2>
+
+<ul data-role="listview" data-inset="true">
+    <li>
+        <div>
+            
+            <div data-role="controlgroup" data-type="horizontal">
+                <a id="qOptionAnswerQuestionSave" data-role="button" data-inline="true" data-theme="b">Save</a>
+                <a href="#file?<%= fileId %>" data-role="button" data-inline="true">Cancel</a>
+                <a id="qOptionAnswerQuestionDelete" data-role="button" >Delete</a>
+                <select name="qOptionAnswerQuestionOrder" id="qOptionAnswerQuestionOrder">
+                </select>
+            </div>
+
+            <b>Question:</b>
+            <textarea id="qOptionAnswerQuestionInput" cols="40" rows="8"><%= question %></textarea>
+            <br />
+
+            <b>Answer:</b>
+            <button data-icon="plus" id="qOptionAnswerQuestionAdd" data-inline="true">Add Item</button>
+
+            <div data-role="popup" id="qOptionAnswerQuestionPopup"  style="max-width:400px;" class="ui-content ui-corner-all">
+
+                <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Cancel</a>
+                <b>New Item:</b>
+                <input id="qOptionAnswerQuestionPopupInput" />
+                <a data-role="button" id="qOptionAnswerQuestionPopupAdd" data-icon="plus">Add</a>
+                        
+            </div>
+
+            <ul id="qOptionAnswerQuestionList" data-role="listview" data-inset="true" data-split-icon="minus">    
+            </ul>
+        </div>
+    </li>
+</ul>

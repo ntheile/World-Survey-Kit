@@ -1,0 +1,46 @@
+﻿<!--Currently this template is not being used-->
+<h2>Editing - Camera </h2>
+
+<ul data-role="listview" data-inset="true">
+    <li>
+        <div>
+
+
+
+        <fieldset data-role="controlgroup" data-type="horizontal">
+            <legend></legend>
+            <a id="qCameraQuestionSave" data-role="button" data-inline="true" data-theme="b" data-icon="save">Save</a>
+            <a href="#file?<%= fileId %>" data-role="button" data-inline="true" data-icon="back">Cancel</a>
+            <a id="qCameraQuestionDelete" data-role="button" data-icon="trash">Delete</a>
+            <select data-inline="true" name="qCameraQuestionOrder" id="qCameraQuestionOrder">
+            </select>
+        </fieldset>   
+        
+           
+       
+        
+
+        <div>
+            <b>Question:</b>
+            <textarea id="qCameraQuestionInput" cols="40" rows="8" placeholder="Enter a description of what the user should take a picture of"><%= question %></textarea>
+        </div>
+
+        <div>
+            <a data-role="button" data-icon="camera">Take Picture</a>
+        </div>
+
+        <div>
+            <textarea disabled="disabled">[This will contain the location of the image]</textarea>   
+        </div>
+
+        </div>
+    </li>
+</ul>
+
+
+
+
+
+
+
+

@@ -1,0 +1,66 @@
+﻿<ul data-role="listview" data-inset="true">
+    <li>
+        <div>
+            <div>
+                <b>Manage System Users</b>
+                <a onclick="$('.userManagerInfoPopup').popup('open')" data-icon="info-sign" class="ui-icon-nodisc" data-role="button" data-iconshadow="false" data-theme="b" data-iconpos="notext" data-inline="true">Information</a>
+            </div>
+            <br />
+            <div>
+                <b>Table</b>  
+                <div>   
+                    <table id="example"  border="0" class="display ui-bar-d ui-body-d table-stripe ui-responsive" data-role="table">
+                        <thead class="ui-bar-d">
+                            <tr>
+                                <th>Edit</th>
+                                <th>Name</th>
+                                <th>Facebook ID</th>
+                                <th>System Admin</th>
+                                <th>Default Org</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userManagerBody">
+                            <tr>
+                                <td colspan="5">
+                                    <center><img src="../../images/loadingLg.gif" /></center>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="ui-bar-d">
+                            <tr>
+                                <th>Edit</th>
+                                <th>Name</th>
+                                <th>Facebook ID</th>
+                                <th>System Admin</th>
+                                <th>Default Org</th>
+                            </tr>
+                        </tfoot>
+                        </table>
+                </div>
+                <br /><br /><br />
+            </div>
+            
+            <div data-role="popup" data-dismissible="false" class="editUserTablePopup ui-content ui-corner-all"  style="max-width:400px;">
+                   <a id="editUserTablePopupCancel" href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Cancel</a>
+                   <div class="editUserTablePopupContent"></div>   
+            </div>
+
+            <div data-role="popup" class="userManagerInfoPopup ui-content ui-corner-all"  style="max-width:400px;">
+                   <a id="A1" href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Cancel</a>
+                    <div style="font:caption">
+                        <b>Use this to perform the following tasks:</b>
+                        <ul>
+                            <li>Grant a user System Administrator access (*Note - Be careful when granting this. System admins can delete and modify all the data)</li>
+                            <li>Change a users name</li>
+                            <li>Delete a user</li>
+                            <li>To add a user to an organization, click the org above in "Manage Organizations" and goto the user profile tab.</li>
+                        </ul>
+                    </div>
+                   
+            </div>
+            
+                  
+        </div>
+    </li>
+
+</ul>

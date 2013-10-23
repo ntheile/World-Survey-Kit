@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.worldsurveykit.survey"
+        version   = "1.0.0">
+
+  <preference name="phonegap-version" value="2.5.0" />
+    
+  <name>World Survey Kit</name>
+
+  <description>
+    Build a survey, change the world!
+  </description>
+  
+  <!--
+        Enable individual API permissions here.
+        The "device" permission is required for the 'deviceready' event.
+    -->
+  <feature name="http://api.phonegap.com/1.0/device" />
+  <feature name="http://api.phonegap.com/1.0/camera"/>
+  <feature name="http://api.phonegap.com/1.0/file"/>
+  <feature name="http://api.phonegap.com/1.0/geolocation"/>
+  <feature name="http://api.phonegap.com/1.0/network"/>
+  <feature name="http://api.phonegap.com/1.0/notification"/>
+
+  <!-- Plugins can also be added here. -->
+    <!--
+        <gap:plugin name="Example" />
+        A list of available plugins are available at https://build.phonegap.com/docs/plugins
+    -->
+    <gap:plugin name="com.phonegap.plugins.facebookconnect">
+      <param name="APP_ID" value="271724712973440" />
+      <param name="APP_NAME" value="World Survey Kit" />
+    </gap:plugin>
+
+  <!--
+        Define access to external domains.
+
+        <access />            - a blank access tag denies access to all external resources.
+        <access origin="*" /> - a wildcard access tag allows access to all external resource.
+
+        Otherwise, you can specify specific domains:
+    -->
+  <access origin="*" />
+
+  <icon src="images/icons/mdpi.png" gap:platform="android" gap:density="mdpi" />
+  <icon src="images/icons/hdpi.png" gap:platform="android" gap:density="hdpi" />
+  <icon src="images/icons/xhdpi.png" gap:platform="android" gap:density="xhdpi" />
+
+</widget>
+

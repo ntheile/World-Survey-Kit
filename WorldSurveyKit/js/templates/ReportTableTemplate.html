@@ -1,0 +1,84 @@
+﻿<div>
+    <h3><%= fileName %></h3>
+</div>
+<div>
+    <div class="report-button-group" data-role="controlgroup" data-type="horizontal" >
+        <a class="toggle-table ui-btn-active" data-role="button" data-icon="th" 
+            onclick="
+                       $('#reportTableTag').addClass('ui-responsive'); 
+                       $('.toggle-table').addClass('ui-btn-active');
+                       $('.toggle-list').removeClass('ui-btn-active');
+                       $('.table-wrapping').css('overflow', 'scroll');
+            ">
+            Table
+        </a>
+        <a class="toggle-list" data-role="button" data-icon="th-list" 
+            onclick="
+                        $('#reportTableTag').removeClass('ui-responsive'); 
+                        $('.toggle-list').addClass('ui-btn-active');
+                        $('.toggle-table').removeClass('ui-btn-active');
+                        $('.table-wrapping').css('overflow', 'visible');
+                    ">
+            List
+        </a>
+        <a data-role="button" data-icon="print"
+            onclick="
+                        $('#reportTableTag').removeClass('ui-responsive'); 
+                        $('.toggle-list').addClass('ui-btn-active');
+                        $('.toggle-table').removeClass('ui-btn-active');
+                        $('.table-wrapping').css('overflow', 'visible');
+                        window.print();
+                    ">
+            Print
+
+        </a>
+        <a data-role="button" data-icon="save"
+            onclick="
+                        $('#csvExportTable').show();
+                        if (App.rootUrl) {
+                              url = App.rootUrl + '/CsvExporter.aspx';
+                        }
+                        else {
+                              url = '/CsvExporter.aspx';
+                        }
+                        $.download(url , 'filename=mySpreadsheet&format=csv&content=' + encodeURIComponent($('#csvExportTable').table2CSV({delivery:'value'}))  );    
+                        $('#csvExportTable').hide();       
+                    ">
+            Export
+        </a>
+        <a data-role="button" href="#importer?<%= id %>" data-icon="circle-arrow-up">
+            Import
+        </a>
+    </div>
+    <div class="table-wrapping">   
+        <table id="reportTableTag" border="0" class="display ui-bar-d ui-body-d table-stripe ui-responsive table-tag" data-role="table">
+            <thead class="ui-bar-d">
+                <tr id="reportTableHeader">
+                   
+                </tr>
+            </thead>
+            <tbody id="reportTableBody">
+                <tr>
+                    <td colspan="5">
+                        <center><img src="../../images/loadingLg.gif" /></center>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot class="ui-bar-d">
+                <tr id="reportTableFooter">
+                   
+                </tr>
+            </tfoot>
+        </table>
+        <br /><br /><br />
+    </div>
+    <div>
+        <table id="csvExportTable" style="clear:both">
+
+        </table>
+    </div>
+</div>
+            
+
+                  
+      

@@ -1,0 +1,6 @@
+﻿<img class="loadingMenu" src="../../images/loadingLg.gif" />
+<% _.each(menuitems, function(item){ %>
+    <li><a href="<%= item.url %>"><div class="dirty-<%= item.dirty %>"><%= item.text %></div></a></li>
+<% }); %>
+
+

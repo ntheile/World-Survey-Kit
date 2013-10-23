@@ -1,0 +1,29 @@
+﻿<h2><%= fileName %></h2>
+<h3><%= order %>). <%= question %></h3>
+
+<button id="goGpsRefresh" data-inline="true" data-icon="refresh">Refresh GPS Position</button>
+        
+<div id="goGpsWrapper"></div>
+
+<b>Latitude:</b><b id="goGpsLat"></b><br />
+<b>Longitude:</b><b id="goGpsLong"></b>
+
+<input id="goGpsDesc" placeholder="[ If no GPS signal is available enter a description of the location here]" />
+
+<div data-role="controlgroup" data-type="horizontal">
+    
+    <% if (back != null) { %>
+       <a data-role="button" id="goGpsBack" data-inline="true" data-theme="b" data-icon="arrow-left">Back</a>
+    <% } %>
+
+    <% if (next != null) { %>
+        <a data-role="button" id="goGpsNext" data-inline="true" data-theme="b" data-icon="arrow-right" data-iconpos="right">Next</a>
+    <% } else { %>
+        <a data-role="button" href="#" data-inline="true" data-icon="save" data-iconpos="right" id="goGpsDone" data-theme="b">Done</a>
+    <% } %>
+
+</div>
+
+<div style="float:right"><a data-role="button" data-theme="b" data-mini="true" data-icon="save" class="goGpsSave">Save and finish later</a></div>
+
+<span><%= order %>/<%= questionCount %></span>

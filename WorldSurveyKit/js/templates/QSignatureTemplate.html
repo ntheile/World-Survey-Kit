@@ -1,0 +1,42 @@
+﻿<h2>Editing - Signature </h2>
+
+<ul data-role="listview" data-inset="true">
+    <li>
+        <div>
+            
+            <div data-role="controlgroup" data-type="horizontal">
+                <a id="qSignatureQuestionSave" data-role="button" data-inline="true" data-theme="b">Save</a>
+                <a href="#file?<%= fileId %>" data-role="button" data-inline="true">Cancel</a>
+                <a id="qSignatureQuestionDelete" data-role="button">Delete</a>
+                <select name="qSignatureQuestionOrder" id="qSignatureQuestionOrder">
+                </select>
+            </div>
+            
+            <div>
+                <b>Question:</b>
+                <textarea id="qSignatureQuestionInput" cols="40" rows="8"><%= question %></textarea>
+            </div>
+            <div>
+                <label>Print your name:</label>
+                <input disabled="disabled" id="qSignatureQuestionPrint" type="text">
+            </div>
+            
+            <div class="sigPad" style="width:580px">
+                <div class="sigNav">
+                    <a class="clearButton" data-icon="remove" data-inline="true" data-role="button">Clear</a>
+                </div>
+
+                <div class="sig sigWrapper" style="height:90px">
+                  <canvas class="pad" width="580" height="90"></canvas>
+                  <input type="hidden" name="output" class="output">
+                </div>
+            </div>
+
+        </div>
+    </li>
+</ul>
+
+
+
+
+

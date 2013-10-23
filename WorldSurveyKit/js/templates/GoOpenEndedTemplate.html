@@ -1,0 +1,28 @@
+﻿<h2 style="float:left"><%= fileName %> - <%= fileInstanceName %></h2>
+<b class="online-status" style="float:right"></b>
+<div style="clear:both"></div>
+<h3><%= order %>). <%= question %></h3>
+
+<textarea cols="40" rows="8" id="goOpenEndedResponse"></textarea>
+
+<div data-role="controlgroup" data-type="horizontal">
+    
+    <% if (back != null) { %>
+       <a data-role="button" id="goOpenEndedBack" data-inline="true" data-theme="b" data-icon="arrow-left">Back</a>
+    <% } %>
+
+    <% if (next != null) { %>
+        <a data-role="button" id="goOpenEndedNext" data-inline="true" data-theme="b" data-icon="arrow-right" data-iconpos="right">Next</a>
+    <% } else { %>
+        <a data-role="button" href="#" data-inline="true" data-icon="save" data-iconpos="right" id="goOpenEndedDone" data-theme="b">Done</a>
+    <% } %>
+
+</div>
+
+<div style="float:right"><a data-role="button" data-theme="b" data-mini="true" data-icon="save" class="goOpenEndedSave">Save and finish later</a></div>
+
+<span><%= order %>/<%= questionCount %></span>
+
+
+
+

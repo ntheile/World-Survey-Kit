@@ -1,0 +1,30 @@
+﻿<h2>Editing - GPS </h2>
+<div data-role="controlgroup" data-type="horizontal">
+    <a href="#file?<%= fileId %>" data-role="button" data-icon="back">Back</a>
+</div>
+
+<ul data-role="listview" data-inset="true">
+    <li>
+        <div data-role="controlgroup" data-type="horizontal">
+            <a id="qGpsQuestionSave" data-role="button" data-inline="true" data-theme="b">Save</a>
+            <a href="#file?<%= fileId %>" data-role="button" data-inline="true">Cancel</a>
+            <a id="qGpsQuestionDelete" data-role="button">Delete</a>
+            <select name="qGpsQuestionOrder" id="qGpsQuestionOrder">
+            </select>
+        </div>
+        
+        <b>Question:</b>
+        <textarea id="qGpsQuestionInput" cols="40" rows="8"><%= question %></textarea>
+        <br />
+
+        <div id="qGpsQuestionImage"></div>
+
+        <textarea disabled="disabled">[This area will be for manual location input]</textarea>
+    </li>
+</ul>
+
+
+
+
+
+

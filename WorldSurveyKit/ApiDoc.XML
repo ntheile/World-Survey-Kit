@@ -1,0 +1,750 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WorldSurveyKit</name>
+    </assembly>
+    <members>
+        <member name="T:WorldSurveyKit.App_Start.Auth">
+            <summary>
+
+              [Auth.FB] - checks if fb identity is accurate and gets authorations roles from
+              our database based on the fb user id, also checks if api token is valid
+
+              Must pass these headers: ApiToken, FbToken
+
+              POST http://localhost:44951/api/values HTTP/1.1
+              User-Agent: Fiddler
+              content-type: application/json
+              Host: localhost:44951
+              ApiToken:saO1zbN6K1l9WjQiDKpZ
+              FbToken:[....]
+
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:WorldSurveyKit.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:WorldSurveyKit.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,WorldSurveyKit.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:WorldSurveyKit.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:WorldSurveyKit.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WorldSurveyKit.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:WorldSurveyKit.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:WorldSurveyKit.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:WorldSurveyKit.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:WorldSurveyKit.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:WorldSurveyKit.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:WorldSurveyKit.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WorldSurveyKit.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,WorldSurveyKit.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,WorldSurveyKit.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:WorldSurveyKit.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:WorldSurveyKit.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create one using <see cref="T:WorldSurveyKit.Areas.HelpPage.ObjectGenerator"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},WorldSurveyKit.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="P:WorldSurveyKit.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:WorldSurveyKit.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:WorldSurveyKit.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="T:WorldSurveyKit.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:WorldSurveyKit.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.HelpPageSampleKey.#ctor(WorldSurveyKit.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:WorldSurveyKit.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:WorldSurveyKit.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:WorldSurveyKit.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,WorldSurveyKit.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:WorldSurveyKit.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:WorldSurveyKit.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:WorldSurveyKit.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:WorldSurveyKit.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:WorldSurveyKit.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:WorldSurveyKit.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:WorldSurveyKit.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:WorldSurveyKit.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:WorldSurveyKit.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:WorldSurveyKit.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WorldSurveyKit.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:WorldSurveyKit.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:WorldSurveyKit.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:WorldSurveyKit.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="T:WorldSurveyKit.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:WorldSurveyKit.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WorldSurveyKit.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.FileInstancesController.GetNewFileInstances">
+            <summary>
+            GET's all file instances that belong to the user
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.FileInstancesController.GetNewFileInstance(System.Int32)">
+            GET api/FileInstances/5
+            <summary>
+            Gets the FileInstance by ID
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.FileInstancesController.PutNewFileInstance(System.Int32,System.Web.Http.OData.Delta{WorldSurveyKit.Models.NewFileInstance})">
+            PUT api/FileInstances/5
+            <summary>
+            Updates the file instance that is passed in by id
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.FileInstancesController.PostNewFileInstance(WorldSurveyKit.Models.NewFileInstance)">
+            POST api/FileInstances
+            <summary>
+            Creates a new file instance for the user, if the user has access to the file
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.FileInstancesController.DeleteNewFileInstance(System.Int32)">
+            <summary>
+            Deletes the file instance that is passed in by id
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.FileInstanceCollectionController.GetFileInstanceCollection(System.Int32)">
+            GET api/FileInstanceCollection/OrgId
+            <summary>
+            GET's all file instances that belong to an org for reports
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.FilesController.GetFile(System.Int32)">
+            GET api/Files/orgsId
+            <summary>
+            Gets all the files that belong to an organization
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.FilesController.PutFile(System.Int32,WorldSurveyKit.Models.File)">
+            <summary>
+            Update a file, for example update the published date by passing in the updated_at field, note this is not a patch and all valus must be passed in. 
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.FilesController.PostFile(WorldSurveyKit.Models.File)">
+            POST api/Files
+            <summary>
+            CREATE's a new file for the org passed in
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.FilesController.DeleteFile(System.Int32)">
+            DELETE api/Files/5
+            <summary>
+            DELETE's a file by id
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.OptionsController.GetOptions(System.Int32)">
+            GET api/Options/questionId
+            <summary>
+            GET's all the options for a particular question, a QuestionsId must be passed in
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.OptionsController.PostOptions(WorldSurveyKit.Models.Options)">
+            POST api/Options
+            <summary>
+            Creates a new option for a question
+            Security - Must be org admin
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.OptionsController.DeleteOptions(System.Int32)">
+            DELETE api/Options/5
+            <summary>
+            Deletes an option for a question
+            Security - Must be org admin
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.OptionCollectionController.GetOptionCollection(System.Int32)">
+            GET api/OptionCollection/OrgId
+            <summary>
+            GET's all the options for all the questions in an org
+            Security must be org user
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.OrgsController.GetOrgs">
+            GET api/Orgs
+            <summary>
+            GETs the orgs where you are admin, if your a sys admin then it gets all the orgs
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.OrgsController.GetOrgs(System.Int32)">
+            GET api/Orgs/5
+            <summary>
+             GETs data about an org by id
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.OrgsController.PutOrgs(System.Int32,WorldSurveyKit.Models.Orgs)">
+            PUT api/Orgs/5
+            <summary>
+            UPDATE's the orgName if your an admin, currently not in use and returns null
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.OrgsController.PostOrgs(WorldSurveyKit.Models.Orgs)">
+            POST api/Orgs
+            <summary>
+            CREATEs a new org, the person who adds it is automatically the admin, only sys admins can add an org
+            </summary> 
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.OrgsController.DeleteOrgs(System.Int32)">
+            DELETE api/Orgs/5
+            <summary>
+            DELETEs an entire organization, only a sys admin can do this
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.OrgUserMappingController.GetOrgUserMappings(System.Int32)">
+            GET api/OrgUserMapping/5
+            <summary>
+            GET's all the users from the orgID that is passed in
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.OrgUserMappingController.PutOrgUserMappings(System.Int32,System.Web.Http.OData.Delta{WorldSurveyKit.Models.OrgUserMappings})">
+            PUT api/OrgUserMapping/318
+            <summary>
+            UPDATES a user by his OrgUserMapping Id that is passed in. 
+            You could use this api to make a user an admin. Can be used for partial updates
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.OrgUserMappingController.PostOrgUserMappings(WorldSurveyKit.Models.OrgUserMappings)">
+            POST api/OrgUserMapping
+            <summary>
+            CREATE's a new user for an org
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.OrgUserMappingController.DeleteOrgUserMappings(System.Int32)">
+            DELETE api/OrgUserMapping/5
+            <summary>
+            DELETE's a user from an org by passing in the id primary key from the OrgUserMapping Table
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.QuestionsController.GetQuestions(System.Int32)">
+            GET api/Questions/id
+            <summary>
+            GET the data about a question by id
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.QuestionsController.PutQuestions(System.Int32,WorldSurveyKit.Models.Questions)">
+            PUT api/Questions/questionId
+            <summary>
+                UPDATE's a question. 
+                Order logic: -1 = make order first, -2 = no change in order, -3 = make order last,
+                Anything else is the questionId the current question should go after
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.QuestionsController.PostQuestions(WorldSurveyKit.Models.Questions)">
+            POST api/Questions
+            <summary>
+            CREATE's a new question
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.QuestionsController.DeleteQuestions(System.Int32)">
+            <summary>
+            Delete's a question from a file, re-orders all the questions in a file
+            it also does a manual cascade and deletes all responses related to this question
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.QuestionCollectionController.GetQuestionCollection(System.Int32)">
+            GET api/QuestionCollection/fileId
+            <summary>
+            GET's all the questions in a file, must be org user
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.UQuestionCollectionController.GetUQuestionCollection(System.Int32)">
+            GET api/UQuestionCollection/OrgId
+            <summary>
+            GET's all the questions in all the files in an org, must be org user
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.QuestionLookupController.GetQuestionLookup(System.Int32)">
+            GET api/QuestionLookup/questionId
+            <summary>
+            Pass in the question ID, get the file Id that it belongs to
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.ResponsesController.GetResponses">
+            GET api/Responses
+            <summary>
+            GET's all the responses for a user by fbtoken passed in
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.ResponsesController.GetResponses(System.Int32)">
+            GET api/Responses/5
+            <summary>
+            GET's all the responses based on the id passed in.
+            Security - must be the user or OrgAdmin (HasFileInstanceAccess())
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.ResponsesController.PutResponses(System.Int32,WorldSurveyKit.Models.Responses)">
+            PUT api/Responses/5
+            <summary>
+            Updates a responses
+            Security - must be the user or OrgAdmin
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.ResponsesController.PostResponses(WorldSurveyKit.Models.Responses)">
+            <summary>
+            Creates a response to a question
+            Security - must have access to the question
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.ResponsesController.DeleteResponses(System.Int32)">
+            DELETE api/Responses/5
+            <summary>
+            Deletes a response to a question.
+            Security - must be the user or OrgAdmin
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.ResponseCollectionController.GetResponseCollection(System.Int32)">
+            GET api/RespsonseCollection/orgId
+            <summary>
+            GET's all the responses for an org
+            </summary>
+            
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.ResponseCollectionByFileInstController.GetResponseCollectionByFileInst(System.Int32)">
+            GET api/RespsonseCollection/fileInstId
+            <summary>
+            GET's all the responses for a fileInstId
+            </summary>
+            
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.UsersController.GetUsers">
+            GET api/Users
+            <summary>
+            GET's all of the users in the system
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.UsersController.GetUsers(System.Int32)">
+            GET api/Users/5
+            <summary>
+            GET's all the information about a user by ID
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.UsersController.PutUsers(System.Int32,WorldSurveyKit.Models.Users)">
+            PUT api/Users/5
+            <summary>
+            UPDATE's user information like the users Name, defaultOrg, and isSystemAdmin
+            You must be a system administrator to use this 
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.UsersController.PostUsers(WorldSurveyKit.Models.Users)">
+            POST api/Users
+            <summary>
+            CREATE's a new user
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.UsersController.DeleteUsers(System.Int32)">
+            DELETE api/Users/5
+            /// <summary>
+            DELETE's a user entirely from the system
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.WhoAmIController.GetWhoAmI">
+            GET api/whomai
+            <summary>
+            Gets the users ID , FB ID, and user's orgs
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.WhoAmIController.PutWhoAmI(System.Int32,WorldSurveyKit.Models.Users)">
+            PUT api/whomai
+            <summary>
+            Updates the defaultOrg for the user
+            </summary>
+        </member>
+        <member name="T:WorldSurveyKit.Models.HtmlRemoval">
+            <summary>
+            Methods to remove HTML from strings. Prevents xss attacks
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Models.HtmlRemoval.Strip(System.String)">
+            <summary>
+            Remove HTML from string with Regex.
+            </summary>
+        </member>
+        <member name="T:WorldSurveyKit.Models.Menu">
+            <summary>
+            Menu model
+            </summary>
+        </member>
+        <member name="T:WorldSurveyKit.Models.Orgs">
+            <summary>
+            Organization table
+            </summary>
+        </member>
+        <member name="T:WorldSurveyKit.Models.OrgUserMappings">
+            <summary>
+            User to Organization mapping
+            </summary>
+        </member>
+        <member name="T:WorldSurveyKit.Models.Users">
+            <summary>
+            User Model 
+            </summary>
+        </member>
+        <member name="T:WorldSurveyKit.Models.File">
+            <summary>
+            File Model (survey and file are used interchangably)
+            </summary>
+        </member>
+        <member name="T:WorldSurveyKit.Models.NewFileInstance">
+            <summary>
+            New File Instance Table (intstance of a file/survey)
+            </summary>
+        </member>
+        <member name="T:WorldSurveyKit.Models.QuestionTypeLookup">
+            <summary>
+             Question Type Lookup Model
+            </summary>
+        </member>
+        <member name="T:WorldSurveyKit.Models.Questions">
+            <summary>
+             Question Model
+            </summary>
+        </member>
+        <member name="T:WorldSurveyKit.Models.Options">
+            <summary>
+             Option model (mult choice, single answer)
+            </summary>
+        </member>
+        <member name="T:WorldSurveyKit.Models.Responses">
+            <summary>
+             Response model (answers to questions are stored here)
+            </summary>
+        </member>
+    </members>
+</doc>

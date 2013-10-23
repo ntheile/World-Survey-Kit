@@ -1,0 +1,1141 @@
+<!doctype html>
+<html class="no-js ui-mobile-rendering" >
+<head>
+      <title>World Survey Kit - Build Surveys, Polls, Signatures, Quizzes, Questions, Answers </title>
+      <meta name="keywords" content="Survey, Polls, Signatures, Quizzes, Questions, Answers, GPS">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="google-translate-customization" content="3ffe706bf7eec298-703e66ffc87b89bc-g3b27300caeeca2a3-18"></meta>
+      <link href="css/jquery.mobile-1.3.0.min.css" rel="stylesheet" />
+      <link href="css/app.css" rel="stylesheet" />
+      <link href="css/jqm-icon-pack-3.0.0-fa.css" rel="stylesheet" />
+      <link href="css/jquery.handsontable.css" rel="stylesheet" />
+</head>
+<body class="daBody" > 
+    <!-- This initializes the Facebook JS SDK -->
+    <div id="fb-root"></div>
+
+    <!-- /Login Page -->
+    <div id="login" data-role="page" data-title="Login to the System">
+              
+            <!-- /header -->
+            <div data-role="header" data-theme="b">
+                
+                <div data-role="fblogin" style="float:right; padding-right: 2px">
+                    <button class="loginBtn" data-mini="true" data-corners="false"> 
+                        <img src="images/facebook_login_sm.png" style="width:18px;height:18px" /><span class="loginBtnText">&nbsp;&nbsp;<img src="images/loadingSm.gif" /> </span>
+                    </button>
+                </div>
+
+                <div style="clear:both"></div>
+
+            </div>
+  
+            <div data-role="content">
+
+                <div class="side-content">
+                    
+                </div>
+
+                <div class="main-content splash" >
+                    <center>
+                        <ul data-role="listview" data-inset="true" data-theme="c" class="wskLogo">
+                            <li>
+                                <center>
+                                     <img id="appLogo" src="images/wsk.png" /><br />
+                                     <b id="appOrgName">World Survey Kit</b>
+                                </center>
+                            </li>
+                        </ul>
+                        <div>
+                            <ul data-role="listview" class="notAuth" style="visibility:hidden">
+                                <li>
+                                    <center>
+                                        Currently you are not authorized to view this application.  
+                                        <button data-inline="true" onclick='$( "#popupContact" ).popup( "open");' data-theme="b" data-icon="envelope">Email</button> 
+                                        for BETA access. Or try logging in again. 
+
+                                    </center>
+                                </li>
+                            </ul>
+                            <br /><br />    
+                        </div>
+
+                    
+                        <div>
+                            <div class="pages">
+                                <div class="handle"></div>
+                            </div>
+                            <div id="frame" class="frame" data-role="none">
+                                <div class="slidee">
+                                  <div>
+                                        <a data-role="button" data-iconpos="notext" data-icon="plus" data-inline="true" data-iconshadow="false" data-theme="b"></a>&nbsp;Create a survey<br />
+                                        Get Answers <br />
+                                        <a data-role="button" data-iconpos="notext" data-icon="table" data-inline="true" class="ui-icon-nodisc ui-icon-alt" data-iconshadow="false" data-theme="b"></a>&nbsp;View tables<br />
+                                        View Lists<br />
+                                        Print Surveys
+                                  </div>
+                                  <div>
+                                      Collect Signatures<br />
+                                      <a data-role="button" data-iconpos="notext" data-icon="screenshot" data-inline="true" class="ui-icon-nodisc ui-icon-alt" data-iconshadow="false" data-theme="b"></a>&nbsp;Get GPS locations<br />
+                                      Multiple Choice<br />
+                                      Single Answer<br />
+                                      Open Ended
+                                  </div>  
+                                  
+                                  <div>
+                                      <a data-role="button" data-iconpos="notext" data-icon="globe" data-inline="true" class="ui-icon-nodisc ui-icon-alt" data-iconshadow="false" data-theme="b"></a>&nbsp;Help the world<br />
+                                      Help yourself<br />
+                                      Solve a problem
+                                  </div>
+                                  <div>
+                                      Create an Organization<br />
+                                      Run your business<br />
+                                      Grow your NGO
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <br /><br /><br />
+
+                        
+                    
+
+                    </center>
+                    
+
+                   <div data-role="popup" id="beta" data-theme="c" class="ui-content" style="max-width:280px">
+                        <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                        <div>
+                            <b>This site is being actively develped and is still in BETA. Contact us in the footer below to get access.</b>
+                        </div>
+                   </div>
+
+                   <div data-role="popup" id="popupContact" data-theme="c" class="ui-content" style="max-width:280px">
+                        <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                        <div id="daContacter"></div>
+                   </div>
+
+                   <div data-role="popup" id="investors" data-theme="c" class="ui-content" style="max-width:600px">
+                        <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                   </div>
+
+                </div>
+  
+            </div><!-- /content -->
+            
+            <div data-role="footer" data-theme="a">
+                
+                 <br />
+                   
+                
+                        <center>
+                            <h2>See how the journey began</h2>
+                            <iframe width="853" height="480" src="//www.youtube.com/embed/EmfQ8TST_o4" frameborder="0" allowfullscreen></iframe>
+                        </center>
+	                
+                    
+                <br /><br />
+
+            </div>
+            <div data-role="footer" data-theme="d">
+                <center>
+                   <br />
+                    <h2>Survey Builder Demo</h2>
+                   
+                     <br /><br />
+                </center>
+                
+            </div>
+            <div data-role="footer" data-theme="a">
+                <ul>
+                    <li>
+                        World Survey Kit &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; Contact us <a href="worldsurveykit@outlook.com">worldsurveykit@outlook.com</a>
+                    </li>
+                </ul> 
+            </div>
+
+    </div>
+
+     <!-- /Home Page -->
+    <div id="home" data-role="page" data-title="Home Page">
+              
+            
+            <div data-role="panel" id="panelHome" data-theme="a">
+                <ul data-role="listview" data-theme="a">
+                    <li data-icon="home"><a href="#home">Home</a></li>
+                    <li data-icon="off"><a class="logoutBtn">Logoff</a></li>
+                    <li data-icon="cog"><a href="#settings">Settings</a></li>
+                    <!--<li data-theme="b">Admin Stuff</li>
+                    <li ><a href="#admin">Admin</a></li>
+                    <li ><a href="#test">Test</a></li>
+                    <li ><a href="#coll">Storage</a></li>-->
+                </ul>
+            </div>
+
+            
+            <div data-role="header" data-theme="b">
+                
+                <div style="float:left; padding-left: 2px;">
+                    <a href="#panelHome" data-role="button" data-icon="reorder" data-inline="true" data-iconpos="notext" class="ui-square-btn"></a>
+                </div>
+                <img src="images/wsk-sm.png"  />
+                <div data-role="fblogin" style="float:right; padding-right: 2px">
+                    <button class="loginBtn" data-mini="true" data-corners="false"> 
+                        <img src="images/facebook_login_sm.png" style="width:18px;height:18px" />&nbsp;&nbsp; Login
+                    </button>
+                </div>
+                <div style="clear:both"></div>
+
+            </div>
+  
+            <div data-role="content">
+
+                <div class="side-content">
+                     <div data-role="wsk-nav-bar">
+                        <!--this is populated dynamically-->
+                    </div>
+                </div>
+
+                <div class="main-content">
+                    
+                    <h3 id="homeHeading" style="float:left"></h3>
+                    <!--<b class="green-ball" style="float:right">.</b>-->
+                    <div style="clear:both"></div>
+                    
+                    <ul id="homeListView" data-role="listview" data-inset="true" data-inline="true" data-theme="b" style="visibility:hidden">
+                        <li data-icon="plus"><a id="homeNewSurvey" data-position-to="window">Fill out a New Survey</a></li>
+                        <li><a href="#history?0" onclick="$.mobile.loading('show')"></i>View Survey History<span class="ui-li-count homeSurveyHistory"></span></a></li>
+                    </ul>
+
+                    <div data-role="popup" id="homeNewSurveyPopup"  style="max-width:400px;" class="ui-content ui-corner-all">
+
+                        <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Cancel</a>
+                        
+                        <b>1). Type a name that easily identifies this survey:</b>
+                        <input id="homeNewSurveyName" />
+
+                        <b>2). Choose a survey to fill out:</b>
+                        <div id="homeNewSurveyList">
+                        </div>
+
+                    </div>
+                    
+                    <center><b id="home-load-msg"></b></center>
+
+                </div>
+  
+            </div>
+
+    </div>
+
+
+
+     <!-- /History Page -->
+    <div id="history" data-role="page" data-title="Survey History">
+              
+            
+            <div data-role="panel" id="panelHistory" data-theme="a">
+                <ul data-role="listview" data-theme="a">
+                    <li data-icon="home"><a href="#home" >Home</a></li>
+                    <li data-icon="off"><a class="logoutBtn">Logoff</a></li>
+                    <li data-icon="cog"><a href="#settings">Settings</a></li>
+                </ul>
+            </div>
+
+            
+            <div data-role="header" data-theme="b">
+                
+                <div style="float:left; padding-left: 2px;">
+                    <a href="#panelHistory" data-role="button" data-icon="reorder" data-inline="true" data-iconpos="notext" class="ui-square-btn ui-icon-nodisc" data-iconshadow="false">Menu</a>
+                    <a onclick="window.history.back()" data-role="button" data-icon="arrow-left" data-inline="true" data-iconpos="notext" class="ui-square-btn ui-icon-nodisc" data-iconshadow="false">Back</a>
+                </div>
+                <div data-role="fblogin" style="float:right; padding-right: 2px">
+                    <button class="loginBtn" data-mini="true" data-corners="false"> 
+                        <img src="images/facebook_login_sm.png" style="width:18px;height:18px" />&nbsp;&nbsp; Login
+                    </button>
+                </div>
+                <div style="clear:both"></div>
+
+            </div>
+  
+            <div data-role="content">
+
+                <div class="side-content">
+                    
+                </div>
+
+                <div class="main-content">
+                    
+                    <h3 id="h1">History</h3>
+                   
+                    <ul data-role="listview" data-inset="true" data-inline="true" id="historyList">
+                       
+                    </ul>
+
+                    <div id="historyPaging" style="visibility:hidden">
+                        <div data-role="controlgroup" data-inline="true" data-type="horizontal">
+                            <a id="page-back" href="#history?1" data-role="button" data-theme="b" data-icon="arrow-l" data-iconpos="left">Back</a>
+                            <select name="page-select" id="page-select">
+                                
+                            </select>
+                            <a id="page-next" href="#history?2" data-role="button"data-theme="b" data-icon="arrow-r"  data-iconpos="right">Next</a>
+                        </div>
+                    </div>
+
+                </div>
+  
+            </div>
+
+    </div>
+
+     <!-- /Settings Page -->
+    <div id="settings" data-role="page" data-title="Settings">
+              
+            <div data-role="header" data-theme="b">
+                
+                <div style="float:left; padding-left: 2px;">
+                    <a onclick="window.history.back()" data-role="button" data-icon="arrow-left" data-inline="true" data-iconpos="notext" class="ui-square-btn ui-icon-nodisc" data-iconshadow="false">Back</a>
+                </div>
+                <div data-role="fblogin" style="float:right; padding-right: 2px">
+                    <button class="loginBtn" data-mini="true" data-corners="false"> 
+                        <img src="images/facebook_login_sm.png" style="width:18px;height:18px" />&nbsp;&nbsp; Login
+                    </button>
+                </div>
+                <div style="clear:both"></div>
+
+            </div>
+  
+            <div data-role="content">
+
+                <div class="main-content">
+                    
+                    <div class="side-content">
+                        <div data-role="wsk-nav-bar">
+                            <!--this is populated dynamically-->
+                        </div>
+                    </div>
+
+                    <ul data-role="listview" data-inset="true">
+                        <li>
+                            <div>
+                                <b>Default Organization:</b><br />
+                                <button data-inline="true" data-theme="b" id="settingsSave" data-icon="save" >Save</button>
+                                <span class="admin-only">
+                                    <a style='float:right' href="#admin">Add a system admin</a><span style='float:right'>&nbsp; | &nbsp; </span>
+                                    <a style='float:right' href="#admin">Add new organization</a>
+                                </span>
+                                <div id="settingsList">
+                                </div>
+                           </div>
+                        </li>
+                    </ul>
+
+                    <ul data-role="listview" data-inset="true">
+                        <li>
+                            <div>
+                                <b>Utilities:</b><br />
+                                <a id="settingsSyncAll" data-inline="true" data-role="button" data-theme="b">Sync Data</a> <i id="syncCount"></i>
+                                <br />
+                                <a id="settingsReloadApp" data-inline="true" data-role="button" data-theme="b">Reload App</a> <i>*Note - This will reload the app. Use this if you are experiencing any issues.</i>
+                                <br />
+                                <a id="settingsReload" data-inline="true" data-role="button" data-theme="b">Reset App</a> <i>*Note - This will force the app to reset. You may lose unsaved data. Use only if you are experiencing issues.</i>
+                                
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul data-role="listview" data-inset="true">
+                        <li>
+                            <div>
+                                <b>Other:</b><br />
+                                
+                                <div style="max-width:175px;" id="google_translate_element"></div>
+                                <a id="helpPage" data-inline="true" data-role="button" data-icon="comments-alt">Help</a> <i>Report a bug, or ask a question</i>
+                                
+                                
+                            </div>
+                        </li>
+                    </ul>
+
+                   
+                    <b><i>* You must have internet connection for the settings to be changed.</i></b>
+                    
+                </div>
+  
+            </div>
+
+    </div>
+
+
+     <!-- /reports Page -->
+    <div id="reports" data-role="page" data-title="Reports">
+              
+            
+            <div data-role="panel" id="panelReports" data-theme="a">
+                <ul data-role="listview" data-theme="a">
+                    <li data-icon="home"><a href="#home" >Home</a></li>
+                    <li data-icon="off"><a class="logoutBtn">Logoff</a></li>
+                    <li data-icon="cog"><a href="#settings">Settings</a></li>
+                    <!--<li data-theme="b">Admin Stuff</li>
+                    <li ><a href="#admin">Admin</a></li>
+                    <li ><a href="#test">Test</a></li>
+                    <li ><a href="#coll">Storage</a></li>-->
+                </ul>
+            </div>
+
+            
+            <div data-role="header" data-theme="b">
+                
+                <div style="float:left; padding-left: 2px;">
+                    <a href="#panelReports" data-role="button" data-icon="reorder" data-inline="true" data-iconpos="notext" class="ui-square-btn"></a>
+                </div>
+                <div data-role="fblogin" style="float:right; padding-right: 2px">
+                    <button class="loginBtn" data-mini="true" data-corners="false"> 
+                        <img src="images/facebook_login_sm.png" style="width:18px;height:18px" />&nbsp;&nbsp; Login
+                    </button>
+                </div>
+                <div style="clear:both"></div>
+
+            </div>
+  
+            <div data-role="content">
+
+                <div class="side-content">
+                     <div data-role="wsk-nav-bar">
+                        <!--this is populated dynamically-->
+                    </div>
+                </div>
+
+                <div class="main-content">
+
+                    <div id="reportsMain"></div>
+                    <p id="report-sync"></p>
+                </div>
+
+                <div id="reportsTable"></div>
+  
+            </div>
+
+    </div>
+
+    <!-- /go Page -->
+    <div id="go" data-role="page" data-title="Taking Survery...">
+              
+            
+            <div data-role="panel" id="panelGo" data-theme="a">
+                <ul class="panelGo" data-role="listview" data-theme="a">
+                    
+                   
+                </ul>
+            </div>
+
+            
+            <div data-role="header" data-theme="b">
+                
+                <div style="float:left; padding-left: 2px;">
+                    <a href="#panelGo" data-role="button" data-icon="reorder" data-inline="true" data-iconpos="notext" class="ui-square-btn"></a>
+                    <a onclick="window.history.back()" data-role="button" data-icon="arrow-left" data-inline="true" data-iconpos="notext" class="ui-square-btn ui-icon-nodisc" data-iconshadow="false">Back</a>
+                </div>
+                <div data-role="fblogin" style="float:right; padding-right: 2px">
+                    <button class="loginBtn" data-mini="true" data-corners="false"> 
+                        <img src="images/facebook_login_sm.png" style="width:18px;height:18px" />&nbsp;&nbsp; Login
+                    </button>
+                </div>
+                <!--<h1>
+                     <a href="#home"><img src="images/aq-36.png"  /></a>
+                </h1>-->
+                <div style="clear:both"></div>
+
+            </div>
+  
+            <div data-role="content">
+
+                <div class="side-content">
+                    
+                </div>
+
+                <div class="main-content">
+                    
+                    
+ 
+                </div>
+  
+            </div>
+
+    </div>
+
+
+    <!-- /User Profile Page -->
+    <div id="profile" data-role="page" data-title="User Profiles">
+              
+            
+            <div data-role="panel" id="panelProfile" data-theme="a">
+                <ul data-role="listview" data-theme="a">
+                    <li data-icon="home"><a href="#home" >Home</a></li>
+                    <li data-icon="off"><a class="logoutBtn">Logoff</a></li>
+                    <li data-icon="cog"><a href="#settings">Settings</a></li>
+                </ul>
+            </div>
+
+            
+            <div data-role="header" data-theme="b">
+                
+                <div style="float:left; padding-left: 2px;">
+                    <a href="#panelProfile" data-role="button" data-icon="reorder" data-inline="true" data-iconpos="notext" class="ui-square-btn"></a>
+                    <a onclick="window.history.back()" data-role="button" data-icon="arrow-left" data-inline="true" data-iconpos="notext" class="ui-square-btn ui-icon-nodisc" data-iconshadow="false">Back</a>
+                </div>
+                <div data-role="fblogin" style="float:right; padding-right: 2px">
+                    <button class="loginBtn" data-mini="true" data-corners="false"> 
+                        <img src="images/facebook_login_sm.png" style="width:18px;height:18px" />&nbsp;&nbsp; Login
+                    </button>
+                </div>
+                <div style="clear:both"></div>
+
+            </div>
+  
+            <div data-role="content">
+
+                <div class="side-content">
+                    <div data-role="admin-menu">
+                        <!--this is populated dynamically-->
+                    </div>
+                </div>
+
+                <div class="main-content">
+
+                    <h2 id="orgName"></h2>
+
+                    <a data-theme="b" id="addUser" data-inline="true" data-icon="plus" data-role="button">Add New User</a>
+
+                    <p>Choose a user to edit / delete / make admin etc..</p>
+
+                    <ul id="orgUsers" data-role="listview" data-inset="true"></ul>
+                    
+                    
+                    <div data-role="popup" id="addUserPopup"  style="max-width:400px;" class="ui-content ui-corner-all">
+
+                        <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Cancel</a>
+                        
+                        <div class="addUserCollapse" data-role="collapsible-set" data-theme="b" data-content-theme="d" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="right">
+                            <div data-role="collapsible" data-collapsed="false" class="addExistingUser">
+                                <h3>Choose an Existing User to Add:</h3>
+                                
+                                <div data-role="fieldcontain">
+                                    <label for="select-exisiting-user">Select a user:</label>
+                                    <select name="select-exisiting-user" id="select-exisiting-user">
+                                    </select>
+                                </div>
+
+                                <label for="flip-isUserAdmin">Make the user an Admin?</label>
+                                <select name="flip-isUserAdmin" id="Select2" data-role="slider" class="isOrgAdmin-Existing">
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
+                                </select>
+
+                            </div>
+                            <div data-role="collapsible" class="addNewUser">
+                                <h3>Or Add a new user:</h3>
+                                <div>User Name</div>
+                                <input id="select-new-user" />
+                                <div>Facebook ID <a href="http://findmyfacebookid.com" rel="external"  target="_blank">Get ID</a></div>
+                                <input id="select-new-fbid" />
+                        
+                                <label for="flip-isUserAdmin">Make the user an Admin?</label>
+                                <select name="flip-isUserAdmin" id="Select1" data-role="slider" class="isOrgAdmin-New">
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <a data-role="button" id="profileAdd" data-icon="plus">Add</a>
+                        
+                    </div>
+
+
+                </div>
+  
+            </div>
+
+    </div>
+
+
+    <!-- /Build Page -->
+    <div id="build" data-role="page" data-title="Survey Builder">
+              
+            
+            <div data-role="panel" id="panelBuild" data-theme="a">
+                <ul data-role="listview" data-theme="a">
+                    <li data-icon="home"><a href="#home" >Home</a></li>
+                    <li data-icon="off"><a class="logoutBtn">Logoff</a></li>
+                    <li data-icon="cog"><a href="#settings">Settings</a></li>
+                </ul>
+            </div>
+
+            
+            <div data-role="header" data-theme="b">
+                
+                <div style="float:left; padding-left: 2px;">
+                    <a href="#panelBuild" data-role="button" data-icon="reorder" data-inline="true" data-iconpos="notext" class="ui-square-btn"></a>
+                    <a onclick="window.history.back()" data-role="button" data-icon="arrow-left" data-inline="true" data-iconpos="notext" class="ui-square-btn ui-icon-nodisc" data-iconshadow="false">Back</a>
+                </div>
+                <div data-role="fblogin" style="float:right; padding-right: 2px">
+                    <button class="loginBtn" data-mini="true" data-corners="false"> 
+                        <img src="images/facebook_login_sm.png" style="width:18px;height:18px" />&nbsp;&nbsp; Login
+                    </button>
+                </div>
+               
+                <div style="clear:both"></div>
+
+            </div>
+  
+            <div data-role="content">
+
+                <div class="side-content">
+                    <div data-role="admin-menu">
+                        <!--this is populated dynamically-->
+                    </div>
+                </div>
+
+                <div class="main-content">
+
+                    <h3 id="surveyBuilderHeading"></h3>
+
+                    <a data-theme="b" id="newFile" data-inline="true" data-icon="plus" data-role="button">New Survey</a>
+
+                    <p>Choose a survey to edit / add questions / delete / publish etc...</p>
+
+                    <ul data-role="listview" id="fileList" data-inset="true"></ul>
+                    
+                    
+                    <div data-role="popup" id="newFilePopup"  style="max-width:400px;" class="ui-content ui-corner-all">
+
+                        <h3>New Survey Name</h3>
+
+                        <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Cancel</a>
+                        
+                        <input id="newFileInput" />
+
+                        <a data-role="button" id="newFileSubmit" data-icon="plus">Add</a>
+                        
+                    </div>
+
+                </div>
+  
+            </div>
+
+    </div>
+
+
+    <!-- /File Page -->
+    <div id="file" data-role="page" data-title="Editing File...">
+              
+            <div data-role="panel" id="panelFile" data-theme="a">
+                <ul data-role="listview" data-theme="a">
+                    <li data-icon="home"><a href="#home" >Home</a></li>
+                    <li data-icon="off"><a class="logoutBtn">Logoff</a></li>
+                    <li data-icon="cog"><a href="#settings">Settings</a></li>
+                </ul>
+                
+            </div>
+
+            
+            <div data-role="header" data-theme="b">
+                
+                <div style="float:left; padding-left: 2px;">
+                    <a href="#panelFile" data-role="button" data-icon="reorder" data-inline="true" data-iconpos="notext" class="ui-square-btn"></a>
+                    <a onclick="window.history.back()" data-role="button" data-icon="arrow-left" data-inline="true" data-iconpos="notext" class="ui-square-btn ui-icon-nodisc" data-iconshadow="false">Back</a>
+                </div>
+                <div data-role="fblogin" style="float:right; padding-right: 2px">
+                    <button class="loginBtn" data-mini="true" data-corners="false"> 
+                        <img src="images/facebook_login_sm.png" style="width:18px;height:18px" />&nbsp;&nbsp; Login
+                    </button>
+                </div>
+               
+                <div style="clear:both"></div>
+
+            </div>
+  
+            <div data-role="content">
+
+                <div class="side-content">
+                    <div data-role="admin-menu">
+                        <!--this is populated dynamically-->
+                    </div>
+                    <div data-role="breadcrumbs">
+
+                    </div>
+                </div>
+
+                <div class="main-content">
+                   
+                    <h3 id="fileEditorHeading">Survey Editor - </h3>
+
+                    <ul data-role="listview" data-inset="true">
+                        <li>
+                            <div>
+                                
+                                <div data-role="controlgroup" data-type="horizontal">
+                                    <!--<a data-role="button" data-icon="back" id="fileBack">Back</a>-->
+                                    <a data-role="button" data-icon="refresh" id="filePublish" >Publish</a>
+                                    <a data-role="button" data-icon="trash" id="deleteFile">Delete</a>
+                                </div>
+                    
+                                <a data-theme="b" id="newQuestion" data-inline="true" data-icon="plus" data-role="button">New Question</a>
+                                <span id="lastPublished"></span>
+                                <ol data-role="listview" id="questionList" data-inset="true"></ol>
+
+                                <div data-role="popup" id="newQuestionPopup"  style="max-width:400px;" class="ui-content ui-corner-all">
+
+                                    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Cancel</a>
+
+                                    <h3>Select a question format:</h3>
+
+                                    <select id="newQuestionType">
+                                        <option value="SingleAnswer">Single Answer</option>
+                                        <option value="MultipleChoice">Multiple Choice</option>
+                                        <option value="OpenEnded">Open Ended</option>
+                                        <option value="Gps">Gps</option>
+                                        <!--<option value="Camera">Camera</option>-->
+                                        <option value="Signature">Signature</option>
+                                    </select>
+
+                                    <a data-role="button" id="addNewQuestion" data-icon="plus">Add</a>
+                        
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+
+                    
+
+                    
+                </div>
+  
+            </div>
+
+    </div>
+
+
+    <!-- /Question Page -->
+    <div id="question" data-role="page" data-title="Editing Question...">
+              
+            <div data-role="panel" id="panelQuestion" data-theme="a">
+                <ul data-role="listview" data-theme="a">
+                    <li data-icon="home"><a href="#home" >Home</a></li>
+                    <li data-icon="off"><a class="logoutBtn">Logoff</a></li>
+                    <li data-icon="cog"><a href="#settings">Settings</a></li>
+                </ul>
+            </div>
+
+            
+            <div data-role="header" data-theme="b">
+                
+                <div style="float:left; padding-left: 2px;">
+                    <a href="#panelQuestion" data-role="button" data-icon="reorder" data-inline="true" data-iconpos="notext" class="ui-square-btn"></a>
+                    <a onclick="window.history.back()" data-role="button" data-icon="arrow-left" data-inline="true" data-iconpos="notext" class="ui-square-btn ui-icon-nodisc" data-iconshadow="false">Back</a>
+                </div>
+                <div data-role="fblogin" style="float:right; padding-right: 2px">
+                    <button class="loginBtn" data-mini="true" data-corners="false"> 
+                        <img src="images/facebook_login_sm.png" style="width:18px;height:18px" />&nbsp;&nbsp; Login
+                    </button>
+                </div>
+                
+                <div style="clear:both"></div>
+
+            </div>
+  
+            <div data-role="content">
+
+                <div class="side-content">
+                    <div data-role="admin-menu">
+                        <!--this is populated dynamically-->
+                    </div>
+                    <div data-role="breadcrumbs">
+
+                    </div>
+                </div>
+
+                <div class="main-content">
+
+
+                    <h3>Question Page</h3>
+
+                </div>
+  
+            </div>
+
+    </div>
+
+
+    <!-- /Admin Page -->
+    <div id="admin" data-role="page" data-title="Admin Portal - Choose an organization">
+              
+            <!-- /panel -->
+            <div data-role="panel" id="panelOrg" data-theme="a">
+                <ul data-role="listview" data-theme="a">
+                    <li data-icon="home"><a href="#home" >Home</a></li>
+                    <li data-icon="off"><a class="logoutBtn">Logoff</a></li>
+                    <li data-icon="cog"><a href="#settings">Settings</a></li>
+                </ul>
+            </div>
+
+            <!-- /header -->
+            <div data-role="header" data-theme="b">
+                
+                <div style="float:left; padding-left: 2px;">
+                    <a href="#panelOrg" data-role="button" data-icon="reorder" data-inline="true" data-iconpos="notext" class="ui-square-btn"></a>
+                    <a onclick="window.history.back()" data-role="button" data-icon="arrow-left" data-inline="true" data-iconpos="notext" class="ui-square-btn ui-icon-nodisc" data-iconshadow="false">Back</a>
+                </div>
+                <div data-role="fblogin" style="float:right; padding-right: 2px">
+                    <button class="loginBtn" data-mini="true" data-corners="false"> 
+                        <img src="images/facebook_login_sm.png" style="width:18px;height:18px" />&nbsp;&nbsp; Login
+                    </button>
+                </div>
+                
+                <div style="clear:both"></div>
+
+            </div>
+  
+            <div data-role="content">
+
+                <div class="side-content">
+                    
+                </div>
+
+                <div class="main-content">
+                    
+                    <h2>Admin Portal</h2>
+                      
+                   <ul data-role="listview" data-inset="true">
+                        <li>
+                            <div>
+                                <h3>Manage Organizations</h3>
+                                <div class="orgCollapse" data-role="collapsible" data-theme="b">
+                                    <h4> Add a new organization:</h4>
+                                    <p>
+                                        <input id="new-org" data-inline="true" placeholder="[Put New Organization Name here]" autofocus />
+                                        <button class="addOrg" data-inline="true" data-theme="b">Add Organization</button>
+
+                                    </p>
+                                </div>
+                                <div>
+                                    <b>Choose an organization to add users, build survey's and view reports:</b>
+                                </div>
+                                <ul id="orgList" data-role="listview" data-split-icon="delete" data-inset="true">
+                                     
+                                     <li>
+                                        <img src="images/loadingLg.gif" />
+                                     </li>
+                                     
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <div id="manageUsers">
+
+                    </div>
+                        
+                   
+                </div>
+  
+            </div><!-- /content -->
+
+    </div>
+
+     <!-- /Collection Page -->
+    <div id="coll" data-role="page" data-title="Collection">
+              
+            <!-- /panel -->
+            <div data-role="panel" id="panelCollection" data-theme="a">
+                <ul data-role="listview" data-theme="a">
+                    <li data-icon="home"><a href="#home" >Home</a></li>
+                    <li data-icon="off"><a class="logoutBtn">Logoff</a></li>
+                    <li data-icon="cog"><a href="#settings">Settings</a></li>
+                </ul>
+            </div>
+
+            <!-- /header -->
+            <div data-role="header" data-theme="b">
+                
+                <div style="float:left; padding-left: 2px;">
+                    <a href="#panelCollection" data-role="button" data-icon="reorder" data-inline="true" data-iconpos="notext" class="ui-square-btn"></a>
+                    <a onclick="window.history.back()" data-role="button" data-icon="arrow-left" data-inline="true" data-iconpos="notext" class="ui-square-btn ui-icon-nodisc" data-iconshadow="false">Back</a>
+                </div>
+                <div data-role="fblogin" style="float:right; padding-right: 2px">
+                    <button class="loginBtn" data-mini="true" data-corners="false"> 
+                        <img src="images/facebook_login_sm.png" style="width:18px;height:18px" />&nbsp;&nbsp; Login
+                    </button>
+                </div>
+                <h1>
+                    Collections
+                </h1>
+                <div style="clear:both"></div>
+
+            </div>
+  
+            <div data-role="content">
+
+                <div class="side-content">
+                    
+                </div>
+
+                <div class="main-content">
+                    
+                   <ul data-role="listview" >
+                        <li>
+                            <div>
+                                <a onclick="window.location.reload();" data-role="button" data-inline="true">Refresh</a>
+                                 <div id="collWrapper"></div>
+
+                            </div>   
+                        </li>         
+                   </ul>
+
+                 
+
+                </div>
+  
+            </div><!-- /content -->
+
+    </div>
+
+    <!-- /Error Page -->
+    <div id="error" data-role="page" data-title="An error has occured... ">
+              
+            <!-- /panel -->
+            <div data-role="panel" id="panelError" data-theme="a">
+                <ul data-role="listview" data-theme="a">
+                   <li data-icon="home"><a href="#home" >Home</a></li>
+                    <li data-icon="off"><a class="logoutBtn">Logoff</a></li>
+                    <li data-icon="cog"><a href="#settings">Settings</a></li>
+                </ul>
+            </div>
+
+            <!-- /header -->
+            <div data-role="header" data-theme="b">
+                
+                <div style="float:left; padding-left: 2px;">
+                    <a href="#panelError" data-role="button" data-icon="reorder" data-inline="true" data-iconpos="notext" class="ui-square-btn"></a>
+                    <a onclick="window.history.back()" data-role="button" data-icon="arrow-left" data-inline="true" data-iconpos="notext" class="ui-square-btn ui-icon-nodisc" data-iconshadow="false">Back</a>
+                </div>
+                <div data-role="fblogin" style="float:right; padding-right: 2px">
+                    <button class="loginBtn" data-mini="true" data-corners="false"> 
+                        <img src="images/facebook_login_sm.png" style="width:18px;height:18px" />&nbsp;&nbsp; Login
+                    </button>
+                </div>
+                <h1>
+                    Error
+                </h1>
+                <div style="clear:both"></div>
+
+            </div>
+  
+            <div data-role="content">
+
+                <div class="side-content">
+                    
+                </div>
+
+                <div class="main-content">
+                   
+                    <h3><a data-role="button" data-icon="bolt" data-iconpos="notext" data-theme="c" data-inline="true"></a>An error has occured</h3>
+
+                    <a href="#home" data-role="button" data-inline="true" data-theme="b" data-icon="arror-left" >Back to Home page</a>
+                
+
+                </div>
+  
+            </div><!-- /content -->
+
+    </div>
+
+        <!-- /Import Page -->
+    <div id="importer" data-role="page" data-title="Import Data...">
+              
+            <!-- /panel -->
+            <div data-role="panel" id="panelImport" data-theme="a">
+                <ul data-role="listview" data-theme="a">
+                    <li data-icon="home"><a href="#home" >Home</a></li>
+                    <li data-icon="off"><a class="logoutBtn">Logoff</a></li>
+                    <li data-icon="cog"><a href="#settings">Settings</a></li>
+                </ul>
+            </div>
+
+            <!-- /header -->
+            <div data-role="header" data-theme="b">
+                
+                <div style="float:left; padding-left: 2px;">
+                    <a href="#panelImport" data-role="button" data-icon="reorder" data-inline="true" data-iconpos="notext" class="ui-square-btn"></a>
+                    <a onclick="window.history.back()" data-role="button" data-icon="arrow-left" data-inline="true" data-iconpos="notext" class="ui-square-btn ui-icon-nodisc" data-iconshadow="false">Back</a>
+                </div>
+                <div data-role="fblogin" style="float:right; padding-right: 2px">
+                    <button class="loginBtn" data-mini="true" data-corners="false"> 
+                        <img src="images/facebook_login_sm.png" style="width:18px;height:18px" />&nbsp;&nbsp; Login
+                    </button>
+                </div>
+                
+                <div style="clear:both"></div>
+
+            </div>
+  
+            <div data-role="content">
+
+                <div class="side-content">
+                  
+                </div>
+
+                <div class="main-content">
+                    <h2>Import data</h2>
+
+                    <div id="handson-wrapper" style="-webkit-text-shadow: none; text-shadow: none; display: none;">
+                        <p>Copy and paste data into the table (up to 100 rows). Click on a cell to see proper formatting.</p>
+
+                        <fieldset class="ui-grid-a">
+                            <div class="ui-block-a">
+                                <input data-inline="true" id="import-fileName" placeholder="Type Survey Name here, row number will be appended when imported " />    
+                                
+                            </div>
+                            <div class="ui-block-b">
+                                <button data-inline="true" data-theme="b" id="import-button" >Import</button>    
+                            </div>
+                        </fieldset>
+                        
+                        <div id="handson-table" style="height:400px; overflow: scroll;">
+
+                        </div>
+                        <div id="tooltipdiv" style="font-style:italic; color:white; font-weight:bold"></div>
+                        <div style="clear:both"></div>
+                        <div data-role="popup" id="importer-results-popup" class="ui-content" style="max-width:720px" data-dismissible="false">
+                            <p>
+                                <h3>Import Results:</h3>
+                                <p>
+                                    <i>If there are any results in red below that means they did not successfully import. Check your formatting and make sure no extra spacing was added.</i>
+                                </p>
+                                <a  data-role="button" onclick="window.location.reload()" data-inline="true" id="import-more" data-theme="b">Import More</a><a data-role="button" data-theme="b" data-inline="true" data-rel="back" id="import-view-report">Back to Reports</a>
+                                <b id="importSuccess"></b><br />
+                                <b id="importFail"></b><br />
+                            </p>
+                            <p id="importer-results">
+                               
+                            </p>
+                           
+                        </div>
+                    </div>
+                    
+                  
+                </div>
+  
+            </div><!-- /content -->
+
+    </div>
+
+
+
+    <!-- /Test Page -->
+    <div id="test" data-role="page" data-title="Test ">
+              
+            <!-- /panel -->
+            <div data-role="panel" id="mypanel" data-theme="a">
+                <ul data-role="listview" data-theme="a">
+                    <li data-icon="home"><a href="#home" >Home</a></li>
+                    <li data-icon="off"><a class="logoutBtn">Logoff</a></li>
+                    <li data-icon="cog"><a href="#settings">Settings</a></li>
+                </ul>
+            </div>
+
+            <!-- /header -->
+            <div data-role="header" data-theme="b">
+                
+                <div style="float:left; padding-left: 2px;">
+                    <a href="#mypanel" data-role="button" data-icon="reorder" data-inline="true" data-iconpos="notext" class="ui-square-btn"></a>
+                    <a onclick="window.history.back()" data-role="button" data-icon="arrow-left" data-inline="true" data-iconpos="notext" class="ui-square-btn ui-icon-nodisc" data-iconshadow="false">Back</a>
+                </div>
+                <div data-role="fblogin" style="float:right; padding-right: 2px">
+                    <button class="loginBtn" data-mini="true" data-corners="false"> 
+                        <img src="images/facebook_login_sm.png" style="width:18px;height:18px" />&nbsp;&nbsp; Login
+                    </button>
+                </div>
+                
+                <div style="clear:both"></div>
+
+            </div>
+  
+            <div data-role="content">
+
+                <div class="side-content">
+                    <ul data-role="listview" data-theme="c">
+                        <li>side menu </li>
+                        <li>goes here</li>
+                        <li><span class="state"></span></li>
+                    </ul>
+                </div>
+
+                <div class="main-content">
+                   
+
+                
+                    <a id="apiLink" data-role="button" data-inline="true" data-="false">Api help</a>
+
+                    <a data-role="button" data-inline="true" href="#admin">Organization / Admin Portal</a>
+
+                    <a href="#coll" data-role="button" data-inline="true">LocalStorage</a>
+
+                    <a href="#isAuth" id="isAuth" data-role="button" data-inline="true">Is Authorized to Use App ?</a>
+
+                    <h2>Add an item to the list below to test offline sync (<b style="color:red">red=local</b>, <b style="color:green">green=sycn'd</b>):</h2>
+                    
+                    <div id="menuWrapper">
+                        <div data-role="controlgroup" data-type="horizontal">
+                            <a id="add" data-role="button" >Add Item</a>
+
+                            <a id="reload" data-role="button">Reload</a>
+
+                            <a id="push" data-role="button">Push dirty</a>
+
+                            <a id="csrf" data-role="button">Auth</a>
+
+                            <a id="getfb" onclick="alert(App.user.get('access_token'));" data-role="button">Get FB Token</a>
+                        </div>
+
+                        
+                        <p id="fbdata">
+
+                        </p>
+                        
+                
+                        <ul id="menu" data-role="listview" data-inset="true" >
+                        </ul>
+
+                        <ul id="local" data-role="listview" data-inset="true" >
+                        </ul>
+
+                        
+                    </div>
+            
+
+                    <div class="gps-data"></div>
+
+                </div>
+  
+            </div><!-- /content -->
+
+    </div>
+
+    <form>
+        <input name="__ApiToken" id="__ApiToken" type="hidden" value="saO1zbN6K1l9WjQiDKpZ" />    
+    </form>  
+
+   <script src="js/libs/require-2.1.1.js" data-main="js/main"></script>
+   <script type="text/javascript">
+       function googleTranslateElementInit() {
+           new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+       }
+   </script>
+   <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+﻿ <div data-role="popup" id="edit-user-<%= id %>" style="max-width:400px;" class="ui-content ui-corner-all" data-dismissible="false">
+
+    <a href="#" id="edit-user-cancel-<%= id %>" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Cancel</a>
+                        
+    <h3><%= Users.name %></h3>
+    
+    <label for="flip-edit-user-adm-<%= id %>">Make the user an Admin?</label><br />
+    <select name="flip-edit-user-adm-<%= id %>" id="flip-edit-user-adm-<%= id %>" data-role="slider">
+        <option value="No">No</option>
+        <option value="Yes">Yes</option>
+    </select>
+
+    <br />
+    <button  id="delete-user-submit-<%= id %>" data-inline="true" data-theme="b" data-icon="delete">Delete User</button>
+                        
+    <button id="edit-user-submit-<%= id %>" data-inline="true" data-theme="b" data-icon="check">Save</button>
+                        
+</div>
+
