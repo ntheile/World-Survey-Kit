@@ -340,23 +340,21 @@ Hidden routes in the web application:
 
 TODO - Short Term
 =================
-* Change the authenication model for a survey
-	* anonymous, facebook authenicated, pin
+* change the system admins to only be changeable by me
+* create a first time logged in tutorial
 * add a share via email, link, embed
-* add a tutorial page
-* fix the mobile export to excel link
-* fix signature pad on tablet (onclick it disappears but still records)
 
 
 TODO - Long Term
 ================		
-1. Make a pricing model page with 3 tiers (find appropriate model from competition)
-	1. Free
-	2. Small Biz 
-	3. Enterprise
-2. Make everything pageable and odata queryable
-3. Make charting, graphing and analytics using d3.js http://d3js.org/ 
-4. Share via qr code
+* Make everything pageable and odata queryable
+* Change the authenication model for a survey
+	* anonymous, facebook authenicated, pin
+* Make charting, graphing and analytics using d3.js http://d3js.org/ 
+* Share via qr code
+* Add user dropdown, ajax autocomplete
+* fix the mobile export to excel link
+* fix signature pad on tablet (onclick it disappears but still records)
 
 
 
@@ -376,6 +374,12 @@ should auto sync when you click save and finish later.
 	Change to check for App.fileInstanceCollection.deferred (A Server side traditional backbone fetch) on first load ever
 * fixed duplicate App.orgName in the config.js file to App.organizationsName since we use App.orgName elsewhere in the app
 * fixed the pagination issues in the history page
+
+* open to all facebook users
+	1. Hit Auth Filter
+		- if FB Auth
+			- if in db contine
+			- else add to db, add to an org called by there name
 
 
 

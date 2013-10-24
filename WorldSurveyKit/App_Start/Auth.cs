@@ -74,6 +74,7 @@ namespace WorldSurveyKit.App_Start
                         dynamic result = client.Get("me", new { fields = "name,id" });
                         // set the users identity
                         _fbUserid = result.id;
+                        var _fbName = result.name;
 
                         if (_fbUserid != "")
                         {
@@ -81,10 +82,54 @@ namespace WorldSurveyKit.App_Start
                             // get the userid (internal id ) from the db -  user.Id
                             var user = db.Users.Where(u => u.fbUserId == _fbUserid).FirstOrDefault();
 
-
+                            // Brand new user to add
                             if (user == null)
                             {
-                                _isAuth = false;
+                                //_isAuth = false;
+                                // add user to db
+                                Users newUser = new Users();
+                                var now = DateTime.Now.ToString("O");
+                                newUser.defaultOrg = 1;
+                                newUser.fbUserId = _fbUserid;
+                                newUser.created_at = now;
+                                newUser.isSystemAdmin = false;
+                                newUser.updated_at = now;
+                                newUser.name = _fbName;
+
+                                db.Users.Add(newUser);
+                                db.SaveChanges();
+
+
+                                // add the user to an org with there name as the orgName
+                                Orgs newOrg = new Orgs();
+                                newOrg.created_at = now;
+                                newOrg.orgName = _fbName;
+                                newOrg.updated_at = now;
+
+                                // save new org to the Org DB
+                                db.Orgs.Add(newOrg);
+                                db.SaveChanges();
+
+                                // Map user to the org that was just created and make him the admin
+                                db.OrgUserMappings.Add(new OrgUserMappings { usersId = newUser.id, isOrgAdmin = true, orgsId = newOrg.id});
+                                db.SaveChanges();
+
+                                // set the default org for the user
+                                newUser.defaultOrg = newOrg.id;
+                                db.SaveChanges();
+
+
+
+                                _userId = newUser.id;
+
+                                // Set up the identity object that our Controllers can use
+                                GenericIdentity identity = new GenericIdentity(_fbUserid);
+                                System.Threading.Thread.CurrentPrincipal =
+                                    new GenericPrincipal(identity, _roles);
+
+                                _isAuth = true;
+
+
                             }
                             else
                             {
@@ -98,6 +143,8 @@ namespace WorldSurveyKit.App_Start
                                 _isAuth = true;
 
                             }
+
+                           
                         }
                         else
                         {
@@ -174,6 +221,12 @@ namespace WorldSurveyKit.App_Start
                     }
                 }
             }
+
+
+
+
+
+
 
 
             #region Custom Authorization Logic
