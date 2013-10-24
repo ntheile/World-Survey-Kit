@@ -269,6 +269,19 @@ namespace WorldSurveyKit.Models
             }
         }
 
+        private string _security;
+        public string security
+        {
+            get
+            {
+                return _security;
+            }
+            set
+            {
+                _security = HtmlRemoval.Strip(value);
+            }
+        }
+
         public int orgsId { get; set; } // fk OrgsId // if you are a member of the org than you can view the file, it's that simple, you are either an admin who can create and use surveys or you are a user who can take a survey
         public Orgs Orgs { get; set; } //fk helper
 

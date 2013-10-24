@@ -26,12 +26,24 @@ define(["jquery", "backbone", "models/Models"],
                 // bind to  events
                 App.questionCollection.on("reset", this.addAll, this);
                 App.questionCollection.on("add", this.addOneItem, this);
+
+                
+                $("#flip-survey-security").on("slidestop", function (event, ui) {
+                    var fileModel = App.fileCollection.get(App.fileId);
+
+                    fileModel.save({
+                        "security": $("#flip-survey-security").val()
+                    });
+
+                });
                  
             },
 
             render: function (model) {
 
                 console.log("====> FileCompositeView - render()");
+
+                
 
                 $('#questionList').append("<li data-icon='pencil'>" +
                    "<a href='#question?" + model.get("id") + "'>" + model.get("question") + "</a>" +
@@ -53,7 +65,7 @@ define(["jquery", "backbone", "models/Models"],
 
                 $("#fileEditorHeading").html("Editing - " + fileName);
 
-                
+                $("#flip-survey-security").val(fileModel.get("security")).slider("refresh");
 
                 if (lastPublished == "null") {
                     $("#lastPublished").html("Last Published: never");

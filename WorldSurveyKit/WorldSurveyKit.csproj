@@ -208,6 +208,10 @@
     <Compile Include="Migrations\201306021808580_ResponseVarcharMAX.Designer.cs">
       <DependentUpon>201306021808580_ResponseVarcharMAX.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201310240229301_AddedSecurityToFileTbl.cs" />
+    <Compile Include="Migrations\201310240229301_AddedSecurityToFileTbl.Designer.cs">
+      <DependentUpon>201310240229301_AddedSecurityToFileTbl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\MyDatabase.cs" />
     <Compile Include="Models\Models.cs" />
@@ -712,6 +716,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201306021808580_ResponseVarcharMAX.resx">
       <DependentUpon>201306021808580_ResponseVarcharMAX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310240229301_AddedSecurityToFileTbl.resx">
+      <DependentUpon>201310240229301_AddedSecurityToFileTbl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

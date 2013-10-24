@@ -340,9 +340,9 @@ Hidden routes in the web application:
 
 TODO - Short Term
 =================
-* change the system admins to only be changeable by me
 * create a first time logged in tutorial
 * add a share via email, link, embed
+* modify auth.cs security check helpers to allow a url that comes in to take a public survey, this inherently would make everybody users of all public surveys
 
 
 TODO - Long Term
@@ -355,6 +355,7 @@ TODO - Long Term
 * Add user dropdown, ajax autocomplete
 * fix the mobile export to excel link
 * fix signature pad on tablet (onclick it disappears but still records)
+* add a survey tagging engine
 
 
 
@@ -380,6 +381,7 @@ should auto sync when you click save and finish later.
 		- if FB Auth
 			- if in db contine
 			- else add to db, add to an org called by there name
+* added security to the File table, public and private can now be set on a survey
 
 
 

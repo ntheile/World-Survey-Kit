@@ -50,6 +50,16 @@
      top: 40px; 
      left: 10px; 
      z-index:30;
+
+  }
+
+  .sign-up-btn{
+    width:200px;
+    position:absolute;
+    top: -6px; 
+    left: 5px; 
+    z-index:30;
+
   }
 
  .report-button-group{
@@ -540,4 +550,8 @@ table.display thead td:active {
 	color: white;
 	font-weight: bold;
 	text-decoration: none;
+}
+
+.sign-up-btn{
+    width:200px;
 }

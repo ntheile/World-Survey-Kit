@@ -48,8 +48,8 @@
                         </ul>
                         <div>
                             <center>
-                               <div style="width:200px">
-                                   <button data-theme="g" class="loginBtn" data-corners="false"  >Sign Up</button>
+                               <div class="sign-up-btn">
+                                   <button data-theme="g" class="loginBtn" data-corners="false">Sign Up</button>
                                </div>
                                <div style="float:right">
                                   <a href="https://play.google.com/store/apps/details?id=com.worldsurveykit.survey" target="_blank">
@@ -386,11 +386,7 @@
                         <li>
                             <div>
                                 <b>Default Organization:</b><br />
-                                <button data-inline="true" data-theme="b" id="settingsSave" data-icon="save" >Save</button>
-                                <span class="admin-only">
-                                    <a style='float:right' href="#admin">Add a system admin</a><span style='float:right'>&nbsp; | &nbsp; </span>
-                                    <a style='float:right' href="#admin">Add new organization</a>
-                                </span>
+                                <button data-inline="true" data-theme="g" id="settingsSave" data-icon="save" >Save</button>
                                 <div id="settingsList">
                                 </div>
                            </div>
@@ -572,9 +568,18 @@
 
                     <h2 id="orgName"></h2>
 
-                    <a data-theme="b" id="addUser" data-inline="true" data-icon="plus" data-role="button">Add New User</a>
+                    <a data-theme="g" id="addUser" data-inline="true" data-icon="plus" data-role="button">Add New User</a>
 
-                    <p>Choose a user to edit / delete / make admin etc..</p>
+                    <p><b>The users below are the only ones who can take the survey's you build. ( Unless the survey is marked public )</b></p>
+                    <p>Choose a user to edit</p> 
+                    <ul>
+                        <li>
+                            If you delete the user they will no longer be able to take your surveys.
+                        </li>
+                         <li>
+                             If you make them an admin they will be able to edit your survey's
+                        </li>
+                    </ul> 
 
                     <ul id="orgUsers" data-role="listview" data-inset="true"></ul>
                     
@@ -668,7 +673,7 @@
 
                     <h3 id="surveyBuilderHeading"></h3>
 
-                    <a data-theme="b" id="newFile" data-inline="true" data-icon="plus" data-role="button">New Survey</a>
+                    <a data-theme="g" id="newFile" data-inline="true" data-icon="plus" data-role="button">New Survey</a>
 
                     <p>Choose a survey to edit / add questions / delete / publish etc...</p>
 
@@ -741,16 +746,28 @@
                     <ul data-role="listview" data-inset="true">
                         <li>
                             <div>
-                                
-                                <div data-role="controlgroup" data-type="horizontal">
-                                    <!--<a data-role="button" data-icon="back" id="fileBack">Back</a>-->
-                                    <a data-role="button" data-icon="refresh" id="filePublish" >Publish</a>
-                                    <a data-role="button" data-icon="trash" id="deleteFile">Delete</a>
+                                <div class="ui-block-a">
+                                    <div data-role="controlgroup" data-type="horizontal">
+                                        <!--<a data-role="button" data-icon="back" id="fileBack">Back</a>-->
+                                        <a data-role="button" data-icon="refresh" id="filePublish" >Publish</a>
+                                        <a data-role="button" data-icon="trash" id="deleteFile">Delete</a>
+                                    </div>
                                 </div>
-                    
-                                <a data-theme="b" id="newQuestion" data-inline="true" data-icon="plus" data-role="button">New Question</a>
-                                <span id="lastPublished"></span>
-                                <ol data-role="listview" id="questionList" data-inset="true"></ol>
+                                <div class="ui-block-b" style="float:right">
+                                    <label for="flip-survey-security"><b>Public Survey</b></label>
+                                    <select name="flip-survey-security" id="flip-survey-security" data-role="slider">
+                                        <option value="private">no</option>
+                                        <option value="public">yes</option>
+                                    </select>
+                                </div>
+                                
+                                <div style="clear:both">
+                                    <a data-theme="g" id="newQuestion" data-inline="true" data-icon="plus" data-role="button">New Question</a>
+                                    <span id="lastPublished"></span>
+                                    <ol data-role="listview" id="questionList" data-inset="true"></ol>
+                                </div>
+
+                               
 
                                 <div data-role="popup" id="newQuestionPopup"  style="max-width:400px;" class="ui-content ui-corner-all">
 

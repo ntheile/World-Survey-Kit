@@ -53,6 +53,11 @@ namespace WorldSurveyKit.Controllers
             {
                 if (ModelState.IsValid && id == file.id)
                 {
+                    if (file.security != "public" && file.security != "private")
+                    {
+                        file.security = "public";
+                    }
+                    
                     db.Entry(file).State = EntityState.Modified;
 
                     try
@@ -88,6 +93,11 @@ namespace WorldSurveyKit.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    if (file.security != "public" && file.security != "private")
+                    {
+                        file.security = "public";
+                    }
+                    
                     db.File.Add(file);
                     db.SaveChanges();
 
