@@ -131,7 +131,7 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
             });
 
             $("#home-load").show();
-
+            
             // deferred object until app is loaded
             App.loaded = App.loaded || {};
             App.loaded.deferred = new $.Deferred();
@@ -322,7 +322,7 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
                    App.uResponseCollection.deferred,
                    App.uOptionCollection.deferred
                 ).then(function () {
-                   
+
                     // check if first load exists
                     if (localStorage.loaded) {
                         console.log("already load");
@@ -555,8 +555,8 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
             }
 
             try{
-                if (App.importer.reloadFlag) {
-                    App.importer.reloadFlag = false;
+                //if (App.importer.reloadFlag) { // this route might be slow if there is a large number of surveys
+                //    App.importer.reloadFlag = false;
                     $("#report-sync").html("syncing...");
                     App.fileInstanceCollection.fetch({
                         reset: true,
@@ -565,7 +565,7 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
                             App.reportTableView.render(fileId);
                         }
                     });
-                }
+                //}
             }
             catch (e) { }
             

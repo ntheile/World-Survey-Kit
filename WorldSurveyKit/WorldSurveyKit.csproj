@@ -339,6 +339,7 @@
     <Content Include="images\demo\screen-single.png" />
     <Content Include="images\facebook_login.png" />
     <Content Include="images\facebook_login_sm.png" />
+    <Content Include="images\home.png" />
     <Content Include="images\icons\hdpi.png" />
     <Content Include="images\icons\xhdpi.png" />
     <Content Include="images\icons\mdpi.png" />

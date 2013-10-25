@@ -126,11 +126,25 @@ define(["jquery", "backbone", "models/Models", "collections/MyOrgsCollection"], 
                 }
                 
                 
+                //$("div[data-role='fblogin']").html(
+                //       //"<div id='logout' style='padding: 5px 5px 5px 5px' ><img src='" + picUrl + "' style='width:25px; height:25px;' />&nbsp;&nbsp; " + App.userName + "</div>"
+                //    '<button data-mini="true" data-icon="home" data-corners="false" onclick=" App.router.navigate(\'home\', { trigger: true }) ">' + App.userName +
+                //        '&nbsp;&nbsp;<img src="' + picUrl + '" style="width:18px;height:18px" />' +
+                //    '</button>'
+                //);
+
+               
+                    
+                    
+    
+
                 $("div[data-role='fblogin']").html(
-                       //"<div id='logout' style='padding: 5px 5px 5px 5px' ><img src='" + picUrl + "' style='width:25px; height:25px;' />&nbsp;&nbsp; " + App.userName + "</div>"
-                    '<button data-mini="true" data-icon="home" data-corners="false" onclick=" App.router.navigate(\'home\', { trigger: true }) ">' + App.userName +
-                        '&nbsp;&nbsp;<img src="' + picUrl + '" style="width:18px;height:18px" />' +
-                    '</button>'
+                    '<div data-role="controlgroup" data-type="horizontal" data-mini="true">' +
+                        '<button style="clear:both !important" onclick=" App.router.navigate(\'home\', { trigger: true }) " data-role="button" data-theme="b"><img src="images/home.png" style="width:18px;height:18px" /></button>' +
+                        '<a id="possy" data-mini="true" data-icon="arrow-d" data-iconpos="right" onclick="$( \'#profileMenuPopup\' ).popup( \'open\' );" data-role="button">' +
+                            '<img src="' + picUrl + '" style="width:18px;height:18px" />&nbsp;&nbsp;' + App.userName + '&nbsp;&nbsp;' +
+                        '</a>' +
+                    '</div>'
                 );
 
             }
@@ -230,6 +244,8 @@ define(["jquery", "backbone", "models/Models", "collections/MyOrgsCollection"], 
                     window.localStorage.id = App.id;
                     window.localStorage.defaultOrg = App.defaultOrg;
                     window.localStorage.defaultOrgName = App.defaultOrgName;
+
+                    
 
                     //clear background image
                     $(".backstretch").hide();

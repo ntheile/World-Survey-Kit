@@ -116,6 +116,8 @@ define(["jquery", "backbone", "models/Models"],
 
             deleteFile_ONCLICK: function () {
 
+                var self = this;
+
                 // delete the file and destroy this view
 
                 var model = App.fileCollection.get(App.fileId);
@@ -123,6 +125,10 @@ define(["jquery", "backbone", "models/Models"],
                 if (answer) {
                     model.destroy({
                         success: function (model, response) {
+
+                            // reload files questions and options from server for the home page
+                            self.reloadFileQuestOpt();
+
                             // nav back to build page
                             App.router.navigate("build?" + App.defaultOrg, { trigger: true });
                         }
@@ -141,6 +147,8 @@ define(["jquery", "backbone", "models/Models"],
 
             filePublish_ONCLICK: function () {
                 
+                var self = this;
+
                 // to update and publish this file simply update the updated_at field for the file
                 var model = App.fileCollection.get(App.fileId);
                 
@@ -158,10 +166,8 @@ define(["jquery", "backbone", "models/Models"],
                             $("#lastPublished").html("Last Published: " + App.lastPublished);
                         }
 
-                        // re-load data from server for the client, file, questions, options
-                        App.uFileCollection.storage.sync.full({ url: App.utils.urlify("Files/" + App.defaultOrg) });
-                        App.uQuestionCollection.storage.sync.full({ url: App.utils.urlify("UQuestionCollection/" + App.defaultOrg) });
-                        App.uOptionCollection.storage.sync.full({ url: App.utils.urlify("OptionCollection/" + App.defaultOrg) });
+                        // reload files questions and options from server for the home page
+                        self.reloadFileQuestOpt();
                         
                         alert("Survey successfully published.");
 
@@ -209,6 +215,13 @@ define(["jquery", "backbone", "models/Models"],
 
                 $("#newQuestionPopup").popup("close");
                 
+            },
+
+            reloadFileQuestOpt: function () {
+                // re-load data from server for the client, file, questions, options
+                App.uFileCollection.storage.sync.full({ url: App.utils.urlify("Files/" + App.defaultOrg) });
+                App.uQuestionCollection.storage.sync.full({ url: App.utils.urlify("UQuestionCollection/" + App.defaultOrg) });
+                App.uOptionCollection.storage.sync.full({ url: App.utils.urlify("OptionCollection/" + App.defaultOrg) });
             }
 
         });

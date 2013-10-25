@@ -217,6 +217,14 @@ namespace WorldSurveyKit.Controllers
 
             try
             {
+                
+
+                // what are the orgs you are a member of?
+                var myOrgs = db.OrgUserMappings.Include(oo => oo.Orgs).Where(o => o.usersId == uId);
+
+                Users u = db.Users.Find(uId);
+                Orgs org = db.Orgs.Find(u.defaultOrg);
+
                 // are you either a System admin or an admin of at least one org?
                 bool isAdmin = false;
                 if (Auth.FB.IsSystemAdmin())
@@ -225,18 +233,13 @@ namespace WorldSurveyKit.Controllers
                 }
                 else
                 {
-                    if (Auth.FB.IsOrgAdmin())
+                    // determine if the user is an admin of his default org
+
+                    if (Auth.FB.IsOrgAdmin(u.defaultOrg))
                     {
                         isAdmin = true;
                     }
                 }
-
-                // what are the orgs you are a member of?
-                var myOrgs = db.OrgUserMappings.Include(oo => oo.Orgs).Where(o => o.usersId == uId);
-
-                Users u = db.Users.Find(uId);
-                Orgs org = db.Orgs.Find(u.defaultOrg);
-
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, new
                 {

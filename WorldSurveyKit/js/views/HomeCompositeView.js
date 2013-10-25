@@ -17,6 +17,33 @@ define(["jquery", "backbone", "models/Models"],
 
             console.log("====> HomeCompositeView - init()");
 
+            App.reloadNewOrg = function (orgId) {
+                var url = App.utils.urlify("whoami/" + App.id);
+                $.ajax(url, {
+                    type: "PUT",
+                    contentType: "application/json",
+                    data: JSON.stringify({ defaultOrg: orgId }),
+                    dataType: "json",
+                    success: function (data) {
+                        $.mobile.loading("hide");
+
+                        window.location.reload();
+
+                    },
+                    error: function (model, response) {
+                        $.mobile.loading("hide");
+                        alert(response.statusText);
+                    }
+
+                });
+            };
+
+            _.each(App.myOrgs, function (org) {
+                $("#profileMenuOrgs").append("<li><a onclick='App.reloadNewOrg(" + org.Orgs.id + ")'>" + org.Orgs.orgName + "</a></li>");
+            });
+
+            $("#profileMenuOrgs").listview("refresh");
+
         },
 
         render: function () {

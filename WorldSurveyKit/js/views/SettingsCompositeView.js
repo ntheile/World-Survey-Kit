@@ -129,14 +129,12 @@ define(["jquery", "backbone", "models/Models", "collections/UFileCollection"],
                 });
             }
 
-            var waitDfd = $.wait(4000);
-
+          
            
             var promise = Q.all([
                questionDfd,
                fileInstDfd,
-               respDfd,
-               waitDfd
+               respDfd
             ]);
 
             promise.then(function () {
