@@ -24,7 +24,7 @@ namespace WorldSurveyKit.Controllers
         /// </summary>
         public HttpResponseMessage GetFile(int id)
         {
-
+            
             if (Auth.FB.IsOrgUser(id))
             {
                 var files = db.File.Where(f => f.orgsId == id);
@@ -42,7 +42,7 @@ namespace WorldSurveyKit.Controllers
 
         }
 
-        // PUT api/Files/5
+        // PUT api/Files/{fileId}
         /// <summary>
         /// Update a file, for example update the published date by passing in the updated_at field, note this is not a patch and all valus must be passed in. 
         /// </summary>
@@ -118,14 +118,16 @@ namespace WorldSurveyKit.Controllers
         }
 
 
-        /// DELETE api/Files/5
+        /// DELETE api/Files/{fileId}
         /// <summary>
         /// DELETE's a file by id
         /// </summary>
         public HttpResponseMessage DeleteFile(int id)
         {
+            // get the org the file belongs to
+            int fileId = GetOrgId(id);
 
-            if (Auth.FB.IsOrgAdmin(id))
+            if (Auth.FB.IsOrgAdmin(fileId))
             {
                 File file = db.File.Find(id);
                 if (file == null)
@@ -153,10 +155,20 @@ namespace WorldSurveyKit.Controllers
 
         }
 
+        // helper methods
+        private int GetOrgId(int fileId)
+        {
+            File file = db.File.First(f => f.id == fileId);
+            return file.orgsId;
+        }
+
         protected override void Dispose(bool disposing)
         {
             db.Dispose();
             base.Dispose(disposing);
         }
+
+
+       
     }
 }

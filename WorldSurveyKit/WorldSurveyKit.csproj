@@ -386,6 +386,7 @@
     <Content Include="js\libs\jquery.table2csv.js" />
     <Content Include="js\libs\json2.min.js" />
     <Content Include="js\libs\modernizr.js" />
+    <Content Include="js\libs\q.js" />
     <Content Include="js\libs\require-2.1.5.js" />
     <Content Include="js\libs\require-2.1.6.js" />
     <Content Include="js\libs\shims\extras\modernizr-custom.js" />

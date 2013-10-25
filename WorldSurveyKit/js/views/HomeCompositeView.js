@@ -49,7 +49,7 @@ define(["jquery", "backbone", "models/Models"],
    
             var self = this;
 
-            // filter out unpublished surveys, aka where updated_at is null
+            //// filter out unpublished surveys, aka where updated_at is null
             _.each(App.uFileCollection.filter(function (item) { return item.get("updated_at") !== null; }),  function (model) {
                 var fileName = model.get("fileName");
                 var sid = model.get("sid"); // server id
@@ -71,6 +71,8 @@ define(["jquery", "backbone", "models/Models"],
                 $("#homeNewSurveyListView").listview("refresh");
 
             });
+
+         
 
 
             $('.homeNewSurveyCreate').off('click');

@@ -25,6 +25,8 @@ App.loginPageHash = "#login";
 
 "use strict";
 
+// IE console.log fixer
+var console = console || {};
 
 console.log('in main.js');
 
@@ -66,7 +68,8 @@ require.config({
         "android": "device/android",
         "web": "device/web",
         "config": "config",
-        "handsontable": "libs/jquery.handsontable.full"
+        "handsontable": "libs/jquery.handsontable.full",
+        "q": "libs/q"
     },
     // Sets the configuration for your third party scripts that are not AMD compatible
     shim: {
@@ -93,7 +96,7 @@ require.config({
 });
 
 // Include File Dependencies
-require(["jquery", "backbone", "backstretch", "dataTables", "sly", "modernizrCustom"], function ($, Backbone, backstretch, dataTables, sly, modernize) {
+require(["jquery", "backbone", "backstretch", "dataTables", "sly", "modernizrCustom", "q"], function ($, Backbone, backstretch, dataTables, sly, modernize, q) {
 
     jQuery.noConflict;
 

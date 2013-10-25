@@ -104,9 +104,10 @@ define(["jquery", "backbone", "models/Models", "collections/UFileCollection"],
             
             var self = this;
 
+ 
             // we pass in the url if sync is overridden on the collection, most of the time GET is overridden
             if (App.uQuestionCollection) {
-                App.uQuestionCollection.storage.sync.full({ url: App.utils.urlify("UQuestionCollection/" + App.defaultOrg) }).done(function () {
+                var questionDfd =  App.uQuestionCollection.storage.sync.full({ url: App.utils.urlify("UQuestionCollection/" + App.defaultOrg) }).done(function () {
                     $.mobile.loading("hide");
                 });
 
@@ -114,7 +115,7 @@ define(["jquery", "backbone", "models/Models", "collections/UFileCollection"],
 
             if (App.uFileInstanceCollection) {
               
-                App.uFileInstanceCollection.storage.sync.full().done(function () {
+                var fileInstDfd = App.uFileInstanceCollection.storage.sync.full().done(function () {
                     $.mobile.loading("hide");
                 });
 
@@ -122,13 +123,28 @@ define(["jquery", "backbone", "models/Models", "collections/UFileCollection"],
 
             if (App.uResponseCollection) {
 
-                App.uResponseCollection.storage.sync.full().done(function () {
+                var respDfd = App.uResponseCollection.storage.sync.full().done(function () {
                     $.mobile.loading("hide");
                     self.syncCount();
                 });
-
             }
-             
+
+            var waitDfd = $.wait(4000);
+
+           
+            var promise = Q.all([
+               questionDfd,
+               fileInstDfd,
+               respDfd,
+               waitDfd
+            ]);
+
+            promise.then(function () {
+                console.log("clearing local storage");
+                window.localStorage.clear();
+                window.location.reload();
+            });
+
         },
 
 
