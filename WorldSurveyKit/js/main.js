@@ -69,7 +69,8 @@ require.config({
         "web": "device/web",
         "config": "config",
         "handsontable": "libs/jquery.handsontable.full",
-        "q": "libs/q"
+        "q": "libs/q",
+        "tourbus": "libs/jquery.tourbus"
     },
     // Sets the configuration for your third party scripts that are not AMD compatible
     shim: {
@@ -89,6 +90,10 @@ require.config({
         "polyfiller": {
             "deps": ["jquery", "modernizrCustom"],
             "exports": "Polyfiller"
+        },
+        "tourbus": {
+            "deps": ["jquery"],
+            "exports": "tourbus"
         }
 
     } // end Shim Configuration
@@ -96,7 +101,7 @@ require.config({
 });
 
 // Include File Dependencies
-require(["jquery", "backbone", "backstretch", "dataTables", "sly", "modernizrCustom", "q"], function ($, Backbone, backstretch, dataTables, sly, modernize, q) {
+require(["jquery", "backbone", "backstretch", "dataTables", "sly", "modernizrCustom", "q", "tourbus"], function ($, Backbone, backstretch, dataTables, sly, modernize, q, tourbus) {
 
     jQuery.noConflict;
 

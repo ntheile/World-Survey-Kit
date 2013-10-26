@@ -428,6 +428,11 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
                     App.homeCompositeView.render();
                 }
 
+
+                var tour = $('#my-tour-id').tourbus({});
+                tour.trigger('depart.tourbus');
+
+
                 // style
                 $("#home").trigger("create");
 

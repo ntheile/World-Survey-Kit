@@ -9,6 +9,7 @@
       <link href="css/app.css" rel="stylesheet" />
       <link href="css/jqm-icon-pack-3.0.0-fa.css" rel="stylesheet" />
       <link href="css/jquery.handsontable.css" rel="stylesheet" />
+      <link href="css/jquery-tourbus.css" rel="stylesheet" />
 </head>
 <body class="daBody" > 
     <!-- This initializes the Facebook JS SDK -->
@@ -246,12 +247,12 @@
                     <a href="#panelHome" data-role="button" data-icon="reorder" data-inline="true" data-iconpos="notext" class="ui-square-btn"></a>
                 </div>
                 <img src="images/wsk-sm.png"  />
-                <div data-role="fblogin" style="float:right; padding-right: 2px">
-                    <button class="loginBtn" data-mini="true" data-corners="false"> 
+                <div data-role="fblogin">
+                    <button class="loginBtn ui-btn-right" data-mini="true" data-corners="false"> 
                         <img src="images/facebook_login_sm.png" style="width:18px;height:18px" />&nbsp;&nbsp; Login
                     </button>
                 </div>
-                <div style="clear:both"></div>
+                <div id="profilePos" style="clear:both" class="ui-btn-right"></div>
 
             </div>
   
@@ -286,24 +287,91 @@
                         </div>
 
                     </div>
-
-                  
-                    <div data-role="popup" id="profileMenuPopup" data-theme="d">
-                        <ul id="profileMenuOrgs" data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d">
-                            <li data-role="divider" data-theme="e">Switch to view surveys:</li>
-                            
-                        </ul>
-                    </div>
-                    
                     <center><b id="home-load-msg"></b></center>
 
                 </div>
   
             </div>
 
+
+            <!--profile menu-->
+            <div data-role="popup" id="profileMenuPopup" data-theme="d">
+                <ul id="profileMenuOrgs" data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d">
+                    <li data-role="divider" data-theme="g">Switch survey context:</li>
+                            
+                </ul>
+            </div>
+            
+             <!--tour-->
+            <ol class='tourbus-legs ui-overlay-shadow' id='my-tour-id'>
+                <li data-orientation='centered' class="ui-overlay-shadow" >
+                    <h2>Welcome to World Survey Kit</h2>
+                    <p>Take the tour</p>
+
+                    <a href='javascript:void(0);' class='tourbus-stop'>Skip</a>
+                    <a data-role="button" href='javascript:void(0);'  data-inline="true" data-theme="g" data-icon="arrow-right" data-iconpos="right" class='tourbus-next'>Go</a>
+
+                </li>
+
+
+
+                <li data-el='#homeListView' data-orientation='top' data-width='400'>
+                    <h2>Take a survey</h2>
+                    <p>Fill out a new survey here on the home page or view your survey history for editing.</p>
+                    
+                    <div data-role="controlgroup" data-type="horizontal">
+                         <a data-role="button" href='javascript:void(0);' class='tourbus-prev' data-inline="true" data-theme="g" data-icon="arrow-left">Back</a>
+                         <a data-role="button" href='javascript:void(0);' class='tourbus-next' data-inline="true" data-theme="g" data-icon="arrow-right" data-iconpos="right">Next</a>
+                    </div>
+                </li>
+
+                <li data-el='.ui-block-b' data-orientation='bottom' data-align="center" data-width='300'>
+                    <h2>Manage Users</h2>
+ 
+                   <div data-role="controlgroup" data-type="horizontal">
+                         <a data-role="button" href='javascript:void(0);' class='tourbus-prev' data-inline="true" data-theme="g" data-icon="arrow-left">Back</a>
+                         <a data-role="button" href='javascript:void(0);' class='tourbus-next' data-inline="true" data-theme="g" data-icon="arrow-right" data-iconpos="right">Next</a>
+                    </div>
+                </li>
+
+                 <li data-el='.ui-block-c' data-orientation='bottom' data-align="center"  data-width='300'>
+                    <h2>Reports</h2>
+                    
+                     <div data-role="controlgroup" data-type="horizontal">
+                         <a data-role="button" href='javascript:void(0);' class='tourbus-prev' data-inline="true" data-theme="g" data-icon="arrow-left">Back</a>
+                         <a data-role="button" href='javascript:void(0);' class='tourbus-next' data-inline="true" data-theme="g" data-icon="arrow-right" data-iconpos="right">Next</a>
+                    </div>
+                </li>
+
+                 <li data-el='.ui-block-d' data-orientation='bottom' data-align="center"  data-width='300'>
+                    <h2>Survey Builder</h2>
+                    
+                    <div data-role="controlgroup" data-type="horizontal">
+                         <a data-role="button" href='javascript:void(0);' class='tourbus-prev' data-inline="true" data-theme="g" data-icon="arrow-left">Back</a>
+                         <a data-role="button" href='javascript:void(0);' class='tourbus-next' data-inline="true" data-theme="g" data-icon="arrow-right" data-iconpos="right">Next</a>
+                    </div>
+                </li>
+
+                 <li data-el='.ui-block-e' data-orientation='bottom' data-align="center" data-width='300'>
+                    <h2>Setting</h2>
+                    
+                    <div data-role="controlgroup" data-type="horizontal">
+                         <a data-role="button" href='javascript:void(0);' class='tourbus-prev' data-inline="true" data-theme="g" data-icon="arrow-left">Back</a>
+                         <a data-role="button" href='javascript:void(0);' class='tourbus-next' data-inline="true" data-theme="g" data-icon="arrow-right" data-iconpos="right">Next</a>
+                    </div>
+                </li>
+
+                <li data-el='#profilePos' data-orientation='bottom' data-align="right" data-margin="50">
+                    <h2>Switch Survey context</h2>
+                    <p>...</p>
+                    <a data-role="button" href='javascript:void(0);' data-inline="true" data-theme="g" class='tourbus-stop'>Done</a>
+                </li>
+            </ol>
+
     </div>
 
-
+           
+  
 
      <!-- /History Page -->
     <div id="history" data-role="page" data-title="Survey History">
@@ -324,8 +392,8 @@
                     <a href="#panelHistory" data-role="button" data-icon="reorder" data-inline="true" data-iconpos="notext" class="ui-square-btn ui-icon-nodisc" data-iconshadow="false">Menu</a>
                     <a onclick="window.history.back()" data-role="button" data-icon="arrow-left" data-inline="true" data-iconpos="notext" class="ui-square-btn ui-icon-nodisc" data-iconshadow="false">Back</a>
                 </div>
-                <div data-role="fblogin" style="float:right; padding-right: 2px">
-                    <button class="loginBtn" data-mini="true" data-corners="false"> 
+                <div data-role="fblogin">
+                    <button class="loginBtn ui-btn-right" data-mini="true" data-corners="false"> 
                         <img src="images/facebook_login_sm.png" style="width:18px;height:18px" />&nbsp;&nbsp; Login
                     </button>
                 </div>
@@ -1267,8 +1335,8 @@
                 </div>
 
             </div><!-- /content -->
+            
 
-    </div>
 
     <form>
         <input name="__ApiToken" id="__ApiToken" type="hidden" value="saO1zbN6K1l9WjQiDKpZ" />    
@@ -1281,6 +1349,8 @@
        }
    </script>
    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+   
 
 </body>
 </html>

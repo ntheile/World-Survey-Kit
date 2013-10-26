@@ -139,13 +139,15 @@ define(["jquery", "backbone", "models/Models", "collections/MyOrgsCollection"], 
     
 
                 $("div[data-role='fblogin']").html(
-                    '<div data-role="controlgroup" data-type="horizontal" data-mini="true">' +
-                        '<button style="clear:both !important" onclick=" App.router.navigate(\'home\', { trigger: true }) " data-role="button" data-theme="b"><img src="images/home.png" style="width:18px;height:18px" /></button>' +
-                        '<a id="possy" data-mini="true" data-icon="arrow-d" data-iconpos="right" onclick="$( \'#profileMenuPopup\' ).popup( \'open\' );" data-role="button">' +
+                    '<div data-role="controlgroup" data-type="horizontal" data-mini="true" class="ui-btn-right" >' +
+                        '<a data-role="button" data-mini="true" data-theme="b" onclick=" App.router.navigate(\'home\', { trigger: true }) " ><img src="images/home.png" style="width:18px;height:18px" /></a>' +
+                        '<a data-role="button" data-mini="true" data-icon="arrow-d" data-iconpos="right"  onclick="$( \'#profileMenuPopup\' ).popup( \'open\', { positionTo: \'#profilePos\' } ); " >' +
                             '<img src="' + picUrl + '" style="width:18px;height:18px" />&nbsp;&nbsp;' + App.userName + '&nbsp;&nbsp;' +
                         '</a>' +
                     '</div>'
                 );
+
+                $("#login").trigger("create");
 
             }
             // no user

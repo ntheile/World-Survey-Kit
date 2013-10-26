@@ -309,6 +309,7 @@
     <Content Include="css\images\sort_desc.png" />
     <Content Include="css\images\sort_desc_disabled.png" />
     <Content Include="css\jqm-icon-pack-3.0.0-fa.css" />
+    <Content Include="css\jquery-tourbus.css" />
     <Content Include="css\jquery.handsontable.css" />
     <Content Include="css\jquery.mobile-1.3.0.min.css" />
     <Content Include="css\jquery.signaturepad.css" />
@@ -385,6 +386,7 @@
     <Content Include="js\libs\jquery.mobile-1.3.1.js" />
     <Content Include="js\libs\jquery.signaturepad.js" />
     <Content Include="js\libs\jquery.table2csv.js" />
+    <Content Include="js\libs\jquery.tourbus.js" />
     <Content Include="js\libs\json2.min.js" />
     <Content Include="js\libs\modernizr.js" />
     <Content Include="js\libs\q.js" />

@@ -340,8 +340,12 @@ Hidden routes in the web application:
 
 TODO - Short Term
 =================
-* create a first time logged in tutorial
-* add a share via email, link, embed
+* finish tour js, make a flag in db for first time logged in
+
+* add a share button to survey 
+	* open popup with there friend list share 
+	* after choose friend it auto adds them as user
+	* user visits link you send them and it makes your org the default then opens survey or something
 
 
 TODO - Long Term
