@@ -313,6 +313,8 @@
     <Content Include="css\jquery.handsontable.css" />
     <Content Include="css\jquery.mobile-1.3.0.min.css" />
     <Content Include="css\jquery.signaturepad.css" />
+    <Content Include="css\tdfriendselector\tdfriendselector.css" />
+    <Content Include="css\tdfriendselector\tdfriendselector.png" />
     <Content Include="CsvExporter.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -344,6 +346,7 @@
     <Content Include="images\icons\hdpi.png" />
     <Content Include="images\icons\xhdpi.png" />
     <Content Include="images\icons\mdpi.png" />
+    <Content Include="images\qrcode.png" />
     <Content Include="images\wsk-sm.png" />
     <Content Include="images\wsk.png" />
     <Content Include="images\loadingLg.gif" />
@@ -505,6 +508,7 @@
     <Content Include="js\libs\shims\shims\track-ui.js" />
     <Content Include="js\libs\shims\shims\track.js" />
     <Content Include="js\libs\sly.js" />
+    <Content Include="js\libs\tdfriendselector.js" />
     <Content Include="js\libs\underscore.js" />
     <Content Include="js\models\Models.js" />
     <Content Include="js\templates\AdminMenuTemplate.html" />

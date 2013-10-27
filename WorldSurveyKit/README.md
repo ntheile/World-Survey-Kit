@@ -340,7 +340,8 @@ Hidden routes in the web application:
 
 TODO - Short Term
 =================
-* finish tour js, make a flag in db for first time logged in
+* add google analytics
+* add fb friend picker
 
 * add a share button to survey 
 	* open popup with there friend list share 
@@ -388,6 +389,7 @@ should auto sync when you click save and finish later.
 * added security to the File table, public and private can now be set on a survey
 * user cannot delete own survey in own org - fixed the FilesController delete method and added q.js to fix reset of app
 * added the profile menu and fixed isOrgAmin bug
+* finished tour js, make a flag in db for first time logged in
 
 
 

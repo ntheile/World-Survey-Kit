@@ -343,6 +343,8 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
                                 $.mobile.loading("hide");
                                 $("#home-load-msg").hide();
                                 App.loaded.deferred.resolve();
+                                var tour = $('#my-tour-id').tourbus({});
+                                tour.trigger('depart.tourbus');
                             });
                         });
                     }
@@ -427,11 +429,6 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
                 else {
                     App.homeCompositeView.render();
                 }
-
-
-                var tour = $('#my-tour-id').tourbus({});
-                tour.trigger('depart.tourbus');
-
 
                 // style
                 $("#home").trigger("create");

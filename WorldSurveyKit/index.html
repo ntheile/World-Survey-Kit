@@ -221,6 +221,8 @@
                 </ul> 
             </div>
 
+           
+
     </div>
 
      <!-- /Home Page -->
@@ -297,8 +299,7 @@
             <!--profile menu-->
             <div data-role="popup" id="profileMenuPopup" data-theme="d">
                 <ul id="profileMenuOrgs" data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d">
-                    <li data-role="divider" data-theme="g">Switch survey context:</li>
-                            
+                    <li data-role="divider" data-theme="g">Switch survey context:</li>   
                 </ul>
             </div>
             
@@ -306,18 +307,14 @@
             <ol class='tourbus-legs ui-overlay-shadow' id='my-tour-id'>
                 <li data-orientation='centered' class="ui-overlay-shadow" >
                     <h2>Welcome to World Survey Kit</h2>
-                    <p>Take the tour</p>
-
+                    <a data-role="button" href='javascript:void(0);'  data-inline="true" data-theme="g" data-icon="arrow-right" data-iconpos="right" class='tourbus-next'>Take the tour</a>
                     <a href='javascript:void(0);' class='tourbus-stop'>Skip</a>
-                    <a data-role="button" href='javascript:void(0);'  data-inline="true" data-theme="g" data-icon="arrow-right" data-iconpos="right" class='tourbus-next'>Go</a>
 
                 </li>
 
-
-
                 <li data-el='#homeListView' data-orientation='top' data-width='400'>
-                    <h2>Take a survey</h2>
-                    <p>Fill out a new survey here on the home page or view your survey history for editing.</p>
+                    <h3>Take a survey</h3>
+                    <p>Fill out a new survey here or view/edit your survey history</p>
                     
                     <div data-role="controlgroup" data-type="horizontal">
                          <a data-role="button" href='javascript:void(0);' class='tourbus-prev' data-inline="true" data-theme="g" data-icon="arrow-left">Back</a>
@@ -326,8 +323,8 @@
                 </li>
 
                 <li data-el='.ui-block-b' data-orientation='bottom' data-align="center" data-width='300'>
-                    <h2>Manage Users</h2>
- 
+                   <h3>Manage Users</h3>
+                   <p>Add your friends from Facebook and allow them to take surveys you build.</p>
                    <div data-role="controlgroup" data-type="horizontal">
                          <a data-role="button" href='javascript:void(0);' class='tourbus-prev' data-inline="true" data-theme="g" data-icon="arrow-left">Back</a>
                          <a data-role="button" href='javascript:void(0);' class='tourbus-next' data-inline="true" data-theme="g" data-icon="arrow-right" data-iconpos="right">Next</a>
@@ -335,8 +332,27 @@
                 </li>
 
                  <li data-el='.ui-block-c' data-orientation='bottom' data-align="center"  data-width='300'>
-                    <h2>Reports</h2>
-                    
+                    <h3>Reports</h3>
+                    <p>
+                        <ul>
+                            <li>
+                                View the responses from your surveys
+                            </li>
+                            <li>
+                                Search and filter data
+                            </li>
+                            <li>
+                                Export or print the results
+                            </li>
+                            <li>
+                                Import survey data in bulk
+                            </li>
+                            <li>
+                                Edit responses
+                            </li>
+                        </ul>  
+
+                    </p>
                      <div data-role="controlgroup" data-type="horizontal">
                          <a data-role="button" href='javascript:void(0);' class='tourbus-prev' data-inline="true" data-theme="g" data-icon="arrow-left">Back</a>
                          <a data-role="button" href='javascript:void(0);' class='tourbus-next' data-inline="true" data-theme="g" data-icon="arrow-right" data-iconpos="right">Next</a>
@@ -344,7 +360,36 @@
                 </li>
 
                  <li data-el='.ui-block-d' data-orientation='bottom' data-align="center"  data-width='300'>
-                    <h2>Survey Builder</h2>
+                    <h3>Survey Builder</h3>
+                    <p>
+                        <ul>
+                            <li>
+                                Build a new survey
+                            </li>
+                            <li>
+                                Add questions<br />
+                                &nbsp;&nbsp;Multiple Choice<br />
+                                &nbsp;&nbsp;Single Answer<br />
+                                &nbsp;&nbsp;Open Ended<br />
+                                &nbsp;&nbsp;GPS<br />
+                                &nbsp;&nbsp;Signature
+                            </li>
+                            <li>
+                                Publish the survey
+                            </li>
+                        </ul>
+                        
+
+                    </p>
+                    <div data-role="controlgroup" data-type="horizontal">
+                         <a data-role="button" href='javascript:void(0);' class='tourbus-prev' data-inline="true" data-theme="g" data-icon="arrow-left">Back</a>
+                         <a data-role="button" href='javascript:void(0);' class='tourbus-next' data-inline="true" data-theme="g" data-icon="arrow-right" data-iconpos="right">Next</a>
+                    </div>
+                </li>
+
+                <li data-el='.ui-block-e' data-orientation='bottom' data-align="center" data-width='300'>
+                    <h3>Manage Setting</h3>
+                    <p>Manage your organizations, translate surveys into different languages.</p>
                     
                     <div data-role="controlgroup" data-type="horizontal">
                          <a data-role="button" href='javascript:void(0);' class='tourbus-prev' data-inline="true" data-theme="g" data-icon="arrow-left">Back</a>
@@ -352,20 +397,32 @@
                     </div>
                 </li>
 
-                 <li data-el='.ui-block-e' data-orientation='bottom' data-align="center" data-width='300'>
-                    <h2>Setting</h2>
-                    
+                <li data-el='#profilePos' data-orientation='bottom' data-align="right" data-margin="50" data-width='300'>
+                    <h3>Switch Survey context</h3>
+                    <p>
+                        If a friend invites you to take their survey you can switch to it here.
+                    </p>
                     <div data-role="controlgroup" data-type="horizontal">
                          <a data-role="button" href='javascript:void(0);' class='tourbus-prev' data-inline="true" data-theme="g" data-icon="arrow-left">Back</a>
                          <a data-role="button" href='javascript:void(0);' class='tourbus-next' data-inline="true" data-theme="g" data-icon="arrow-right" data-iconpos="right">Next</a>
                     </div>
                 </li>
 
-                <li data-el='#profilePos' data-orientation='bottom' data-align="right" data-margin="50">
-                    <h2>Switch Survey context</h2>
-                    <p>...</p>
+                <li data-orientation='centered' data-width="300">
+                    <h3>Mobile App</h3>
+                    <p>
+                        World Survey Kit is great for on-site surveys even if there is no internet connectivity! 
+                        <br /><br />
+                        Download the Android app now
+                        <center>
+                             <img src="images/qrcode.png" />
+                        </center>
+                        <br /><br />
+                        iPhone and Windows app coming soon.
+                    </p>
                     <a data-role="button" href='javascript:void(0);' data-inline="true" data-theme="g" class='tourbus-stop'>Done</a>
                 </li>
+
             </ol>
 
     </div>
@@ -429,6 +486,7 @@
   
             </div>
 
+            
     </div>
 
      <!-- /Settings Page -->
@@ -503,6 +561,7 @@
   
             </div>
 
+
     </div>
 
 
@@ -553,6 +612,14 @@
 
                 <div id="reportsTable"></div>
   
+            </div>
+
+            <!--profile menu-->
+            <div data-role="popup" id="Div3" data-theme="d">
+                <ul id="Ul3" data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d">
+                    <li data-role="divider" data-theme="g">Switch survey context:</li>
+                            
+                </ul>
             </div>
 
     </div>
@@ -700,6 +767,9 @@
                         
                     </div>
 
+
+
+                   
 
                 </div>
   
@@ -1229,6 +1299,12 @@
 
                 <div class="main-content">
                   
+                    <center>
+                        <button data-inline="true" data-theme="g" onclick="App.router.navigate('home', { trigger: true }); var tour = $('#my-tour-id').tourbus({});tour.trigger('depart.tourbus');">Take the tour</button>
+                        
+ 
+                    </center>
+
                     <center>
                         <h2>How to use World Survey Kit</h2>
                         <iframe width="853" height="480"  src="//www.youtube.com/embed/5XNAJw_-Lmg" frameborder="0" allowfullscreen></iframe>
