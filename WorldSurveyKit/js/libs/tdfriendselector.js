@@ -152,14 +152,17 @@ var TDFriendSelector = (function (module, $) {
                 bindEvents();
                 // Update classnames to represent the selections for this instance
                 $friends.removeClass(settings.friendSelectedClass + ' ' + settings.friendDisabledClass + ' ' + settings.friendFilteredClass);
-                for (i = 0, len = friends.length; i < len; i += 1) {
-                    if ($.inArray(friends[i].id, selectedFriendIds) !== -1) {
-                        $($friends[i]).addClass(settings.friendSelectedClass);
+                try {
+                    for (i = 0, len = friends.length; i < len; i += 1) {
+                        if ($.inArray(friends[i].id, selectedFriendIds) !== -1) {
+                            $($friends[i]).addClass(settings.friendSelectedClass);
+                        }
+                        if ($.inArray(friends[i].id, disabledFriendIds) !== -1) {
+                            $($friends[i]).addClass(settings.friendDisabledClass);
+                        }
                     }
-                    if ($.inArray(friends[i].id, disabledFriendIds) !== -1) {
-                        $($friends[i]).addClass(settings.friendDisabledClass);
-                    }
-                }
+                } catch (e) { };
+               
                 // Reset filtering
                 numFilteredFriends = 0;
                 $searchField.val("");
@@ -318,19 +321,23 @@ var TDFriendSelector = (function (module, $) {
         };
 
         updatePaginationButtons = function (pageNumber) {
-            var numPages = Math.ceil((friends.length - numFilteredFriends) / instanceSettings.friendsPerPage);
-            $pageNumber.html(pageNumber);
-            $pageNumberTotal.html(numPages);
-            if (pageNumber === 1 || numPages === 1) {
-                $pagePrev.addClass(settings.disabledClass);
-            } else {
-                $pagePrev.removeClass(settings.disabledClass);
+            try {
+                var numPages = Math.ceil((friends.length - numFilteredFriends) / instanceSettings.friendsPerPage);
+                $pageNumber.html(pageNumber);
+                $pageNumberTotal.html(numPages);
+                if (pageNumber === 1 || numPages === 1) {
+                    $pagePrev.addClass(settings.disabledClass);
+                } else {
+                    $pagePrev.removeClass(settings.disabledClass);
+                }
+                if (pageNumber === numPages || numPages === 1) {
+                    $pageNext.addClass(settings.disabledClass);
+                } else {
+                    $pageNext.removeClass(settings.disabledClass);
+                }
             }
-            if (pageNumber === numPages || numPages === 1) {
-                $pageNext.addClass(settings.disabledClass);
-            } else {
-                $pageNext.removeClass(settings.disabledClass);
-            }
+            catch (e) { };
+            
         };
 
         selectFriend = function ($friend) {
@@ -447,9 +454,15 @@ var TDFriendSelector = (function (module, $) {
         // Build the markup of the friend selector
         buildMarkup = function () {
             var i, len, html = '';
-            for (i = 0, len = friends.length; i < len; i += 1) {
-                html += buildFriendMarkup(friends[i]);
+            try {
+                for (i = 0, len = friends.length; i < len; i += 1) {
+                    html += buildFriendMarkup(friends[i]);
+                }
             }
+            catch (e) {
+                html = "";
+            }
+            
             $friends = $(html);
         };
 
