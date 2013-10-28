@@ -6,19 +6,19 @@
     <members>
         <member name="T:WorldSurveyKit.App_Start.Auth">
             <summary>
-
-              [Auth.FB] - checks if fb identity is accurate and gets authorations roles from
-              our database based on the fb user id, also checks if api token is valid
-
-              Must pass these headers: ApiToken, FbToken
-
-              POST http://localhost:44951/api/values HTTP/1.1
-              User-Agent: Fiddler
-              content-type: application/json
-              Host: localhost:44951
-              ApiToken:saO1zbN6K1l9WjQiDKpZ
-              FbToken:[....]
-
+            
+                [Auth.FB] - checks if fb identity is accurate and gets authorations roles from 
+                our database based on the fb user id, also checks if api token is valid
+            
+                Must pass these headers: ApiToken, FbToken
+            
+                POST http://localhost:800/api/values HTTP/1.1
+                User-Agent: Fiddler
+                content-type: application/json
+                Host: localhost:44951
+                ApiToken:saO1zbN6K1l9WjQiDKpZ
+                FbToken:[....]
+                
             </summary>
         </member>
         <member name="M:WorldSurveyKit.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
@@ -413,6 +413,12 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="M:WorldSurveyKit.Controllers.FeedController.GetFeed(System.Int32)">
+            GET api/Feed/orgsId
+            <summary>
+            Gets last 20 activities in the org
+            </summary>
+        </member>
         <member name="M:WorldSurveyKit.Controllers.FileInstancesController.GetNewFileInstances">
             <summary>
             GET's all file instances that belong to the user
@@ -465,9 +471,32 @@
             </summary>
         </member>
         <member name="M:WorldSurveyKit.Controllers.FilesController.DeleteFile(System.Int32)">
-            DELETE api/Files/5
+            DELETE api/Files/{fileId}
             <summary>
             DELETE's a file by id
+            </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.ImporterController.Post(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Imports data in bulk, creates a new file instance and creates responses for that instance
+            <param name="jJson">
+             { 
+                file: fileId,
+                fileName: name,
+                questionsIdMap: ["34","35","36","37"] 
+                responses: [
+                   { 0: "q1a", 1: "q2a" },  // in this case 0 maps to questionId 34
+                   { 0: "q2a", 1: "q22a" },
+                   { 0: "q3a", 1: "q23a" },
+                   { 0: "q4a", 1: "q24a" }
+                ]
+            
+             }
+            </param>
+            <returns>
+                json response with message array of inserted data
+                {"message":["Created file : labowski 0, id: 115","Added response to : labowski 1 , response: bowling , id: 256"]}    
+            </returns>
             </summary>
         </member>
         <member name="M:WorldSurveyKit.Controllers.OptionsController.GetOptions(System.Int32)">
@@ -685,6 +714,21 @@
             <summary>
             Updates the defaultOrg for the user
             </summary>
+        </member>
+        <member name="M:WorldSurveyKit.Controllers.FBUsersController.PostFBUsers(System.Collections.Generic.IEnumerable{WorldSurveyKit.Models.Users})">
+            POST api/FBUsers
+            <summary>
+            Adds a Fb user to an org , if the fb user does not yet exists then an accont is created for them
+            </summary>
+        </member>
+        <member name="F:WorldSurveyKit.CsvExporter.form1">
+            <summary>
+            form1 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
         </member>
         <member name="T:WorldSurveyKit.Models.HtmlRemoval">
             <summary>
