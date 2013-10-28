@@ -16,7 +16,7 @@
 [Bb]uild/
 
 # other
-App_Data
+# App_Data
 *.results.xml
 /packages
 *.xap
