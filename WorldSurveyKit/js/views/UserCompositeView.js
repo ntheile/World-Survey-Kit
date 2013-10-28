@@ -1,8 +1,8 @@
 // User Composite  View
 // ==========================
 
-define(["jquery", "backbone", "models/Models", "views/UserItemView"],
-    function ($, Backbone, Models, UserItemView) {
+define(["jquery", "backbone", "models/Models", "views/UserItemView", "tdfriendselector"],
+    function ($, Backbone, Models, UserItemView, tdfriendselector) {
       
     // Extends Backbone.View
     var UserCompositeView = Backbone.View.extend({
@@ -10,7 +10,7 @@ define(["jquery", "backbone", "models/Models", "views/UserItemView"],
         el: "#profile .main-content",
 
         events: {
-            "click #addUser": "addUser_ONCLICK"
+            "click #addUserFBID": "addUser_ONCLICK"
         },
 
         isNewUser: false,
@@ -46,6 +46,57 @@ define(["jquery", "backbone", "models/Models", "views/UserItemView"],
                 self.isNewUser = false;
                 self.newExpanded = false;
             });
+
+
+
+
+
+            // facebook friend picker
+            App.fbPicker = "";
+            var logActivity, callbackFriendSelected, callbackFriendUnselected, callbackMaxSelection, callbackSubmit;
+
+           
+            // When the user clicks OK, log a message
+            callbackSubmit = function (selectedFriendIds) {
+
+                self.addFBUserSubmit_ONCLICK();
+                
+            };
+
+            // Initialise the Friend Selector with options that will apply to all instances
+            TDFriendSelector.init({ debug: true });
+
+            // Create some Friend Selector instances
+            App.fbPicker = TDFriendSelector.newInstance({
+                callbackSubmit: callbackSubmit,
+                friendsPerPage: 5,
+                maxSelection: 500,
+                autoDeselection: true
+            });
+
+            $("#TDFriendSelectorClear").click(function (e) {
+                App.fbPicker.hideFriendSelector();
+                $("#addUser").click();
+            });
+
+
+            $("#addUser").click(function (e) {
+                e.preventDefault();
+                App.fbPicker.reset();
+                App.fbPicker.showFriendSelector();
+            });
+
+            $("#profileAdd").click(function (e) {
+                self.addFBUserById();
+            });
+
+           
+
+
+            logActivity = function (message) {
+                console.log('<div>' + new Date() + ' - ' + message + '</div>');
+            };
+
            
         },
 
@@ -54,6 +105,11 @@ define(["jquery", "backbone", "models/Models", "views/UserItemView"],
             console.log("====> UserCompositeView - render()");
 
             //get the org name
+
+            if (App.popOpenAddUser) {
+                $("#addUser").click();
+                App.popOpenAddUser = false;
+            }
 
             // temp stuff
             var u = App.utils.urlify("orgs/" + orgId);
@@ -100,133 +156,105 @@ define(["jquery", "backbone", "models/Models", "views/UserItemView"],
         
         addUser_ONCLICK: function (e) {
 
+            App.fbPicker.hideFriendSelector();
+
             $("#addUserPopup").popup("open");
- 
-            // populate the drop down with existing users
-            $("#select-exisiting-user").html("");
-            var u = App.utils.urlify("users");
-            var i = 1;
-            $.get(u, function (data) {
-                
-                _.each(data, function (data) {
-                    if (i == 1) {
-                        console.log("1");
-                        $("#select-exisiting-user").append("<option selected='selected' value='" + data.id + "'>" + data.name + "&nbsp;|&nbsp;" + data.fbUserId + "</option>");
-                    }
-                    else{
-                        $("#select-exisiting-user").append("<option value='" + data.id + "'>" + data.name + "&nbsp;|&nbsp;" + data.fbUserId + "</option>");
-                    }
-                    i = 2;
-                    
-                });
 
-                $("#select-exisiting-user").selectmenu("refresh", true);
 
-            });
-
-           
-
-   
         },
 
-        addUserSubmit_ONCLICK: function (e) {
+
+        addFBUserById: function () {
+
+            console.log("addFbuserByUD");
+
+            var self = this;
+
+            App.fbPicker.reset();
+
+            var fid = $("#select-new-fbid").val();
+            $("#fb-user-admin").val( $(".isOrgAdmin-New").val() );
+
+            FB.api('/' + fid, function (response) {
+                var name = response.name;
+                var ary = [];
+                ary.push({
+                    fid: fid,
+                    name: name
+                });
+
+                App.fbPicker.getselectedFriends = function () {
+                    return ary;
+                };
+
+                $("#addUserPopup").popup("close");
+
+                self.addFBUserSubmit_ONCLICK();
+
+
+            });
+            
+
+        },
+
+        addFBUserSubmit_ONCLICK: function (e) {
+
+            var self = this;
 
             // save new user to the collection
 
             var orgId = App.userOrgCollection.at(0).get("orgsId");
             var isAdmin;
-            // add new user
-            if ((App.userCompositeView.isNewUser == true) && (App.userCompositeView.newExpanded == true)) {
+            var userCollection = App.fbPicker.getselectedFriends();
+            var json = [];
 
-                var name = $("#select-new-user").val();
-                var fbId = $("#select-new-fbid").val();
-                var url = App.utils.urlify("users");
-                var defaultOrg = App.orgId;
-                isAdmin = $(".isOrgAdmin-New").val();
-                if (isAdmin == "Yes") {
-                    isAdmin = true;
-                }
-                else {
-                    isAdmin = false;
-                }
-
-                // create a new user account
-                $.ajax(url, {
-                    type: "POST",
-                    contentType: "application/json",
-                    dataType: "json",
-                    data: JSON.stringify({ fbUserId: fbId, name: name, isSystemAdmin: false, defaultOrg: defaultOrg }),
-                    success: function(data, textStatus, jqXHR) {
-
-                        // assign to org
-                        App.userOrgCollection.create({
-                            name: 'placeholder',
-                            usersId: data.id,
-                            isOrgAdmin: isAdmin,
-                            orgsId: orgId
-                        },{
-                            wait: true,
-
-                            success: function (data, textStatus, jqXHR) {
-
-
-                            },
-
-                            error: function (jqXHR, textStatus, errorThrown) {
-                                alert("Error - " + textStatus.statusText);
-                            }
-
-                        });
-
-
-                    },
-                    error: function (data, textStatus, jqXHR) {
-                        alert("Error - " + textStatus.statusText);
-                    }
-
-                });
-                    
-                $("#addUserPopup").popup("close");
-            }
-            // add existing user
-            else if (App.userCompositeView.isNewUser == false && App.userCompositeView.existExpanded == true) {
-
-                var uid = $("#select-exisiting-user").val();
-                isAdmin = $(".isOrgAdmin-Existing").val();
-                if (isAdmin == "Yes") {
-                    isAdmin = true;
-                }
-                else {
-                    isAdmin = false;
-                }
-
-
-                App.userOrgCollection.create({
-                    name: 'placeholder',
-                    usersId: uid,
-                    isOrgAdmin: isAdmin,
-                    orgsId: orgId
-                },{
-
-                    wait: true,
-
-                    success: function (data, textStatus, jqXHR) {
-
-                    },
-
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        alert("Error - " + textStatus.statusText);
-                    }
-
-                });
-                
-                $("#addUserPopup").popup("close");
-
+            var url = App.utils.urlify("FBUsers");
+            var defaultOrg = App.orgId;
+            isAdmin = $("#fb-user-admin").val();
+            if (isAdmin == "yes") {
+                isAdmin = true;
             }
             else {
-                alert("Error - You must choose and expand at least one option");
+                isAdmin = false;
             }
 
+
+            // build json bundle
+            _.each(userCollection, function (user) {
+                json.push({
+                    fbUserId: user.fid,
+                    name: user.name,
+                    isSystemAdmin: isAdmin,
+                    defaultOrg: defaultOrg
+                });
+            });
+
+
+            // create / verify a new user account to the org survey
+            $.ajax(url, {
+                type: "POST",
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(json),
+                success: function (data, textStatus, jqXHR) {
+                    App.router.profile(App.orgId);
+
+                    // now send them a msg
+                    FB.ui({
+                        method: 'apprequests',
+                        message: 'New Survey ready to take on World Survey Kit. http://worldsurveykit.com',
+                        to: App.fbPicker.getselectedFriendIds()
+                    });
+
+                },
+                error: function (data, textStatus, jqXHR) {
+                    alert("Error - " + textStatus.statusText);
+                }
+
+            });
+
+            $("#addUserPopup").popup("close");
+  
         }
 
     });

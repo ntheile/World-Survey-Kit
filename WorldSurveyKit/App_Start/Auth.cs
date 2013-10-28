@@ -118,8 +118,6 @@ namespace WorldSurveyKit.App_Start
                                 newUser.defaultOrg = newOrg.id;
                                 db.SaveChanges();
 
-
-
                                 _userId = newUser.id;
 
                                 // Set up the identity object that our Controllers can use

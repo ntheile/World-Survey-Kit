@@ -70,7 +70,8 @@ require.config({
         "config": "config",
         "handsontable": "libs/jquery.handsontable.full",
         "q": "libs/q",
-        "tourbus": "libs/jquery.tourbus"
+        "tourbus": "libs/jquery.tourbus",
+        "tdfriendselector": "libs/tdfriendselector"
     },
     // Sets the configuration for your third party scripts that are not AMD compatible
     shim: {

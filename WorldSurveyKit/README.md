@@ -341,12 +341,9 @@ Hidden routes in the web application:
 TODO - Short Term
 =================
 * add google analytics
-* add fb friend picker
+* add open graph "Take the {survey name} survey on World Survey Kit
+* add a news feed to the home page
 
-* add a share button to survey 
-	* open popup with there friend list share 
-	* after choose friend it auto adds them as user
-	* user visits link you send them and it makes your org the default then opens survey or something
 
 
 TODO - Long Term
@@ -390,6 +387,7 @@ should auto sync when you click save and finish later.
 * user cannot delete own survey in own org - fixed the FilesController delete method and added q.js to fix reset of app
 * added the profile menu and fixed isOrgAmin bug
 * finished tour js, make a flag in db for first time logged in
+* added fb friend picker
 
 
 

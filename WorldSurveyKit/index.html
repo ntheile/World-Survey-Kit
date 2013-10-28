@@ -10,6 +10,7 @@
       <link href="css/jqm-icon-pack-3.0.0-fa.css" rel="stylesheet" />
       <link href="css/jquery.handsontable.css" rel="stylesheet" />
       <link href="css/jquery-tourbus.css" rel="stylesheet" />
+      <link href="css/tdfriendselector/tdfriendselector.css" rel="stylesheet" />
 </head>
 <body class="daBody" > 
     <!-- This initializes the Facebook JS SDK -->
@@ -404,7 +405,7 @@
                     </p>
                     <div data-role="controlgroup" data-type="horizontal">
                          <a data-role="button" href='javascript:void(0);' class='tourbus-prev' data-inline="true" data-theme="g" data-icon="arrow-left">Back</a>
-                         <a data-role="button" href='javascript:void(0);' class='tourbus-next' data-inline="true" data-theme="g" data-icon="arrow-right" data-iconpos="right">Next</a>
+                         <a data-role="button" href='javascript:void(0);' onclick="App.router.navigate('#build?' + App.defaultOrg  , {trigger: true});" class='tourbus-next' data-inline="true" data-theme="g" data-icon="arrow-right" data-iconpos="right">Next</a>
                     </div>
                 </li>
 
@@ -420,7 +421,18 @@
                         <br /><br />
                         iPhone and Windows app coming soon.
                     </p>
-                    <a data-role="button" href='javascript:void(0);' data-inline="true" data-theme="g" class='tourbus-stop'>Done</a>
+                   <div data-role="controlgroup" data-type="horizontal">
+                         <a data-role="button" href='javascript:void(0);' class='tourbus-prev' data-inline="true" data-theme="g" data-icon="arrow-left">Back</a>
+                         <a data-role="button" href='javascript:void(0);' class='tourbus-next' data-inline="true" data-theme="g" data-icon="arrow-right" data-iconpos="right">Next</a>
+                    </div>
+                </li>
+
+                <li data-orientation='centered' data-width="300">
+                    <h3>Get Building!</h3>
+                    <p>
+                       Get started by building a new survey, then you can share it with friends.
+                    </p>
+                    <a data-role="button" href='javascript:void(0);' data-inline="true" data-theme="g" class='tourbus-stop'>Ok</a>
                 </li>
 
             </ol>
@@ -713,7 +725,7 @@
 
                     <a data-theme="g" id="addUser" data-inline="true" data-icon="plus" data-role="button">Add New User</a>
 
-                    <p><b>The users below are the only ones who can take the survey's you build. ( Unless the survey is marked public )</b></p>
+                    <p><b>The users below are the only ones who can take the survey's you build.</b></p>
                     <p>Choose a user to edit</p> 
                     <ul>
                         <li>
@@ -727,49 +739,92 @@
                     <ul id="orgUsers" data-role="listview" data-inset="true"></ul>
                     
                     
-                    <div data-role="popup" id="addUserPopup"  style="max-width:400px;" class="ui-content ui-corner-all">
+
+
+                     <div data-role="popup" id="addUserPopup"  style="max-width:400px;" class="ui-content ui-corner-all">
 
                         <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Cancel</a>
+
+                        <div>Facebook ID <a href="http://findmyfacebookid.com" rel="external" class="ui-btn-right"  target="_blank">Get ID</a></div>
+                        <input id="select-new-fbid" />
                         
-                        <div class="addUserCollapse" data-role="collapsible-set" data-theme="b" data-content-theme="d" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="right">
-                            <div data-role="collapsible" data-collapsed="false" class="addExistingUser">
-                                <h3>Choose an Existing User to Add:</h3>
-                                
-                                <div data-role="fieldcontain">
-                                    <label for="select-exisiting-user">Select a user:</label>
-                                    <select name="select-exisiting-user" id="select-exisiting-user">
-                                    </select>
-                                </div>
-
-                                <label for="flip-isUserAdmin">Make the user an Admin?</label>
-                                <select name="flip-isUserAdmin" id="Select2" data-role="slider" class="isOrgAdmin-Existing">
-                                    <option value="No">No</option>
-                                    <option value="Yes">Yes</option>
-                                </select>
-
-                            </div>
-                            <div data-role="collapsible" class="addNewUser">
-                                <h3>Or Add a new user:</h3>
-                                <div>User Name</div>
-                                <input id="select-new-user" />
-                                <div>Facebook ID <a href="http://findmyfacebookid.com" rel="external"  target="_blank">Get ID</a></div>
-                                <input id="select-new-fbid" />
-                        
-                                <label for="flip-isUserAdmin">Make the user an Admin?</label>
-                                <select name="flip-isUserAdmin" id="Select1" data-role="slider" class="isOrgAdmin-New">
-                                    <option value="No">No</option>
-                                    <option value="Yes">Yes</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <a data-role="button" id="profileAdd" data-icon="plus">Add</a>
+                        <label for="flip-isUserAdmin">Allow the user to edit your surveys?</label>
+                        <select name="flip-isUserAdmin" id="Select1" data-role="slider" class="isOrgAdmin-New">
+                            <option value="no">No</option>
+                            <option value="yes">Yes</option>
+                        </select>
+                            
+                        <a data-role="button" id="profileAdd" data-icon="plus" data-inline="true" data-theme="g">Add</a>
                         
                     </div>
 
+                    
 
+                    <!-- Markup for These Days Friend Selector -->
+                    <div id="TDFriendSelector">
+                        <div class="TDFriendSelector_dialog">
+                            <a href="#" id="TDFriendSelector_buttonClose">x</a>
+                            <div class="TDFriendSelector_form">
+                                <div class="TDFriendSelector_header">
+                                        <p>Select friends to take your surveys</p>
+                                </div>
+                                <div class="TDFriendSelector_content">
+                                        
+                                        <div class="TDFriendSelector_searchContainer TDFriendSelector_clearfix">
+                                            <div class="TDFriendSelector_selectedCountContainer">
+                                                <span class="TDFriendSelector_selectedCount">0</span> friends selected
+                                                &nbsp;&nbsp;&nbsp;<a id="TDFriendSelectorClear" data-role="button" data-inline="true" class="ui-btn-right" data-mini="true">clear</a>
+                                            </div>
+                                            
+                                                
+                                        </div>
+                                    <input type="text" placeholder="Search friends" id="TDFriendSelector_searchField" />
+                                        <div class="TDFriendSelector_friendsContainer"></div>
+                                </div>
+                               <div class="TDFriendSelector_footer TDFriendSelector_clearfix">
+                                   
+                                    <div data-role="controlgroup" data-type="horizontal" data-mini="true">
+                                        <a data-mini="true" data-inline="true" data-role="button" data-icon="arrow-left"  data-theme="b"  href="#" id="TDFriendSelector_pagePrev"></a>
+                                        <a data-mini="true" data-inline="true" data-role="button" data-icon="arrow-right" data-theme="b"  href="#" id="TDFriendSelector_pageNext"></a>
+                                        <div class="TDFriendSelector_pageNumberContainer">
+                                            &nbsp;&nbsp;&nbsp;Page <span id="TDFriendSelector_pageNumber">1</span> / <span id="TDFriendSelector_pageNumberTotal">1</span>
+                                        </div>
+                                    </div>
+                                   <br />
+                                   <div>
+                                        <div class="ui-block-a">
+                                            <p>
+                                                Allow the users edit your surveys:&nbsp;&nbsp;&nbsp;
+                                            </p>
+                                        </div><!-- /ui-block -->
+                                        <div class="ui-block-b">
+                                            <select name="fb-user-admin" id="fb-user-admin" data-role="slider" data-mini="true">
+                                                <option value="no">no</option>
+                                                <option value="yes">yes</option>
+                                            </select>
+                                        </div><!-- /ui-block -->
+                                        
+                                   </div><br style="clear:both"/>
+                                   <div>
+                                       <a  data-role="button" data-theme="g" href="#" id="TDFriendSelector_buttonOK">OK</a>
+                                   </div>
+                                    
 
-                   
+                                    <br />
+                                    <ul data-role="listview">
+                                        <li>
+                                            <div>
+                                                 <b>Don't see the person your looking for?</b><br />
+                                                    <button data-mini="true" data-role="button" data-inline="true" id="addUserFBID">Add by Facebook ID</button>
+                                            </div>
+                                        </li>
+                                    </ul>
+  
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
   
@@ -820,7 +875,7 @@
                     <h3 id="surveyBuilderHeading"></h3>
 
                     <a data-theme="g" id="newFile" data-inline="true" data-icon="plus" data-role="button">New Survey</a>
-
+                    <span id="buildTour"></span>
                     <p>Choose a survey to edit / add questions / delete / publish etc...</p>
 
                     <ul data-role="listview" id="fileList" data-inset="true"></ul>

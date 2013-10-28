@@ -151,6 +151,8 @@ namespace WorldSurveyKit.Controllers
 
         }
 
+
+
         /// DELETE api/Users/5
         /// /// <summary>
         /// DELETE's a user entirely from the system
@@ -305,6 +307,115 @@ namespace WorldSurveyKit.Controllers
             }
 
         }
+
+    }
+
+
+
+    [Auth.FB]
+    public class FBUsersController : ApiController
+    {
+        private MyDatabase db = new MyDatabase();
+
+
+        /// POST api/FBUsers
+        /// <summary>
+        /// Adds a Fb user to an org , if the fb user does not yet exists then an accont is created for them
+        /// </summary>
+        [HttpPost]
+        public HttpResponseMessage PostFBUsers(IEnumerable<Users> usr)
+        {
+            if (Auth.FB.IsOrgAdmin())
+            {
+                if (ModelState.IsValid)
+                {
+                    
+                    // loop users
+
+                    foreach (Users users in usr)
+                    {
+                        //Check to see FB ID already exists
+                        Users existingUser = db.Users.FirstOrDefault(u => u.fbUserId == users.fbUserId);
+                        if (existingUser == null)
+                        {
+                            // new user
+                            // create account
+                            Users newUser = new Users();
+                            var now = DateTime.Now.ToString("O");
+                            newUser.defaultOrg = 1;
+                            newUser.fbUserId = users.fbUserId;
+                            newUser.created_at = now;
+                            newUser.isSystemAdmin = false;
+                            newUser.updated_at = now;
+                            newUser.name = users.name;
+
+                            db.Users.Add(newUser);
+                            db.SaveChanges();
+
+
+                            // add the user to an org with there name as the orgName
+                            Orgs newOrg = new Orgs();
+                            newOrg.created_at = now;
+                            newOrg.orgName = users.name;
+                            newOrg.updated_at = now;
+
+                            // save new org to the Org DB
+                            db.Orgs.Add(newOrg);
+                            db.SaveChanges();
+
+                            // Map user to the org that was just created and make him the admin
+                            db.OrgUserMappings.Add(new OrgUserMappings { usersId = newUser.id, isOrgAdmin = true, orgsId = newOrg.id });
+                            
+                            // add an org user mapping
+                            db.OrgUserMappings.Add(new OrgUserMappings { usersId = newUser.id, isOrgAdmin = users.isSystemAdmin, orgsId = users.defaultOrg });
+                            
+                            db.SaveChanges();
+
+                            // set the default org for the user
+                            newUser.defaultOrg = newOrg.id;
+                            db.Entry(newUser).State = EntityState.Modified;
+                            db.SaveChanges();
+                        }
+                        else
+                        {
+                            // if usr exists
+                            // add an org user mapping, if one does not already exist
+                            OrgUserMappings existingMapping = db.OrgUserMappings.FirstOrDefault(ou => ou.orgsId == users.defaultOrg && ou.usersId == existingUser.id);
+                            if (existingMapping != null)
+                            {
+                                // update mapping
+                                existingMapping.isOrgAdmin = users.isSystemAdmin;
+                                db.Entry(existingMapping).State = EntityState.Modified;
+                            }
+                            else
+                            {
+                                // create mapping
+                                db.OrgUserMappings.Add(new OrgUserMappings { isOrgAdmin = users.isSystemAdmin, orgsId = users.defaultOrg, usersId = existingUser.id});
+                            }
+                           
+                            db.SaveChanges();
+                            
+
+
+                        }
+                    }
+                    
+
+                    return Request.CreateResponse(HttpStatusCode.OK);
+
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest);
+                }
+            }
+            else
+            {
+                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.Unauthorized));
+            }
+
+        }
+
 
     }
 

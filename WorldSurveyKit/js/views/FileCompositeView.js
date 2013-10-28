@@ -172,7 +172,9 @@ define(["jquery", "backbone", "models/Models"],
                         alert("Survey successfully published.");
 
                         // renav to build page 
-                        App.router.navigate("#build?" + App.defaultOrg, { trigger: true });
+                        //App.router.navigate("#build?" + App.defaultOrg, { trigger: true });
+                        App.popOpenAddUser = true;
+                        App.router.navigate("#profile?" + App.defaultOrg, { trigger: true });
 
                         $("#questionList").html("");
 

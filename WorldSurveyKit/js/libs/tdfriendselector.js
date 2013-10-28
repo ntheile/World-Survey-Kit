@@ -109,7 +109,7 @@ var TDFriendSelector = (function (module, $) {
         var showFriendSelector, hideFriendSelector, getselectedFriendIds, setDisabledFriendIds, filterFriends, reset,
 
 		// Private variables
-		instanceSettings, selectedFriendIds = [], disabledFriendIds = [], numFilteredFriends = 0,
+		instanceSettings, selectedFriendIds = [], disabledFriendIds = [], numFilteredFriends = 0, selectedFriends = [],
 
 		// Private functions
 		bindEvents, unbindEvents, updateFriendsContainer, updatePaginationButtons, selectFriend;
@@ -184,6 +184,10 @@ var TDFriendSelector = (function (module, $) {
             return selectedFriendIds;
         };
 
+        getselectedFriends = function () {
+            return selectedFriends;
+        };
+
         /**
 		 * Disabled friends are greyed out in the interface and are not selectable.
 		 */
@@ -220,6 +224,7 @@ var TDFriendSelector = (function (module, $) {
             }
             $friendsContainer.empty();
             selectedFriendIds = [];
+            selectedFriends = [];
             $selectedCount.html("");
             disabledFriendIds = [];
             numFilteredFriends = 0;
@@ -331,6 +336,7 @@ var TDFriendSelector = (function (module, $) {
         selectFriend = function ($friend) {
             var friendId, i, len, removedId;
             friendId = $friend.attr('data-id');
+            friendName = $friend.attr('data-name');
 
             // If the friend is disabled, ignore this
             if ($friend.hasClass(settings.friendDisabledClass)) {
@@ -348,6 +354,7 @@ var TDFriendSelector = (function (module, $) {
                     // Add friend to selectedFriendIds
                     if ($.inArray(friendId, selectedFriendIds) === -1) {
                         selectedFriendIds.push(friendId);
+                        selectedFriends.push({fid: friendId,  name:friendName});
                         $friend.addClass(settings.friendSelectedClass);
                         $selectedCount.html(selectedFriendIds.length);
                         log('TDFriendSelector - newInstance - selectFriend - selected IDs: ', selectedFriendIds);
@@ -362,6 +369,7 @@ var TDFriendSelector = (function (module, $) {
                 for (i = 0, len = selectedFriendIds.length; i < len; i += 1) {
                     if (selectedFriendIds[i] === friendId) {
                         selectedFriendIds.splice(i, 1);
+                        selectedFriends.splice(i, 1);
                         $friend.removeClass(settings.friendSelectedClass);
                         $selectedCount.html(selectedFriendIds.length);
                         if (typeof instanceSettings.callbackFriendUnselected === "function") { instanceSettings.callbackFriendUnselected(friendId); }
@@ -380,6 +388,7 @@ var TDFriendSelector = (function (module, $) {
             showFriendSelector: showFriendSelector,
             hideFriendSelector: hideFriendSelector,
             getselectedFriendIds: getselectedFriendIds,
+            getselectedFriends: getselectedFriends,
             setDisabledFriendIds: setDisabledFriendIds,
             filterFriends: filterFriends,
             reset: reset
@@ -446,7 +455,7 @@ var TDFriendSelector = (function (module, $) {
 
         // Return the markup for a single friend
         buildFriendMarkup = function (friend) {
-            return '<a href="#" class="TDFriendSelector_friend TDFriendSelector_clearfix" data-id="' + friend.id + '">' +
+            return '<a href="#" class="TDFriendSelector_friend TDFriendSelector_clearfix" data-id="' + friend.id + '" data-name="' + friend.name + '" >' +
 					'<img src="//graph.facebook.com/' + friend.id + '/picture?type=square" width="50" height="50" alt="' + friend.name + '" class="TDFriendSelector_friendAvatar" />' +
 					'<div class="TDFriendSelector_friendName">' +
 						'<span>' + friend.name + '</span>' +

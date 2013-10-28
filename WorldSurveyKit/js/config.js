@@ -5,7 +5,7 @@
 //// local dev
 App.platform = "Web";
 App.rootUrl = "";
-App.fbid = "321109034670289";
+App.fbid = "169340593242773";
 App.bgImage = "images/sky.jpg";
 App.logo = "images/wsk.png";
 App.organizationsName = "World Survey Kit";

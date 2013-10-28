@@ -30,7 +30,7 @@
         A list of available plugins are available at https://build.phonegap.com/docs/plugins
     -->
     <gap:plugin name="com.phonegap.plugins.facebookconnect">
-      <param name="APP_ID" value="271724712973440" />
+      <param name="APP_ID" value="169340593242773" />
       <param name="APP_NAME" value="World Survey Kit" />
     </gap:plugin>
 
