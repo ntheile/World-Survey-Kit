@@ -562,7 +562,6 @@
     <Content Include="js\libs\shims\shims\jpicker\images\Thumbs.db" />
     <Content Include="js\libs\shims\shims\styles\config.rb" />
     <Content Include="js\libs\shims\shims\styles\scss\shim.scss" />
-    <Content Include="README.md" />
     <Content Include="BuildScripts\azure\azure.ps1" />
     <None Include="BuildScripts\android\android.ps1" />
     <None Include="Properties\PublishProfiles\crossfrontd - FTP.pubxml" />
