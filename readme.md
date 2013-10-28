@@ -2,11 +2,18 @@ World Survey Kit
 ===================
 -------------------
 
+Go to the app here http://worldsurveykit.com
+
 App Introduction
 ================
 World Survey Kit revolves around collecting data in survey's called a kit. It is driven by questions, answers, surveys and data. Once you join an organization 
-you can distribute your kit via email, or the World Survey Kit app.
+you can distribute your kit to your facebook friends, or by using the the World Survey Kit mobile app.
 If you are an organization you can even lock down certain kits to employees only.
+
+![Screenshot](WorldSurveyKit/images/demo/demo.png)
+
+What industries can it be used in?
+==================================
             
 Kits can be used by any industry:
             
@@ -338,6 +345,14 @@ Hidden routes in the web application:
 
 
 
+
+
+
+TODO
+=======
+-------
+
+
 TODO - Short Term
 =================
 * add google analytics
@@ -347,15 +362,13 @@ TODO - Short Term
 
 
 
-
 TODO - Long Term
 ================		
 * Make everything pageable and odata queryable
 * Change the authenication model for a survey
 	* anonymous, facebook authenicated, pin
 * Make charting, graphing and analytics using d3.js http://d3js.org/ 
-* Share via qr code
-* Add user dropdown, ajax autocomplete
+* Share survey via qr code
 * fix the mobile export to excel link
 * fix signature pad on tablet (onclick it disappears but still records)
 * add a survey tagging engine
@@ -391,7 +404,7 @@ should auto sync when you click save and finish later.
 * finished tour js, make a flag in db for first time logged in
 * added fb friend picker
 * added a news feed to the home page
-
+* added together js remove the views, content and scripts folder 
 
 
 

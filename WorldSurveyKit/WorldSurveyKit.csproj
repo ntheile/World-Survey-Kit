@@ -332,6 +332,7 @@
     <Content Include="images\AquaClara.gif" />
     <Content Include="images\bg-footer-noise.jpg" />
     <Content Include="images\city.jpg" />
+    <Content Include="images\demo\demo.png" />
     <Content Include="images\demo\screen-build.png" />
     <Content Include="images\demo\screen-gps.png" />
     <Content Include="images\demo\screen-import.png" />

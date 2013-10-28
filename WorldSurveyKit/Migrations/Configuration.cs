@@ -31,15 +31,17 @@ namespace WorldSurveyKit.Migrations
         {
 
 
-            ////add a lookup table of question types
-            //db.QuestionTypeLookup.AddOrUpdate(
-            //       new QuestionTypeLookup { type = "OpenEnded" },
-            //       new QuestionTypeLookup { type = "Gps" },
-            //       new QuestionTypeLookup { type = "Camera" },
-            //       new QuestionTypeLookup { type = "SingleAnswer" },
-            //       new QuestionTypeLookup { type = "MultipleChoice" },
-            //       new QuestionTypeLookup { type = "Signature" }
-            //);
+
+
+            //add a lookup table of question types
+            db.QuestionTypeLookup.AddOrUpdate(
+                q => q.type,
+                   new QuestionTypeLookup { type = "OpenEnded" },
+                   new QuestionTypeLookup { type = "Gps" },
+                   new QuestionTypeLookup { type = "SingleAnswer" },
+                   new QuestionTypeLookup { type = "MultipleChoice" },
+                   new QuestionTypeLookup { type = "Signature" }
+            );
 
             //// add an org
             //db.Orgs.AddOrUpdate(
