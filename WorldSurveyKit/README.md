@@ -341,8 +341,10 @@ Hidden routes in the web application:
 TODO - Short Term
 =================
 * add google analytics
+* sort activity feed and history
+* add togetherjs
 * add open graph "Take the {survey name} survey on World Survey Kit
-* add a news feed to the home page
+
 
 
 
@@ -388,7 +390,7 @@ should auto sync when you click save and finish later.
 * added the profile menu and fixed isOrgAmin bug
 * finished tour js, make a flag in db for first time logged in
 * added fb friend picker
-
+* added a news feed to the home page
 
 
 
