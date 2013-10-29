@@ -422,7 +422,11 @@
                         <br /><br />
                         Download the Android app now
                         <center>
-                             <img src="images/qrcode.png" />
+                            <img src="images/qrcode.png" /><br />
+                            <a href="https://play.google.com/store/apps/details?id=com.worldsurveykit.survey" target="_blank">
+                                      <img alt="Android app on Google Play"
+                                           src="https://developer.android.com/images/brand/en_app_rgb_wo_60.png" />
+                            </a>
                         </center>
                         <br /><br />
                         iPhone and Windows app coming soon.
@@ -727,7 +731,7 @@
 
                 <div class="main-content">
 
-                    <h2 id="orgName"></h2>
+                    <h3 id="orgName"></h3>
 
                     <a data-theme="g" id="addUser" data-inline="true" data-icon="plus" data-role="button">Add New User</a>
 
@@ -1362,19 +1366,39 @@
                   
                     <center>
                         <button data-inline="true" data-theme="g" onclick="App.router.navigate('home', { trigger: true }); var tour = $('#my-tour-id').tourbus({});tour.trigger('depart.tourbus');">Take the tour</button>
-                        
- 
                     </center>
-
+                    <br /><br />
                     <center>
-                        <h2>World Survey Kit Demo</h2>
-                        <iframe width="853" height="480"  src="//www.youtube.com/embed/RxK-kTe_PJs" frameborder="0" allowfullscreen></iframe>
+                        <div style="float:left">
+                            <h3>World Survey Kit Demo Video</h3>
+                            <img style="cursor:pointer" onmouseover="$(this).css('border' , '6px solid gray')" onmouseout="$(this).css('border' , 'none')" onclick="$('#popupVideo').popup('open')" src="images/demo/screen-gps.png" />
+                        </div>
+                        <div>
+                            <h3>How to import data in bulk from an existing system</h3>
+                            <img style="cursor:pointer" onmouseover="$(this).css('border' , '6px solid gray')" onmouseout="$(this).css('border' , 'none')" onclick="$('#popupVideo2').popup('open')" src="images/demo/screen-sidemenu.png" />
+                        </div>
+                        <div style="clear:both"></div>
+                        
+                        
+                       
+                        
+
+                        <div data-role="popup" id="popupVideo" data-overlay-theme="a" data-theme="d" data-tolerance="15,15" class="ui-content">
+                             <a data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                             <iframe seamless  src="//www.youtube.com/embed/RxK-kTe_PJs" allowfullscreen></iframe>
+                        </div>
+
+                        <div data-role="popup" id="popupVideo2" data-overlay-theme="a" data-theme="d" data-tolerance="15,15" class="ui-content">
+                             <a data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                             <iframe seamless  src="//www.youtube.com/embed/Pd1W0ZjhzIw" allowfullscreen></iframe>
+                        </div>
                     </center>  
 
-                     <center>
-                        <h2>How to import data in bulk from an existing system</h2>
-                       <iframe width="853" height="480"  src="//www.youtube.com/embed/Pd1W0ZjhzIw" frameborder="0" allowfullscreen></iframe>
-                    </center>  
+                    
+                        
+                        
+                        
+                   
                  
                  
                         
@@ -1485,8 +1509,19 @@
            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
        }
    </script>
-   <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+   <script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+   <script>
+       (function (i, s, o, g, r, a, m) {
+           i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+               (i[r].q = i[r].q || []).push(arguments)
+           }, i[r].l = 1 * new Date(); a = s.createElement(o),
+           m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+       })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
+       ga('create', 'UA-45252529-1', 'worldsurveykit.com');
+       ga('send', 'pageview');
+
+    </script>
    
 
 </body>

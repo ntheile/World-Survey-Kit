@@ -355,7 +355,6 @@ TODO
 
 TODO - Short Term
 =================
-* add google analytics
 * sort activity feed and history
 * add togetherjs
 * add open graph "Take the {survey name} survey on World Survey Kit
@@ -405,6 +404,7 @@ should auto sync when you click save and finish later.
 * added fb friend picker
 * added a news feed to the home page
 * added together js remove the views, content and scripts folder 
+* added google analytics
 
 
 
