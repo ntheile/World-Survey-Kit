@@ -79,7 +79,7 @@ define(["jquery", "backbone", "models/Models", "text!templates/GoGpsTemplate.htm
         // outputs gps image, lat and long
         renderGps: function(lat, long, desc){
 
-            var strGPS = '<img src="https://maps.googleapis.com/maps/api/staticmap?center=' + lat + ' ' + long + '&amp;zoom=14&amp;size=288x200&amp;markers=color:blue%7Clabel:X%7C' + lat + ' ' + long + '&amp;sensor=false" height="200" width="288">';
+            var strGPS = '<img src="//maps.googleapis.com/maps/api/staticmap?center=' + lat + ' ' + long + '&amp;zoom=14&amp;size=288x200&amp;markers=color:blue%7Clabel:X%7C' + lat + ' ' + long + '&amp;sensor=false" height="200" width="288">';
             $("#goGpsWrapper").html(strGPS);
             $("#goGpsLat").html(lat);
             $("#goGpsLong").html(long);

@@ -697,6 +697,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201305240458133_First.resx">
       <DependentUpon>201305240458133_First.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201306021808580_ResponseVarcharMAX.resx">
       <DependentUpon>201306021808580_ResponseVarcharMAX.cs</DependentUpon>

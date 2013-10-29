@@ -11,7 +11,7 @@
 //App.organizationsName = "World Survey Kit";
 //App.emailToName = "worldsurveykit";
 //App.emailProvider = "outlook.com";
-//App.helpPage = "https://bitbucket.org/ntheile/wsk/issues";
+//App.helpPage = "//bitbucket.org/ntheile/wsk/issues";
 
 //// azure
 App.platform = "Web";
@@ -22,4 +22,4 @@ App.logo = "images/wsk.png";
 App.organizationsName = "World Survey Kit";
 App.emailToName = "worldsurveykit";
 App.emailProvider = "outlook.com";
-App.helpPage = "https://bitbucket.org/ntheile/wsk/issues";
+App.helpPage = "//bitbucket.org/ntheile/wsk/issues";

@@ -81,7 +81,7 @@ define(["jquery", "backbone", "models/Models"],
                     _.each(data, function (item) {
                         var fid = item.fid;
                         var feed = item.feed;
-                        var pic = "http://graph.facebook.com/" + fid + "/picture?type=square";
+                        var pic = "//graph.facebook.com/" + fid + "/picture?type=square";
                         var name = "";
                         var date = item.date;
                                   
