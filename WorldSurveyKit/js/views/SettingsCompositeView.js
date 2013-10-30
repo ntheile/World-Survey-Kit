@@ -140,6 +140,8 @@ define(["jquery", "backbone", "models/Models", "collections/UFileCollection"],
             promise.then(function () {
                 console.log("clearing local storage");
                 window.localStorage.clear();
+                // soft change to home page
+                App.router.navigate("#home", { replace: true });
                 window.location.reload();
             });
 

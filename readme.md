@@ -380,6 +380,7 @@ TODO - Long Term
 * add a survey tagging engine
 * modify auth.cs security check helpers to allow a url that comes in to take a public survey, 
 	this inherently would make everybody users of all public surveys
+* App reset when under user context fails to load sometimes, maybe switch to default context then reset
 
 
 Completed
