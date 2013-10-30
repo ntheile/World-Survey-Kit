@@ -48,6 +48,7 @@ define(["jquery", "backbone", "models/Models", "views/UserItemView", "tdfriendse
             });
 
 
+          
 
 
 
@@ -242,7 +243,7 @@ define(["jquery", "backbone", "models/Models", "views/UserItemView", "tdfriendse
                     // now send them a msg
                     FB.ui({
                         method: 'apprequests',
-                        message: 'New Survey ready to take on World Survey Kit. http://worldsurveykit.com',
+                        message: 'New Survey ready to take on World Survey Kit. http://worldsurveykit.com/#s?23' ,
                         to: App.fbPicker.getselectedFriendIds()
                     });
 

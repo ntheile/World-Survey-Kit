@@ -13,9 +13,11 @@
       <link href="css/tdfriendselector/tdfriendselector.css" rel="stylesheet" />
 </head>
 <body class="daBody" > 
+    <div id="profilePos" style="float:right"></div>
+    <div style="clear:both" ></div>
     <!-- This initializes the Facebook JS SDK -->
     <div id="fb-root"></div>
-
+    
     <!-- /Login Page -->
     <div id="login" data-role="page" data-title="Login to the System">
               
@@ -51,7 +53,7 @@
                         <div>
                             <center>
                                <div class="sign-up-btn">
-                                   <button data-theme="g" class="loginBtn" data-corners="false">Sign Up</button>
+                                   <button data-theme="g" class="loginBtn" data-corners="false">Free Sign Up</button>
                                </div>
                                <div style="float:right">
                                   <a href="//play.google.com/store/apps/details?id=com.worldsurveykit.survey" target="_blank">
@@ -255,7 +257,7 @@
                         <img src="images/facebook_login_sm.png" style="width:18px;height:18px" />&nbsp;&nbsp; Login
                     </button>
                 </div>
-                <div id="profilePos" style="clear:both" class="ui-btn-right"></div>
+               
 
             </div>
   
@@ -303,12 +305,7 @@
             </div>
 
 
-            <!--profile menu-->
-            <div data-role="popup" id="profileMenuPopup" data-theme="d">
-                <ul id="profileMenuOrgs" data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d">
-                    <li data-role="divider" data-theme="g">Switch survey context:</li>   
-                </ul>
-            </div>
+          
             
              <!--tour-->
             <ol class='tourbus-legs ui-overlay-shadow' id='my-tour-id'>
@@ -447,9 +444,80 @@
 
             </ol>
 
+
+            <!--tour non admin-->
+            <ol class='tourbus-legs ui-overlay-shadow' id='my-tour-id-nonadmin'>
+                <li data-orientation='centered' class="ui-overlay-shadow" >
+                    <h2>Welcome to World Survey Kit</h2>
+                    <a data-role="button" href='javascript:void(0);'  data-inline="true" data-theme="g" data-icon="arrow-right" data-iconpos="right" class='tourbus-next'>Take the tour</a>
+                    <a href='javascript:void(0);' class='tourbus-stop'>Skip</a>
+
+                </li>
+
+                <li data-el='#homeListView' data-orientation='bottom' data-width='400'>
+                    <h3>Take a survey</h3>
+                    <p>Fill out a new survey here or view/edit your survey history</p>
+                    
+                    <div data-role="controlgroup" data-type="horizontal">
+                         <a data-role="button" href='javascript:void(0);' class='tourbus-prev' data-inline="true" data-theme="g" data-icon="arrow-left">Back</a>
+                         <a data-role="button" href='javascript:void(0);' onclick='$(".profileMenuPopup").popup("open", { positionTo: "#profilePos" });' class='tourbus-next' data-inline="true" data-theme="g" data-icon="arrow-right" data-iconpos="right">Next</a>
+                    </div>
+                </li>
+
+              
+            
+                <li data-el='#profilePos' data-orientation='bottom' data-align="right" data-margin="160" data-width='300'>
+                    <h3>Switch Survey context</h3>
+                    <p>
+                        If a friend invites you to take their survey you can switch to it here. Or you can switch back to your profile and build your own survey.
+                    </p>
+                    <div data-role="controlgroup" data-type="horizontal">
+                         <a data-role="button" href='javascript:void(0);' class='tourbus-prev' data-inline="true" data-theme="g" data-icon="arrow-left">Back</a>
+                         <a data-role="button" href='javascript:void(0);' onclick="App.router.navigate('#build?' + App.defaultOrg  , {trigger: true});" class='tourbus-next' data-inline="true" data-theme="g" data-icon="arrow-right" data-iconpos="right">Next</a>
+                    </div>
+                </li>
+
+                <li data-orientation='centered' data-width="300">
+                    <h3>Mobile App</h3>
+                    <p>
+                        World Survey Kit is great for on-site surveys even if there is no internet connectivity! 
+                        <br /><br />
+                        Download the Android app now
+                        <center>
+                            <img src="images/qrcode.png" /><br />
+                            <a href="//play.google.com/store/apps/details?id=com.worldsurveykit.survey" target="_blank">
+                                      <img alt="Android app on Google Play"
+                                           src="//developer.android.com/images/brand/en_app_rgb_wo_60.png" />
+                            </a>
+                        </center>
+                        <br /><br />
+                        iPhone and Windows app coming soon.
+                    </p>
+                   <div data-role="controlgroup" data-type="horizontal">
+                         <a data-role="button" href='javascript:void(0);' class='tourbus-prev' data-inline="true" data-theme="g" data-icon="arrow-left">Back</a>
+                         <a data-role="button" href='javascript:void(0);' class='tourbus-next' data-inline="true" data-theme="g" data-icon="arrow-right" data-iconpos="right">Next</a>
+                    </div>
+                </li>
+
+                <li data-orientation='centered' data-width="300">
+                    <h3>Get Building!</h3>
+                    <p>
+                       After you are done taking the survey switch over to your profile and build one for yourself! Then share it with friends.
+                    </p>
+                    <a data-role="button" href='javascript:void(0);' data-inline="true" data-theme="g" class='tourbus-stop'>Ok</a>
+                </li>
+
+            </ol>
+
+
+
+            <div data-role="profilemenu">
+
+            </div>
+
     </div>
 
-           
+     
   
 
      <!-- /History Page -->
@@ -583,7 +651,9 @@
   
             </div>
 
+            <div data-role="profilemenu5">
 
+            </div>
     </div>
 
 
@@ -605,7 +675,6 @@
 
             
             <div data-role="header" data-theme="b">
-                
                 <div style="float:left; padding-left: 2px;">
                     <a href="#panelReports" data-role="button" data-icon="reorder" data-inline="true" data-iconpos="notext" class="ui-square-btn"></a>
                 </div>
@@ -636,12 +705,8 @@
   
             </div>
 
-            <!--profile menu-->
-            <div data-role="popup" id="Div3" data-theme="d">
-                <ul id="Ul3" data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d">
-                    <li data-role="divider" data-theme="g">Switch survey context:</li>
-                            
-                </ul>
+           <div data-role="profilemenu3">
+
             </div>
 
     </div>
@@ -837,8 +902,15 @@
                     </div>
 
                 </div>
+
+                
   
             </div>
+
+
+             <div data-role="profilemenu2">
+
+             </div>
 
     </div>
 
@@ -904,7 +976,15 @@
                     </div>
 
                 </div>
+
+                <div data-role="profilemenu">
+
+                </div>
   
+            </div>
+
+            <div data-role="profilemenu4">
+
             </div>
 
     </div>
@@ -960,7 +1040,8 @@
                                 <div class="ui-block-a">
                                     <div data-role="controlgroup" data-type="horizontal">
                                         <!--<a data-role="button" data-icon="back" id="fileBack">Back</a>-->
-                                        <a data-role="button" data-icon="refresh" id="filePublish" >Publish</a>
+                                        <a data-role="button" data-icon="refresh" id="filePublish" data-theme="g" >Publish</a>
+                                        <a data-role="button" data-icon="user" id="inviteUsers" >Invite Users</a>
                                         <a data-role="button" data-icon="trash" id="deleteFile">Delete</a>
                                     </div>
                                 </div>
@@ -973,7 +1054,7 @@
                                 </div>
                                 
                                 <div style="clear:both">
-                                    <a data-theme="g" id="newQuestion" data-inline="true" data-icon="plus" data-role="button">New Question</a>
+                                    <a data-theme="b" id="newQuestion" data-inline="true" data-icon="plus" data-role="button">New Question</a>
                                     <span id="lastPublished"></span>
                                     <ol data-role="listview" id="questionList" data-inset="true"></ol>
                                 </div>
@@ -1365,7 +1446,7 @@
                 <div class="main-content">
                   
                     <center>
-                        <button data-inline="true" data-theme="g" onclick="App.router.navigate('home', { trigger: true }); var tour = $('#my-tour-id').tourbus({});tour.trigger('depart.tourbus');">Take the tour</button>
+                        <button id="tut-tour" data-inline="true" data-theme="g" >Take the tour</button>
                     </center>
                     <br /><br />
                     <center>
@@ -1394,15 +1475,12 @@
                         </div>
                     </center>  
 
-                    
-                        
-                        
-                        
-                   
-                 
-                 
                         
                 </div>
+
+            </div>
+
+            <div data-role="profilemenu6">
 
             </div>
 
@@ -1523,6 +1601,6 @@
 
     </script>
    
-
+     
 </body>
 </html>

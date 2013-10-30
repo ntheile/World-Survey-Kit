@@ -169,7 +169,7 @@ define(["jquery", "backbone", "models/Models"],
                         // reload files questions and options from server for the home page
                         self.reloadFileQuestOpt();
                         
-                        alert("Survey successfully published.");
+                        //alert("Survey successfully published.");
 
                         // renav to build page 
                         //App.router.navigate("#build?" + App.defaultOrg, { trigger: true });

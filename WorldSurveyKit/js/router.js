@@ -343,8 +343,19 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
                                 $.mobile.loading("hide");
                                 $("#home-load-msg").hide();
                                 App.loaded.deferred.resolve();
-                                var tour = $('#my-tour-id').tourbus({});
-                                tour.trigger('depart.tourbus');
+
+                                if (App.isAdmin) {
+                                    var tour = $('#my-tour-id').tourbus({});
+                                    tour.trigger('depart.tourbus');
+
+                                }
+                                else {
+                                    App.router.navigate('home', { trigger: true });
+                                    var tour = $('#my-tour-id-nonadmin').tourbus({});
+                                    tour.trigger('depart.tourbus');
+                                }
+                                
+
                             });
                         });
                     }
@@ -358,7 +369,30 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
                     // TODO maybe present a refresh button if files fail to load
                 });
 
+                
+                // set the default org for a user and reloads
+                App.reloadNewOrg = function (orgId) {
+                    var url = App.utils.urlify("whoami/" + App.id);
+                    $.ajax(url, {
+                        type: "PUT",
+                        contentType: "application/json",
+                        data: JSON.stringify({ defaultOrg: orgId }),
+                        dataType: "json",
+                        success: function (data) {
+                            $.mobile.loading("hide");
 
+                            window.location.reload();
+
+                        },
+                        error: function (model, response) {
+                            $.mobile.loading("hide");
+                            alert(response.statusText);
+                        }
+
+                    });
+                };
+
+                
                 // Tell Backbone to start watching for hashchange events
                 Backbone.history.start();
 
@@ -398,6 +432,7 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
          
             $.mobile.loading("show");
 
+
             // wait for the FileCollection to Load First
             $.when(
                 App.uFileInstanceCollection.deferred,
@@ -415,6 +450,33 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
 
                 // show dom ele
                 $.mobile.changePage("#home", { reverse: false, changeHash: false });
+                $("#home").trigger("create");
+
+                try{
+                    // Profile menu code
+                    $(".profiledd").off("click");
+                    $(".profiledd").on("click", function () {
+                        $(".profileMenuPopup").popup('open', { positionTo: '#profilePos' });
+                    });
+                    var strOrg = "";
+                    _.each(App.myOrgs, function (org) {
+                        strOrg = strOrg + "<li><a onclick='App.reloadNewOrg(" + org.Orgs.id + ")'>" + org.Orgs.orgName + "</a></li>";
+
+                    });
+                    $("div[data-role='profilemenu']").html("");
+                    $("div[data-role='profilemenu']").append(
+                        '<div data-role="popup" class="profileMenuPopup" data-theme="d">' +
+                            '<ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d">' +
+                                '<li data-role="divider" data-theme="g">Switch survey context:</li>' + strOrg +
+                            '</ul>' +
+                        '</div>'
+                    );
+                    $(".profileMenuPopup").trigger("create");
+                    
+                }
+                catch (e) { }
+             
+                
 
                 $("[data-role='wsk-nav-bar']").html(_.template(NavBarTemplate, { orgId: App.defaultOrg, homeSelected: "ui-btn-active" }));
                 $("#home").trigger("create");
@@ -518,11 +580,40 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
             $.when(
                   App.uFileCollection.deferred
             ).then(function () {
+
+                
+
+
                 _.each(App.uFileCollection.models, function (model) {
                     $(".reportsMainList").append("<li><a href='#reports?" + model.get("sid") + "' >" + model.get("fileName") + "</a></li>");
                     $(".reportsMainList").listview("refresh");
                 });
             });
+
+
+            try {
+                // Profile menu code
+                $(".profiledd").off("click");
+                $(".profiledd").on("click", function () {
+                    $(".profileMenuPopup3").popup('open', { positionTo: '#profilePos' });
+                });
+                var strOrg = "";
+                _.each(App.myOrgs, function (org) {
+                    strOrg = strOrg + "<li><a onclick='App.reloadNewOrg(" + org.Orgs.id + ")'>" + org.Orgs.orgName + "</a></li>";
+
+                });
+                $("div[data-role='profilemenu3']").html("");
+                $("div[data-role='profilemenu3']").append(
+                    '<div data-role="popup" class="profileMenuPopup3" data-theme="d">' +
+                        '<ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d">' +
+                            '<li data-role="divider" data-theme="g">Switch survey context:</li>' + strOrg +
+                        '</ul>' +
+                    '</div>'
+                );
+                $("#reports").trigger("create");
+                $(".profileMenuPopup3").trigger("create");
+            }
+            catch (e) { }
 
         },
 
@@ -633,6 +724,32 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
 
             // style
             $("#settings").trigger("create");
+
+
+
+            try {
+                // Profile menu code
+                $(".profiledd").off("click");
+                $(".profiledd").on("click", function () {
+                    $(".profileMenuPopup5").popup('open', { positionTo: '#profilePos' });
+                });
+                var strOrg = "";
+                _.each(App.myOrgs, function (org) {
+                    strOrg = strOrg + "<li><a onclick='App.reloadNewOrg(" + org.Orgs.id + ")'>" + org.Orgs.orgName + "</a></li>";
+
+                });
+                $("div[data-role='profilemenu5']").html("");
+                $("div[data-role='profilemenu5']").append(
+                    '<div data-role="popup" class="profileMenuPopup5" data-theme="d">' +
+                        '<ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d">' +
+                            '<li data-role="divider" data-theme="g">Switch survey context:</li>' + strOrg +
+                        '</ul>' +
+                    '</div>'
+                );
+                $("#settings").trigger("create");
+                $(".profileMenuPopup5").trigger("create");
+            }
+            catch (e) { }
 
         },
 
@@ -845,6 +962,28 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
             // show dom ele
             $.mobile.changePage("#profile", { reverse: false, changeHash: false });
 
+            // Profile menu code
+            $(".profiledd").off("click");
+            $(".profiledd").on("click", function () {
+                $(".profileMenuPopup2").popup('open', { positionTo: '#profilePos' });
+            });
+            var strOrg = "";
+            _.each(App.myOrgs, function (org) {
+                strOrg = strOrg + "<li><a onclick='App.reloadNewOrg(" + org.Orgs.id + ")'>" + org.Orgs.orgName + "</a></li>";
+
+            });
+            $("div[data-role='profilemenu2']").html("");
+            $("div[data-role='profilemenu2']").append(
+                '<div data-role="popup" class="profileMenuPopup2" data-theme="d">' +
+                    '<ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d">' +
+                        '<li data-role="divider" data-theme="g">Switch survey context:</li>' + strOrg +
+                    '</ul>' +
+                '</div>'
+            );
+            $(".profileMenuPopup2").trigger("create");
+            
+         
+
             // SHOW the side menu
             // set the orgId for the global variable used by the collection 
             // for GET /api/OrgUserMapping/<App.tempOrgId> as well as the 
@@ -924,7 +1063,25 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
             ).then(function () {
                 //success
 
-                if (!App.fileBuilderCompositeView) App.fileBuilderCompositeView = new FileBuilderCompositeView();
+                if (!App.fileBuilderCompositeView) {
+
+                    // Profile menu code
+                    var strOrg = "";
+                    _.each(App.myOrgs, function (org) {
+                        strOrg = strOrg + "<li><a onclick='App.reloadNewOrg(" + org.Orgs.id + ")'>" + org.Orgs.orgName + "</a></li>";
+
+                    });
+                    $("div[data-role='profilemenu']").append(
+                        '<div data-role="popup" class="profileMenuPopup" data-theme="d">' +
+                            '<ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d">' +
+                                '<li data-role="divider" data-theme="g">Switch survey context:</li>' + strOrg +
+                            '</ul>' +
+                        '</div>'
+                    );
+
+                    App.fileBuilderCompositeView = new FileBuilderCompositeView();
+
+                }
                 App.fileCollection.fetch({
                     success: function () {
                         // triggger re-style
@@ -939,7 +1096,29 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
                 console.log("Error fetching files on init");
             });
 
-           
+            try {
+                // Profile menu code
+                $(".profiledd").off("click");
+                $(".profiledd").on("click", function () {
+                    $(".profileMenuPopup4").popup('open', { positionTo: '#profilePos' });
+                });
+                var strOrg = "";
+                _.each(App.myOrgs, function (org) {
+                    strOrg = strOrg + "<li><a onclick='App.reloadNewOrg(" + org.Orgs.id + ")'>" + org.Orgs.orgName + "</a></li>";
+
+                });
+                $("div[data-role='profilemenu4']").html("");
+                $("div[data-role='profilemenu4']").append(
+                    '<div data-role="popup" class="profileMenuPopup4" data-theme="d">' +
+                        '<ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d">' +
+                            '<li data-role="divider" data-theme="g">Switch survey context:</li>' + strOrg +
+                        '</ul>' +
+                    '</div>'
+                );
+                $("#build").trigger("create");
+                $(".profileMenuPopup4").trigger("create");
+            }
+            catch (e) { }
 
         },
 
@@ -1329,6 +1508,23 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
             // show dom ele
             $.mobile.changePage("#tutorial", { reverse: false, changeHash: false });
 
+            $("#tut-tour").off("click");
+            $("#tut-tour").on("click", function(){
+                if (App.isAdmin) {
+                    App.router.navigate('home', { trigger: true });
+                    var tour = $('#my-tour-id').tourbus({});
+                    tour.trigger('depart.tourbus')
+                }
+                else {
+                    App.router.navigate('home', { trigger: true });
+                    var tour = $('#my-tour-id-nonadmin').tourbus({});
+                    tour.trigger('depart.tourbus');
+                }
+                
+
+            });
+
+
             if (!App.tutorialView) {
 
 
@@ -1356,7 +1552,7 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
                         'width': w - (ifrPadding + ifrBorder),
                         'height': h - (ifrPadding + ifrBorder)
                     };
-                };
+                }
 
                 $("#popupVideo iframe").attr("width", 0).attr("height", 0);
 
@@ -1400,6 +1596,31 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
             }
 
             $("#tutorial").trigger("create");
+
+
+            try {
+                // Profile menu code
+                $(".profiledd").off("click");
+                $(".profiledd").on("click", function () {
+                    $(".profileMenuPopup6").popup('open', { positionTo: '#profilePos' });
+                });
+                var strOrg = "";
+                _.each(App.myOrgs, function (org) {
+                    strOrg = strOrg + "<li><a onclick='App.reloadNewOrg(" + org.Orgs.id + ")'>" + org.Orgs.orgName + "</a></li>";
+
+                });
+                $("div[data-role='profilemenu6']").html("");
+                $("div[data-role='profilemenu6']").append(
+                    '<div data-role="popup" class="profileMenuPopup6" data-theme="d">' +
+                        '<ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d">' +
+                            '<li data-role="divider" data-theme="g">Switch survey context:</li>' + strOrg +
+                        '</ul>' +
+                    '</div>'
+                );
+                $("#tutorial").trigger("create");
+                $(".profileMenuPopup6").trigger("create");
+            }
+            catch (e) { }
 
         },
 

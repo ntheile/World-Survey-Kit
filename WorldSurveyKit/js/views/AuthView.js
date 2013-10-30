@@ -135,13 +135,11 @@ define(["jquery", "backbone", "models/Models", "collections/MyOrgsCollection"], 
 
                
                     
-                    
-    
 
                 $("div[data-role='fblogin']").html(
                     '<div data-role="controlgroup" data-type="horizontal" data-mini="true" class="ui-btn-right" >' +
                         '<a data-role="button" data-mini="true" data-theme="b" onclick=" App.router.navigate(\'home\', { trigger: true }) " ><img src="images/home.png" style="width:18px;height:18px" /></a>' +
-                        '<a data-role="button" data-mini="true" data-icon="arrow-d" data-iconpos="right"  onclick="$( \'#profileMenuPopup\' ).popup( \'open\', { positionTo: \'#profilePos\' } ); " >' +
+                        '<a data-role="button" class="profiledd" data-mini="true" data-icon="arrow-d" data-iconpos="right"  >' +
                             '<img src="' + picUrl + '" style="width:18px;height:18px" />&nbsp;&nbsp;' + App.userName + '&nbsp;&nbsp;' +
                         '</a>' +
                     '</div>'
