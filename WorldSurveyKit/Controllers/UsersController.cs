@@ -302,7 +302,8 @@ namespace WorldSurveyKit.Controllers
                     defaultOrg = u.defaultOrg,
                     defaultOrgName = org.orgName,
                     isSystemAdmin = u.isSystemAdmin,
-                    referrerUrl = referrerUrl
+                    referrerUrl = referrerUrl,
+                    s = s
                 });
             }
             catch (Exception ex)
