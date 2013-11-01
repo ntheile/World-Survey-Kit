@@ -13,6 +13,7 @@ define(["jquery", "backbone", "models/Models"],
             events: {
                 "click #deleteFile": "deleteFile_ONCLICK",
                 "click #filePublish": "filePublish_ONCLICK",
+                "click #invite": "invite_ONCLICK",
                 "click #newQuestion": "newQuestion_ONCLICK"  
             },
 
@@ -171,17 +172,18 @@ define(["jquery", "backbone", "models/Models"],
                         
                         //alert("Survey successfully published.");
 
-                        // renav to build page 
-                        //App.router.navigate("#build?" + App.defaultOrg, { trigger: true });
-                        App.popOpenAddUser = true;
-                        App.router.navigate("#profile?" + App.defaultOrg, { trigger: true });
-
-                        $("#questionList").html("");
+                        //$("#questionList").html("");
 
                     },
                     wait: true
                 });
 
+            },
+
+            invite_ONCLICK: function(){
+                // renav to profile page 
+                App.popOpenAddUser = App.fileId;
+                App.router.navigate("#profile?" + App.defaultOrg, { trigger: true });
             },
 
             addNewQuestion_ONCLICK: function (e) {

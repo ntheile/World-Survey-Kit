@@ -755,6 +755,10 @@
   
             </div>
 
+            <div data-role="profilemenu10">
+
+            </div>
+
     </div>
 
 
@@ -838,7 +842,7 @@
                     <!-- Markup for These Days Friend Selector -->
                     <div id="TDFriendSelector">
                         <div class="TDFriendSelector_dialog">
-                            <a href="#" id="TDFriendSelector_buttonClose">x</a>
+                            <a href="#" onclick=" try { App.popOpenAddUser = false } catch (e) {}" id="TDFriendSelector_buttonClose">x</a>
                             <div class="TDFriendSelector_form">
                                 <div class="TDFriendSelector_header">
                                         <p>Select friends to take your surveys</p>
@@ -1041,7 +1045,7 @@
                                     <div data-role="controlgroup" data-type="horizontal">
                                         <!--<a data-role="button" data-icon="back" id="fileBack">Back</a>-->
                                         <a data-role="button" data-icon="refresh" id="filePublish" data-theme="g" >Publish</a>
-                                        <a data-role="button" data-icon="user" id="inviteUsers" >Invite Users</a>
+                                        <a data-role="button" data-icon="user" id="invite" >Invite Users</a>
                                         <a data-role="button" data-icon="trash" id="deleteFile">Delete</a>
                                     </div>
                                 </div>

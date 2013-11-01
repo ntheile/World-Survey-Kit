@@ -202,24 +202,23 @@ namespace WorldSurveyKit.Controllers
     public class WhoAmIController : ApiController
     {
         private MyDatabase db = new MyDatabase();
-
+        
 
         /// GET api/whomai
         /// <summary>
         /// Gets the users ID , FB ID, and user's orgs
+        /// If the user passes in api/whoami?s=343 a s or new survey id then one is created if credentials check out
         /// </summary>
         [HttpGet]
-        public HttpResponseMessage GetWhoAmI()
+        public HttpResponseMessage GetWhoAmI(int ? s = 0)
         {
             // wait for FB to replicate your FBToken
             System.Threading.Thread.Sleep(500);
             int uId = Auth.FB.GetUserId();
-            string fbId = Auth.FB.GetFbId();
-
+            string fbId = Auth.FB.GetFbId(); 
 
             try
             {
-                
 
                 // what are the orgs you are a member of?
                 var myOrgs = db.OrgUserMappings.Include(oo => oo.Orgs).Where(o => o.usersId == uId);
@@ -243,6 +242,57 @@ namespace WorldSurveyKit.Controllers
                     }
                 }
 
+
+                // if a newFileId is passed in and the user is a member of that org then create a fileInstance, 
+                //      set the files org as the user deafult org and send back a url #go?file{fileInstId}
+                string referrerUrl = "";
+                // is new file passed in
+                if (s != 0 ) {
+                    
+                    // is user a member of the org?
+                    File fileDetails = db.File.FirstOrDefault(ff => ff.id == s);
+                    int orgsId = fileDetails.id;
+                    if (Auth.FB.IsOrgUser(orgsId))
+                    {
+                        int myId = Auth.FB.GetUserId();
+                        
+                        
+                        // create the file instance
+                        NewFileInstance n = new NewFileInstance();
+                        n.fileId = fileDetails.id;
+                        n.userId = u.id;
+                        n.name = fileDetails.fileName + " - " + u.name + " " + DateTime.Now.ToString("O");
+                        n.created_at = DateTime.Now.ToString("O");
+
+                        NewFileInstance newFileInst = db.NewFileInstance.Add(n);
+                        db.SaveChanges();
+                        
+
+                        //Update the Users default org
+                        u.defaultOrg = fileDetails.orgsId;
+                        db.Entry(u).State = EntityState.Modified;
+                        db.SaveChanges();
+
+                        // get the first question for url
+                        Questions q = db.Questions.FirstOrDefault(dd => dd.fileId == fileDetails.id && dd.order == 1);
+
+                        // pass back file location
+                        referrerUrl = "#go?file" + newFileInst.id + "?q" + q.id;
+
+                        isAdmin = Auth.FB.IsOrgAdmin(u.defaultOrg);
+
+                    }
+                    else
+                    {
+                        referrerUrl = "";
+                    }
+
+                }
+                else{
+                    referrerUrl = "";
+                }
+
+
                 return this.Request.CreateResponse(HttpStatusCode.OK, new
                 {
                     Id = uId,
@@ -251,7 +301,8 @@ namespace WorldSurveyKit.Controllers
                     org = myOrgs,
                     defaultOrg = u.defaultOrg,
                     defaultOrgName = org.orgName,
-                    isSystemAdmin = u.isSystemAdmin
+                    isSystemAdmin = u.isSystemAdmin,
+                    referrerUrl = referrerUrl
                 });
             }
             catch (Exception ex)

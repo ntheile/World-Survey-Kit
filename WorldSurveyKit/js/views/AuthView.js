@@ -239,13 +239,35 @@ define(["jquery", "backbone", "models/Models", "collections/MyOrgsCollection"], 
                     App.myOrgs = data.org;
 
                     App.myOrgsCollection = new MyOrgsCollection(data.org);
-                    
+
 
                     window.localStorage.id = App.id;
                     window.localStorage.defaultOrg = App.defaultOrg;
                     window.localStorage.defaultOrgName = App.defaultOrgName;
-
                     
+                    App.referrerUrl = data.referrerUrl;
+                    App.hash = "";
+                    // change to the url requested, redirect if needed
+
+                    // no hash , go home
+                    if (!window.location.hash) {
+                        App.hash = "#home";
+                        $.mobile.changePage("#home", { reverse: false, changeHash: false });
+                    }
+                    else { // hash 
+                        // new survey created, nav to the new survey
+                        if (App.referrerUrl != "" && App.referrerUrl != null && App.referrerUrl != undefined) {
+                            //App.hash = App.referrerUrl;
+                            window.location.hash = "#home";
+                            //$.mobile.changePage("#go", { reverse: false, changeHash: false });
+                            $.mobile.changePage("#home", { reverse: false, changeHash: false });
+                        }
+                        else { // nav to deep linked hash
+                            App.hash = window.location.hash;
+                            $.mobile.changePage(App.hash, { reverse: false, changeHash: false });
+                        }
+                    }
+
 
                     //clear background image
                     $(".backstretch").hide();
@@ -266,27 +288,19 @@ define(["jquery", "backbone", "models/Models", "collections/MyOrgsCollection"], 
                             App.uid = App.user.get('id');
                             App.userName = App.user.get('name');
 
+                            // update the pic and user name
+                            App.authView.render();
+
                             // start the router now that we have a Users Id
                             require(["router"], function (Router) {
                                 if (!App.router) {
                                     App.router = new Router();
                                 }
+
                             });
 
-                            // update the pic and user name
-                            App.authView.render();
-
-
-                            var hash = '';
-                            // change to the url requested, redirect if needed
-                            if (!window.location.hash) {
-                                hash = "#home";
-                            }
-                            else {
-                                hash = window.location.hash;
-                            }
-                            $.mobile.changePage(hash, { reverse: false, changeHash: false });
-
+                            
+  
 
                         }
 
@@ -393,6 +407,24 @@ define(["jquery", "backbone", "models/Models", "collections/MyOrgsCollection"], 
             else {
                 url = "/api/whoami";
             }
+
+            var hash = window.location.hash;
+            // check if the user is deep linking a new survey from a friend /#s?{fileIdInt}
+            if (/\#s\?[0-9]/.test(hash)) {
+                var newFileId = hash.split("?"); // split by ? ,
+                console.log(newFileId);
+                newFileId = newFileId[1]; // exp: #s?435  [0] = #s [1] = 435
+                newFileId = newFileId.split("&"); // exp: 435&referer=facebook   [0] = 435  [1] = referer=facebook
+                newFileId = newFileId[0]; // this is what we want! 435 or {fileIdInt}
+                console.log(newFileId);
+
+                if ($.isNumeric(newFileId)) {
+                    url = url + "?s=" + newFileId;
+                }
+            }
+            
+            
+            
 
             console.log("url - " + url);
 

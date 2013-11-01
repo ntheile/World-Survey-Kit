@@ -121,6 +121,8 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
         // The Router constructor
         initialize: function () {
 
+            var self = this;
+
             console.log('router init');
 
             $.mobile.loading("show", {
@@ -162,8 +164,8 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
                 }
                 
                 // if its first load we want to get the App.fileInstanceCollection to judge load time of data
-                if (!localStorage.loaded) {
-                    console.log("first load - get App.fileInstanceCollection");
+                if (!localStorage.loaded && App.isAdmin) {
+                    //console.log("first load - get App.fileInstanceCollection");
                     App.fileInstanceCollection = new FileInstanceCollection();
                 }
 
@@ -328,6 +330,9 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
                         console.log("already load");
                         App.loaded.deferred.resolve();
                         $.mobile.loading("hide");
+
+                        
+
                     }
                     else {
                         console.log("first load ever");
@@ -354,7 +359,6 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
                                     var tour = $('#my-tour-id-nonadmin').tourbus({});
                                     tour.trigger('depart.tourbus');
                                 }
-                                
 
                             });
                         });
@@ -494,6 +498,8 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
 
                 // style
                 $("#home").trigger("create");
+
+                
 
 
                 ///
@@ -848,6 +854,8 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
 
                     }
 
+                    
+
                     ///
                     /// End Success
                     ///
@@ -856,6 +864,8 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
                     //error
                     console.log("Error fetching files");
                 });
+
+               
 
             }
             // regular user edit view

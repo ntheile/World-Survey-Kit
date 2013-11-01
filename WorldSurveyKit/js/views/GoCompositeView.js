@@ -32,6 +32,30 @@ define(["jquery", "backbone", "models/Models", "views/GoOpenEndedView", "views/G
 
             console.log("====> GoCompositeView - init()");
 
+            try {
+                // Profile menu code
+                $(".profiledd").off("click");
+                $(".profiledd").on("click", function () {
+                    $(".profileMenuPopup10").popup('open', { positionTo: '#profilePos' });
+                });
+                var strOrg = "";
+                _.each(App.myOrgs, function (org) {
+                    strOrg = strOrg + "<li><a onclick='App.reloadNewOrg(" + org.Orgs.id + ")'>" + org.Orgs.orgName + "</a></li>";
+
+                });
+                $("div[data-role='profilemenu10']").html("");
+                $("div[data-role='profilemenu10']").append(
+                    '<div data-role="popup" class="profileMenuPopup10" data-theme="d">' +
+                        '<ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d">' +
+                            '<li data-role="divider" data-theme="g">Switch survey context:</li>' + strOrg +
+                        '</ul>' +
+                    '</div>'
+                );
+                $("#build").trigger("create");
+                $(".profileMenuPopup10").trigger("create");
+            }
+            catch (e) { }
+
         },
 
         // renders the question content

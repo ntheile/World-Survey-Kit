@@ -37,6 +37,18 @@ define(["jquery", "backbone", "models/Models"],
             $.mobile.loading("hide");
 
 
+            
+           
+            // check if new survey 
+            if (App.referrerUrl != "" && App.referrerUrl != null && App.referrerUrl != undefined) {
+                $.mobile.loading("show", {
+                    text: "Loading Survey...",
+                    textVisible: true,
+                    theme: "a"
+                });
+            }
+
+
             // get feed
             var url = App.utils.urlify("feed/" + App.defaultOrg);
             $.ajax(url, {
@@ -44,6 +56,16 @@ define(["jquery", "backbone", "models/Models"],
                 contentType: "application/json",
                 dataType: "json",
                 success: function (data) {
+
+                    // check if new survey 
+                    if (App.referrerUrl != "" && App.referrerUrl != null && App.referrerUrl != undefined) {
+                        $.wait(1000).then(function () {
+                            $.mobile.loading("hide");
+                            App.router.navigate(App.referrerUrl, { trigger: true });
+                            App.referrerUrl = "";
+                        });
+                    }
+
                     $("#activityFeed").html("");
                     $("#activityFeed").append("<h3>Activity Feed</h3>");
 

@@ -355,14 +355,7 @@ TODO
 
 TODO - Short Term
 =================
-* make the invite users button work on the build page
-* create the page /#s?fileId to allow a deep link to be shared to take a survey
-	* first in auth.js the url is checked for #/s?fileId which sends an ajax call to the backend after the user is authorized 
-	* the authorizing prompt changes to "loading survey..."
-		* the backends creates a new fileinstance of the survey (name = {User Name's} survey {Survey name} - {DateTime Stamp})
-		* sets the users default org to be the surveys org, then send a redirect /#go?file{fileInstanceId}
-    * the client picks up these changes then runs the app like normal , the App.defaultOrg is that of your friend who sent you the survey
-* sort activity feed and history by newest
+* switch deffered to using Q
 * add togetherjs for chat and real time (Only enable in chrome and firefox desktop, disbale the circle thingy on click)
 * add open graph "{User} took the survey, {survey name} on World Survey Kit"
 
@@ -415,6 +408,14 @@ should auto sync when you click save and finish later.
 * added google analytics
 * fix the profile menu dropdown to work on all pages
 * fix the tutorial to work for a App.isAdmin = false user view
+* make the invite users button work on the build page
+* create the page /#s?fileId to allow a deep link to be shared to take a survey
+	* first in auth.js the url is checked for #/s?fileId which sends an ajax call to the backend after the user is authorized 
+	* the authorizing prompt changes to "loading survey..."
+		* the backends creates a new fileinstance of the survey (name = {User Name's} survey {Survey name} - {DateTime Stamp})
+		* sets the users default org to be the surveys org, then send a redirect /#go?file{fileInstanceId}
+    * the client picks up these changes then runs the app like normal , the App.defaultOrg is that of your friend who sent you the survey
+
 
 
 

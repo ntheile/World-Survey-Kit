@@ -108,9 +108,12 @@ define(["jquery", "backbone", "models/Models", "views/UserItemView", "tdfriendse
             //get the org name
 
             if (App.popOpenAddUser) {
-                $("#addUser").click();
+                App.fbsurveryUrl = 'http://worldsurveykit.com/#s?' + App.popOpenAddUser;
                 App.popOpenAddUser = false;
+                $("#addUser").click();
             }
+          
+            
 
             // temp stuff
             var u = App.utils.urlify("orgs/" + orgId);
@@ -240,12 +243,17 @@ define(["jquery", "backbone", "models/Models", "views/UserItemView", "tdfriendse
                 success: function (data, textStatus, jqXHR) {
                     App.router.profile(App.orgId);
 
+                    
+
                     // now send them a msg
                     FB.ui({
                         method: 'apprequests',
-                        message: 'New Survey ready to take on World Survey Kit. http://worldsurveykit.com/#s?23' ,
+                        message: 'New Survey ready to take on World Survey Kit. ' + App.fbsurveryUrl,
                         to: App.fbPicker.getselectedFriendIds()
                     });
+
+                    App.popOpenAddUser = false;
+                    App.fbsurveryUrl = "http://worldsurveykit.com";
 
                 },
                 error: function (data, textStatus, jqXHR) {
