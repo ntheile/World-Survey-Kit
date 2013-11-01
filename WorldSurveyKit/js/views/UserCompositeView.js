@@ -246,12 +246,27 @@ define(["jquery", "backbone", "models/Models", "views/UserItemView", "tdfriendse
                     
 
                     // now send them a msg
-                    FB.ui({
-                        method: 'apprequests',
-                        message: 'New Survey ready to take on World Survey Kit. ' + App.fbsurveryUrl,
-                        to: App.fbPicker.getselectedFriendIds()
+                    //FB.ui({
+                    //    method: 'apprequests',
+                    //    message: 'New Survey ready to take on World Survey Kit. ' + App.fbsurveryUrl,
+                    //    link: App.fbsurveryUrl,
+                    //    to: App.fbPicker.getselectedFriendIds()
+                    //});
+
+
+                    _.each(App.fbPicker.getselectedFriendIds(), function (userId) {
+                        FB.ui({
+                            app_id: App.fbid,
+                            method: 'send',
+                            name: "New Survey",
+                            link: App.fbsurveryUrl,
+                            to: userId,
+                            description: 'New Survey to take'
+                        });
+
                     });
 
+                   
                     App.popOpenAddUser = false;
                     App.fbsurveryUrl = "http://worldsurveykit.com";
 
