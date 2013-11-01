@@ -251,7 +251,7 @@ namespace WorldSurveyKit.Controllers
                     
                     // is user a member of the org?
                     File fileDetails = db.File.FirstOrDefault(ff => ff.id == s);
-                    int orgsId = fileDetails.id;
+                    int orgsId = fileDetails.orgsId;
                     if (Auth.FB.IsOrgUser(orgsId))
                     {
                         int myId = Auth.FB.GetUserId();
