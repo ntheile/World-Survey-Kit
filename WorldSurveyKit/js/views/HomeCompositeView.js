@@ -36,63 +36,57 @@ define(["jquery", "backbone", "models/Models"],
             $("#homeListView").css("visibility", "visible");
             $.mobile.loading("hide");
 
-
-            
-           
-            // check if new survey 
-            if (App.referrerUrl != "" && App.referrerUrl != null && App.referrerUrl != undefined) {
-                $.mobile.loading("show", {
-                    text: "Loading Survey...",
-                    textVisible: true,
-                    theme: "a"
-                });
-            }
-
-
             // get feed
-            var url = App.utils.urlify("feed/" + App.defaultOrg);
-            $.ajax(url, {
-                type: "GET",
-                contentType: "application/json",
-                dataType: "json",
-                success: function (data) {
+            try{
+                var url = App.utils.urlify("feed/" + App.defaultOrg);
+                $.ajax(url, {
+                    type: "GET",
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function (data) {
 
-                    // check if new survey 
-                    if (App.referrerUrl != "" && App.referrerUrl != null && App.referrerUrl != undefined) {
-                        $.wait(2200).then(function () {
-                            $.mobile.loading("hide");
-                            App.router.navigate(App.referrerUrl, { trigger: true });
-                            App.referrerUrl = "";
+                        // check if new survey 
+                        if (App.referrerUrl != "" && App.referrerUrl != null && App.referrerUrl != undefined) {
+                            $.wait(2200).then(function () {
+                                $.mobile.loading("hide");
+                                App.router.navigate(App.referrerUrl, { trigger: true });
+                                App.referrerUrl = "";
+                            });
+                        }
+
+                        $("#activityFeed").html("");
+                        $("#activityFeed").append("<h3>Activity Feed</h3>");
+
+                        _.each(data, function (item) {
+                            var fid = item.fid;
+                            var feed = item.feed;
+                            var pic = "//graph.facebook.com/" + fid + "/picture?type=square";
+                            var name = "";
+                            var date = item.date;
+
+
+                            FB.api('/' + fid, function (r) {
+
+                                name = r.name;
+                                $("#activityFeed").append("<br/><div style='float:left'><img src=" + pic + " /></div><div style='float:left'>&nbsp;&nbsp;&nbsp;&nbsp</div><div style='float:left'><b>" + name + "</b>&nbsp;&nbsp;<small>" + date + "</small><br/>" + feed + "</div><hr style='clear:both' />");
+                            });
+
+
+
                         });
+                    },
+                    error: function (model, response) {
+                        $.mobile.loading("hide");
+                        // sorry no feed
+                        alert(response.statusText);
                     }
 
-                    $("#activityFeed").html("");
-                    $("#activityFeed").append("<h3>Activity Feed</h3>");
-
-                    _.each(data, function (item) {
-                        var fid = item.fid;
-                        var feed = item.feed;
-                        var pic = "//graph.facebook.com/" + fid + "/picture?type=square";
-                        var name = "";
-                        var date = item.date;
-                                  
-                       
-                        FB.api('/' + fid, function (r) {
-
-                            name = r.name;
-                            $("#activityFeed").append("<br/><div style='float:left'><img src=" + pic + " /></div><div style='float:left'>&nbsp;&nbsp;&nbsp;&nbsp</div><div style='float:left'><b>" + name + "</b>&nbsp;&nbsp;<small>" + date + "</small><br/>" + feed + "</div><hr style='clear:both' />");
-                        });
-                       
-                        
-
-                    });
-                },
-                error: function (model, response) {
-                    $.mobile.loading("hide");
-                    alert(response.statusText);
-                }
-
-            });
+                });
+            }
+            catch(e){
+                // sorry no feed
+            }
+           
 
             
             return this;

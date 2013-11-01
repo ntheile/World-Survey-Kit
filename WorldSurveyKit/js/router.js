@@ -314,33 +314,39 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
 
 
             ///
-            /// After all files are loaded code goes here
+            /// After all files are loaded code goes here 
             ///
                 // when the files are loaded hide the spinner and set up sync Interval (note that alot of the files are locally cached)
-                $.when(
-                   App.uQuestionCollection.deferred,
-                   App.uFileInstanceCollection.deferred,
-                   App.uFileCollection.deferred,
-                   App.uResponseCollection.deferred,
-                   App.uOptionCollection.deferred
-                ).then(function () {
+                App.startMe = function () {
+                    $.when(
+                       App.uQuestionCollection.deferred,
+                       App.uFileInstanceCollection.deferred,
+                       App.uFileCollection.deferred,
+                       App.uResponseCollection.deferred,
+                       App.uOptionCollection.deferred
+                    ).then(function () {
 
-                    // check if first load exists
-                    if (localStorage.loaded) {
-                        console.log("already load");
-                        App.loaded.deferred.resolve();
-                        $.mobile.loading("hide");
+                        // check if first load exists
+                        if (localStorage.loaded) {
+                            console.log("already load");
+                            App.loaded.deferred.resolve();
+                            $.mobile.loading("hide");
 
-                        
+                            // check if new survey 
+                            if (App.referrerUrl != "" && App.referrerUrl != null && App.referrerUrl != undefined) {
+                                $.mobile.loading("show", {
+                                    text: "Loading Survey...",
+                                    textVisible: true,
+                                    theme: "a"
+                                });
+                            }
 
-                    }
-                    else {
-                        console.log("first load ever");
-                        // wait for data to load since it has never been cached
-                        $("#home-load-msg").html("Please wait, loading user settings for the first time...");
-                        $.when(
-                            App.fileInstanceCollection.deferred
-                        ).then(function () {
+                        }
+                        else {
+                            console.log("first load ever");
+                            // wait for data to load since it has never been cached
+                            $("#home-load-msg").html("Please wait, loading user settings for the first time...");
+                            
                             $.wait(2000).then(function () {
                                 // fetch local data
                                 localStorage.loaded = true;
@@ -348,6 +354,15 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
                                 $.mobile.loading("hide");
                                 $("#home-load-msg").hide();
                                 App.loaded.deferred.resolve();
+
+                                // check if new survey 
+                                if (App.referrerUrl != "" && App.referrerUrl != null && App.referrerUrl != undefined) {
+                                    $.mobile.loading("show", {
+                                        text: "Loading Survey...",
+                                        textVisible: true,
+                                        theme: "a"
+                                    });
+                                }
 
                                 if (App.isAdmin) {
                                     var tour = $('#my-tour-id').tourbus({});
@@ -361,19 +376,53 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
                                 }
 
                             });
-                        });
-                    }
-                }, function () {
-                    //error
-                    $.mobile.loading("hide");
-                    console.log("Error fetching files on init");
+                            
+                        }
+                    }, function () {
+                        //error
+                        $.mobile.loading("hide");
+                        console.log("Error fetching files on init");
 
-                    App.loaded.deferred.reject("files failed to load");
+                        App.loaded.deferred.reject("files failed to load");
 
-                    // TODO maybe present a refresh button if files fail to load
-                });
-
+                        // TODO maybe present a refresh button if files fail to load
+                    });
+                }
                 
+
+                //
+                // dont START the app until we get the feed back
+                //
+                try{
+                    var url = App.utils.urlify("feed/" + App.defaultOrg);
+                    $.ajax(url, {
+                        type: "GET",
+                        contentType: "application/json",
+                        dataType: "json",
+                        success: function (data) {
+
+                            // check if new survey 
+
+                            $.wait(1000).then(function () {
+                                App.startMe();
+                            });
+
+
+                        },
+                        error: function (model, response) {
+                            $.mobile.loading("hide");
+                            App.startMe();
+                            alert(response.statusText);
+                        }
+                    });
+                }
+                catch (e){
+                    App.startMe();
+                }
+                
+
+
+
                 // set the default org for a user and reloads
                 App.reloadNewOrg = function (orgId) {
                     var url = App.utils.urlify("whoami/" + App.id);
