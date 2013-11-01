@@ -59,7 +59,7 @@ define(["jquery", "backbone", "models/Models"],
 
                     // check if new survey 
                     if (App.referrerUrl != "" && App.referrerUrl != null && App.referrerUrl != undefined) {
-                        $.wait(1000).then(function () {
+                        $.wait(2200).then(function () {
                             $.mobile.loading("hide");
                             App.router.navigate(App.referrerUrl, { trigger: true });
                             App.referrerUrl = "";

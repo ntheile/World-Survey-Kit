@@ -278,7 +278,7 @@ namespace WorldSurveyKit.Controllers
 
                         // pass back file location
                         referrerUrl = "#go?file" + newFileInst.id + "?q" + q.id;
-
+                         
                         isAdmin = Auth.FB.IsOrgAdmin(u.defaultOrg);
 
                     }
