@@ -18,7 +18,7 @@ if (document.domain == "localhost") {
 }
 else {
     // increment this after every major release is pushed to clear the users browser cache
-    App.version = 7;
+    App.version = 223;
 }
 
 App.loginPageHash = "#login";
