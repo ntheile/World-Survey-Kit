@@ -46,8 +46,8 @@ define(["jquery", "backbone", "models/Models", "views/GoOpenEndedView", "views/G
                 $("div[data-role='profilemenu10']").html("");
                 $("div[data-role='profilemenu10']").append(
                     '<div data-role="popup" class="profileMenuPopup10" data-theme="d">' +
-                        '<ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d">' +
-                            '<li data-role="divider" data-theme="g">Switch survey context:</li>' + strOrg +
+                        '<ul data-role="listview" data-inset="true" style="min-width:250px;" data-theme="d">' +
+                            '<li data-role="divider" data-theme="g">Switch to Friends Survey:</li>' + strOrg +
                         '</ul>' +
                     '</div>'
                 );

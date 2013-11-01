@@ -415,7 +415,7 @@ should auto sync when you click save and finish later.
 		* the backends creates a new fileinstance of the survey (name = {User Name's} survey {Survey name} - {DateTime Stamp})
 		* sets the users default org to be the surveys org, then send a redirect /#go?file{fileInstanceId}
     * the client picks up these changes then runs the app like normal , the App.defaultOrg is that of your friend who sent you the survey
-
+* fixed tour, fixed switching friend context to hash to home
 
 
 

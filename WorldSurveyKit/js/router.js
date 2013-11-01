@@ -432,6 +432,8 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
                         data: JSON.stringify({ defaultOrg: orgId }),
                         dataType: "json",
                         success: function (data) {
+                            window.location.hash = "#home";
+
                             $.mobile.loading("hide");
 
                             window.location.reload();
@@ -519,8 +521,8 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
                     $("div[data-role='profilemenu']").html("");
                     $("div[data-role='profilemenu']").append(
                         '<div data-role="popup" class="profileMenuPopup" data-theme="d">' +
-                            '<ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d">' +
-                                '<li data-role="divider" data-theme="g">Switch survey context:</li>' + strOrg +
+                            '<ul data-role="listview" data-inset="true" style="min-width:250px;" data-theme="d">' +
+                                '<li data-role="divider" data-theme="g">Switch to Friends Survey:</li>' + strOrg +
                             '</ul>' +
                         '</div>'
                     );
@@ -660,8 +662,8 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
                 $("div[data-role='profilemenu3']").html("");
                 $("div[data-role='profilemenu3']").append(
                     '<div data-role="popup" class="profileMenuPopup3" data-theme="d">' +
-                        '<ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d">' +
-                            '<li data-role="divider" data-theme="g">Switch survey context:</li>' + strOrg +
+                        '<ul data-role="listview" data-inset="true" style="min-width:250px;" data-theme="d">' +
+                            '<li data-role="divider" data-theme="g">Switch to Friends Survey:</li>' + strOrg +
                         '</ul>' +
                     '</div>'
                 );
@@ -796,8 +798,8 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
                 $("div[data-role='profilemenu5']").html("");
                 $("div[data-role='profilemenu5']").append(
                     '<div data-role="popup" class="profileMenuPopup5" data-theme="d">' +
-                        '<ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d">' +
-                            '<li data-role="divider" data-theme="g">Switch survey context:</li>' + strOrg +
+                        '<ul data-role="listview" data-inset="true" style="min-width:250px;" data-theme="d">' +
+                            '<li data-role="divider" data-theme="g">Switch to Friends Survey:</li>' + strOrg +
                         '</ul>' +
                     '</div>'
                 );
@@ -1034,8 +1036,8 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
             $("div[data-role='profilemenu2']").html("");
             $("div[data-role='profilemenu2']").append(
                 '<div data-role="popup" class="profileMenuPopup2" data-theme="d">' +
-                    '<ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d">' +
-                        '<li data-role="divider" data-theme="g">Switch survey context:</li>' + strOrg +
+                    '<ul data-role="listview" data-inset="true" style="min-width:250px;" data-theme="d">' +
+                        '<li data-role="divider" data-theme="g">Switch to Friends Survey:</li>' + strOrg +
                     '</ul>' +
                 '</div>'
             );
@@ -1132,8 +1134,8 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
                     });
                     $("div[data-role='profilemenu']").append(
                         '<div data-role="popup" class="profileMenuPopup" data-theme="d">' +
-                            '<ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d">' +
-                                '<li data-role="divider" data-theme="g">Switch survey context:</li>' + strOrg +
+                            '<ul data-role="listview" data-inset="true" style="min-width:250px;" data-theme="d">' +
+                                '<li data-role="divider" data-theme="g">Switch to Friends Survey:</li>' + strOrg +
                             '</ul>' +
                         '</div>'
                     );
@@ -1169,8 +1171,8 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
                 $("div[data-role='profilemenu4']").html("");
                 $("div[data-role='profilemenu4']").append(
                     '<div data-role="popup" class="profileMenuPopup4" data-theme="d">' +
-                        '<ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d">' +
-                            '<li data-role="divider" data-theme="g">Switch survey context:</li>' + strOrg +
+                        '<ul data-role="listview" data-inset="true" style="min-width:250px;" data-theme="d">' +
+                            '<li data-role="divider" data-theme="g">Switch to Friends Survey:</li>' + strOrg +
                         '</ul>' +
                     '</div>'
                 );
@@ -1671,8 +1673,8 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
                 $("div[data-role='profilemenu6']").html("");
                 $("div[data-role='profilemenu6']").append(
                     '<div data-role="popup" class="profileMenuPopup6" data-theme="d">' +
-                        '<ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d">' +
-                            '<li data-role="divider" data-theme="g">Switch survey context:</li>' + strOrg +
+                        '<ul data-role="listview" data-inset="true" style="min-width:250px;" data-theme="d">' +
+                            '<li data-role="divider" data-theme="g">Switch to Friends Survey:</li>' + strOrg +
                         '</ul>' +
                     '</div>'
                 );

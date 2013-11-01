@@ -25,7 +25,7 @@
             <div data-role="header" data-theme="b">
                 
                 <div data-role="fblogin" style="float:right; padding-right: 2px">
-                    <button class="loginBtn" data-mini="true" data-corners="false"> 
+                    <button class="loginBtn" data-mini="true" data-corners="false" data-theme="g"> 
                         <img src="images/facebook_login_sm.png" style="width:18px;height:18px" /><span class="loginBtnText">&nbsp;&nbsp;<img src="images/loadingSm.gif" /> </span>
                     </button>
                 </div>
@@ -397,12 +397,12 @@
                     
                     <div data-role="controlgroup" data-type="horizontal">
                          <a data-role="button" href='javascript:void(0);' class='tourbus-prev' data-inline="true" data-theme="g" data-icon="arrow-left">Back</a>
-                         <a data-role="button" href='javascript:void(0);' class='tourbus-next' data-inline="true" data-theme="g" data-icon="arrow-right" data-iconpos="right">Next</a>
+                         <a data-role="button" href='javascript:void(0);' onclick='$(".profileMenuPopup").popup("open", { positionTo: "#profilePos" });' class='tourbus-next' data-inline="true" data-theme="g" data-icon="arrow-right" data-iconpos="right">Next</a>
                     </div>
                 </li>
 
-                <li data-el='#profilePos' data-orientation='bottom' data-align="right" data-margin="50" data-width='300'>
-                    <h3>Switch Survey context</h3>
+                <li data-el='#profilePos' data-orientation='bottom' data-align="right" data-margin="160" data-width='300'>
+                    <h3>Switch to a freinds survey by clicking the dropdown</h3>
                     <p>
                         If a friend invites you to take their survey you can switch to it here.
                     </p>
@@ -467,7 +467,7 @@
               
             
                 <li data-el='#profilePos' data-orientation='bottom' data-align="right" data-margin="160" data-width='300'>
-                    <h3>Switch Survey context</h3>
+                    <h3>Switch to a friends survey</h3>
                     <p>
                         If a friend invites you to take their survey you can switch to it here. Or you can switch back to your profile and build your own survey.
                     </p>
