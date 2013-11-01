@@ -210,7 +210,7 @@ namespace WorldSurveyKit.Controllers
         /// If the user passes in api/whoami?s=343 a s or new survey id then one is created if credentials check out
         /// </summary>
         [HttpGet]
-        public HttpResponseMessage GetWhoAmI(int s = 0)
+        public HttpResponseMessage GetWhoAmI(int? s = 0 )
         {
             // wait for FB to replicate your FBToken
             System.Threading.Thread.Sleep(500);
