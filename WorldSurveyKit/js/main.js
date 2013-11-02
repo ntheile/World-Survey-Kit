@@ -156,7 +156,7 @@ require(["jquery", "backbone", "backstretch", "dataTables", "sly", "modernizrCus
             },
         // Automated cycling
         startAt: 0,
-        scrollBy: 1,
+        scrollBy: 0,
         cycleBy: 'pages',
         cycleInterval: 4000,
         pauseOnHover: 1,
@@ -189,7 +189,7 @@ require(["jquery", "backbone", "backstretch", "dataTables", "sly", "modernizrCus
             },
         // Automated cycling
         startAt: 0,
-        scrollBy: 1,
+        scrollBy: 0,
         cycleBy: 'pages',
         cycleInterval: 4000,
         pauseOnHover: 1,

@@ -3,7 +3,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.worldsurveykit.survey"
-        version   = "1.0.0">
+        version   = "1.1.1">
 
   <preference name="phonegap-version" value="2.5.0" />
     
@@ -30,7 +30,7 @@
         A list of available plugins are available at https://build.phonegap.com/docs/plugins
     -->
     <gap:plugin name="com.phonegap.plugins.facebookconnect">
-      <param name="APP_ID" value="169340593242773" />
+      <param name="APP_ID" value="271724712973440" />
       <param name="APP_NAME" value="World Survey Kit" />
     </gap:plugin>
 

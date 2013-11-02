@@ -23,3 +23,4 @@ App.organizationsName = "World Survey Kit";
 App.emailToName = "worldsurveykit";
 App.emailProvider = "outlook.com";
 App.helpPage = "//bitbucket.org/ntheile/wsk/issues";
+
