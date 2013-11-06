@@ -39,7 +39,7 @@ define(["jquery", "backbone", "models/Models", "text!templates/QGpsTemplate.html
             // gps
             navigator.geolocation.getCurrentPosition(
                 function (position) {
-                    var strGPS = '<img src="//maps.googleapis.com/maps/api/staticmap?center=' + position.coords.latitude + ' ' + position.coords.longitude + '&amp;zoom=14&amp;size=288x200&amp;markers=color:blue%7Clabel:X%7C' + position.coords.latitude + ' ' + position.coords.longitude + '&amp;sensor=false" height="200" width="288">';
+                    var strGPS = '<img src="http://maps.googleapis.com/maps/api/staticmap?center=' + position.coords.latitude + ' ' + position.coords.longitude + '&amp;zoom=14&amp;size=288x200&amp;markers=color:blue%7Clabel:X%7C' + position.coords.latitude + ' ' + position.coords.longitude + '&amp;sensor=false" height="200" width="288">';
                     var strgps = 'Latitude: ' + position.coords.latitude + '<br/>' + 'Longitude: ' + position.coords.longitude + '<br/>';
                     $('#qGpsQuestionImage').html(strGPS + "<br/>" + strgps);
                 },
