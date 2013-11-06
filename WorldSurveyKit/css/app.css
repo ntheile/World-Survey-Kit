@@ -66,6 +66,10 @@
       visibility:hidden;
   }
 
+ .hide-mobile{
+     display:none;
+ }
+
 }
 
 .splash {

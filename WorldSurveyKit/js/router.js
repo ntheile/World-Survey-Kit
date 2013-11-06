@@ -412,7 +412,7 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
                         error: function (model, response) {
                             $.mobile.loading("hide");
                             App.startMe();
-                            alert(response.statusText);
+                            //alert(response.statusText);
                         }
                     });
                 }
@@ -1151,35 +1151,38 @@ define(["jquery", "backbone", "text!templates/MenuTemplate.html", "collections/M
                     }
                 });
 
+                try {
+                    // Profile menu code
+                    $(".profiledd").off("click");
+                    $(".profiledd").on("click", function () {
+                        $(".profileMenuPopup4").popup('open', { positionTo: '#profilePos' });
+                    });
+                    var strOrg = "";
+                    _.each(App.myOrgs, function (org) {
+                        strOrg = strOrg + "<li><a onclick='App.reloadNewOrg(" + org.Orgs.id + ")'>" + org.Orgs.orgName + "</a></li>";
+
+                    });
+                    $("div[data-role='profilemenu4']").html("");
+                    $("div[data-role='profilemenu4']").append(
+                        '<div data-role="popup" class="profileMenuPopup4" data-theme="d">' +
+                            '<ul data-role="listview" data-inset="true" style="min-width:250px;" data-theme="d">' +
+                                '<li data-role="divider" data-theme="g">Switch to Friends Survey:</li>' + strOrg +
+                            '</ul>' +
+                        '</div>'
+                    );
+                    //$("#build").trigger("create");
+                    //$(".profileMenuPopup4").trigger("create");
+                }
+                catch (e) { }
+
+
             }, function () {
                 //error
                 $.mobile.loading("hide");
                 console.log("Error fetching files on init");
             });
 
-            try {
-                // Profile menu code
-                $(".profiledd").off("click");
-                $(".profiledd").on("click", function () {
-                    $(".profileMenuPopup4").popup('open', { positionTo: '#profilePos' });
-                });
-                var strOrg = "";
-                _.each(App.myOrgs, function (org) {
-                    strOrg = strOrg + "<li><a onclick='App.reloadNewOrg(" + org.Orgs.id + ")'>" + org.Orgs.orgName + "</a></li>";
-
-                });
-                $("div[data-role='profilemenu4']").html("");
-                $("div[data-role='profilemenu4']").append(
-                    '<div data-role="popup" class="profileMenuPopup4" data-theme="d">' +
-                        '<ul data-role="listview" data-inset="true" style="min-width:250px;" data-theme="d">' +
-                            '<li data-role="divider" data-theme="g">Switch to Friends Survey:</li>' + strOrg +
-                        '</ul>' +
-                    '</div>'
-                );
-                $("#build").trigger("create");
-                $(".profileMenuPopup4").trigger("create");
-            }
-            catch (e) { }
+           
 
         },
 

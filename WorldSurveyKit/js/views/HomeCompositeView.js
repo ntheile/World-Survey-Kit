@@ -60,7 +60,7 @@ define(["jquery", "backbone", "models/Models"],
                         _.each(data, function (item) {
                             var fid = item.fid;
                             var feed = item.feed;
-                            var pic = "//graph.facebook.com/" + fid + "/picture?type=square";
+                            var pic = "http://graph.facebook.com/" + fid + "/picture?type=square";
                             var name = "";
                             var date = item.date;
 
@@ -78,7 +78,7 @@ define(["jquery", "backbone", "models/Models"],
                     error: function (model, response) {
                         $.mobile.loading("hide");
                         // sorry no feed
-                        alert(response.statusText);
+                        //alert(response.statusText);
                     }
 
                 });
