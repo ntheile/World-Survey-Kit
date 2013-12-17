@@ -353,6 +353,7 @@
     <Content Include="css\font\fontawesome-webfont.ttf" />
     <Content Include="css\font\fontawesome-webfont.woff" />
     <Content Include="css\font\FontAwesome.otf" />
+    <Content Include="js\libs\fastclick.js" />
     <Content Include="js\libs\jquery.signaturepad_old.js" />
     <Content Include="js\libs\cordova-android-2.3.0.js" />
     <Content Include="js\libs\facebook_js_sdk.js" />

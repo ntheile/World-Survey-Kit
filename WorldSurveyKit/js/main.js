@@ -84,7 +84,8 @@ require.config({
         "handsontable": "libs/jquery.handsontable.full",
         "q": "libs/q",
         "tourbus": "libs/jquery.tourbus",
-        "tdfriendselector": "libs/tdfriendselector"
+        "tdfriendselector": "libs/tdfriendselector",
+        "fastclick": "libs/fastclick"
     },
     // Sets the configuration for your third party scripts that are not AMD compatible
     shim: {
@@ -115,9 +116,12 @@ require.config({
 });
 
 // Include File Dependencies
-require(["jquery", "backbone", "backstretch", "dataTables", "sly", "modernizrCustom", "q", "tourbus"], function ($, Backbone, backstretch, dataTables, sly, modernize, q, tourbus) {
+require(["jquery", "backbone", "backstretch", "dataTables", "sly", "modernizrCustom", "q", "tourbus" , "fastclick"], function ($, Backbone, backstretch, dataTables, sly, modernize, q, tourbus, fastclick) {
 
     jQuery.noConflict;
+    
+    // remove the 300 ms delay with Fastclick
+    FastClick.attach(document.body);
 
     // load and implement all unsupported features if the canvas does not exist (Mainly used for IE 8 support)
     if (!Modernizr.canvas) {

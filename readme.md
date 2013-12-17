@@ -355,7 +355,11 @@ TODO
 
 TODO - Short Term
 =================
-* switch deffered to using Q
+* Fix bug to populate report on edit from the report table page, add this code to GoCompositeView.js line 93
+// if its an empty array then get the id since we are getting server model not backbone offline
+if (fileInstanceName.length == 0){
+    fileInstanceName = self.fileInstColl.where({ id: parseInt(this.fileInstanceId) });
+}
 * add togetherjs for chat and real time (Only enable in chrome and firefox desktop, disbale the circle thingy on click)
 * add open graph "{User} took the survey, {survey name} on World Survey Kit"
 
