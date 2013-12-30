@@ -323,6 +323,7 @@
     <Content Include="images\icons\xhdpi.png" />
     <Content Include="images\icons\mdpi.png" />
     <Content Include="images\qrcode.png" />
+    <Content Include="images\WindowsStoreBadge.png" />
     <Content Include="images\wsk-sm.png" />
     <Content Include="images\wsk.png" />
     <Content Include="images\loadingLg.gif" />
