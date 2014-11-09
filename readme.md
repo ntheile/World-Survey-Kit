@@ -40,7 +40,7 @@ print the data.
 
 An organization has the ability to run their business on the platform.  It enables them to gather data based on a
 variety of inputs including single answer, multiple choice, signature, GPS, open ended and more [More types coming soon...]. 
-This will enable Organizations and NGO’s to solve some of the world’s most pressing problems. Where on earth 
+This will enable Organizations and NGOâ€™s to solve some of the worldâ€™s most pressing problems. Where on earth 
 do people need clean water? How can we make money off our sustainable solutions? How do I gather a signature 
 to sell to a carbon credit broker in remote locations in Africa? etc...
                       
@@ -285,7 +285,7 @@ Edit the following in the config.xml to get facebook login and PhoneGap to work 
 
 4. The next steps show how to package a Phonegap app then upload your web assets - a ZIP file of HTML, CSS and JavaScript files 
 to PhoneGap Build. PhoneGap will compile and package the app for you. 
-In minutes, you’ll receive the download URLs for all mobile platforms. Remember this PhoneGap build will only 
+In minutes, youâ€™ll receive the download URLs for all mobile platforms. Remember this PhoneGap build will only 
 work for the platform you specified in config.js. To target other mobile platforms this process must be repeated
 and a separate PhoneGap Build App created. (You could always change this and configure App.platform by "User Agent String
 Sniffing", but that could be difficult and messy to do)
@@ -366,7 +366,8 @@ if (fileInstanceName.length == 0){
 
 
 TODO - Long Term
-================		
+================
+* port over to a meteor and angular app
 * Make everything pageable and odata queryable
 * Change the authenication model for a survey
 	* anonymous, facebook authenicated, pin
